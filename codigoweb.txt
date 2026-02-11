@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fast Travel | Viaja a la velocidad del clic</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans">
+
+	<nav class="p-6 flex justify-between items-center bg-white shadow-sm">
+    	<h1 class="text-2xl font-bold text-blue-600"> Fast Travel</h1>
+    	<div class="space-x-6 hidden md:block text-gray-600 font-medium">
+        	<a href="#" class="hover:text-blue-500">Destinos</a>
+        	<a href="#" class="hover:text-blue-500">Ofertas</a>
+        	<a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">Reservar Ahora</a>
+    	</div>
+	</nav>
+
+	<header class="py-20 px-6 text-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    	<h2 class="text-4xl md:text-6xl font-extrabold mb-4">El mundo, más cerca que nunca</h2>
+    	<p class="text-xl mb-8 opacity-90">Vuelos rápidos, trámites simples y aventuras inmediatas.</p>
+    	<div class="max-w-md mx-auto bg-white p-2 rounded-lg shadow-xl flex">
+        	<input type="text" placeholder="¿A dónde quieres volar?" class="w-full p-3 text-gray-800 focus:outline-none">
+        	<button class="bg-orange-500 text-white px-6 py-3 rounded-md font-bold hover:bg-orange-600 transition">Buscar</button>
+    	</div>
+	</header>
+
+	<section class="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+        	<i class="fa-solid fa-bolt text-4xl text-yellow-500 mb-4"></i>
+        	<h3 class="text-xl font-bold mb-2">Check-in Express</h3>
+        	<p class="text-gray-500">Sin filas, sin esperas. Todo desde tu móvil en segundos.</p>
+    	</div>
+    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+        	<i class="fa-solid fa-earth-americas text-4xl text-blue-500 mb-4"></i>
+        	<h3 class="text-xl font-bold mb-2">Destinos Globales</h3>
+        	<p class="text-gray-500">Conexiones directas a las capitales más importantes del mundo.</p>
+    	</div>
+    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+        	<i class="fa-solid fa-shield-halved text-4xl text-green-500 mb-4"></i>
+        	<h3 class="text-xl font-bold mb-2">Seguro Total</h3>
+        	<p class="text-gray-500">Protección ante cambios de último minuto garantizada.</p>
+    	</div>
+	</section>
+
+	<footer class="py-10 text-center text-gray-400 border-t">
+    	<p>© 2026 Fast Travel. Todos los derechos reservados.</p>
+	</footer>
+
+</body>
+</html>
+
+ 
