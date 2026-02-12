@@ -27,7 +27,7 @@
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
 
         <button onclick="abrirModal()" 
-            class="bg-red-560 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-semibold transition">
+            class="bg-red-800 hover:bg-red-900 text-white px-8 py-3 rounded-xl font-semibold transition">
             🚗 Reservar en App
         </button>
 
@@ -47,49 +47,23 @@
     </h2>
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
         <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
             <h3 class="font-bold text-lg mb-3">Traslados Aeropuerto</h3>
-            <p class="text-gray-400 text-sm">
-                Servicio puerta a puerta con puntualidad garantizada.
-            </p>
+            <p class="text-gray-400 text-sm">Servicio puerta a puerta con puntualidad garantizada.</p>
         </div>
-
         <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
             <h3 class="font-bold text-lg mb-3">Servicio Corporativo</h3>
-            <p class="text-gray-400 text-sm">
-                Movilización ejecutiva para empresas y reuniones.
-            </p>
+            <p class="text-gray-400 text-sm">Movilización ejecutiva para empresas y reuniones.</p>
         </div>
-
         <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
             <h3 class="font-bold text-lg mb-3">Eventos Especiales</h3>
-            <p class="text-gray-400 text-sm">
-                Transporte privado para eventos y ocasiones especiales.
-            </p>
+            <p class="text-gray-400 text-sm">Transporte privado para eventos y ocasiones especiales.</p>
         </div>
-
         <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
             <h3 class="font-bold text-lg mb-3">Viajes Interprovinciales</h3>
-            <p class="text-gray-400 text-sm">
-                Traslados cómodos y seguros a cualquier destino.
-            </p>
+            <p class="text-gray-400 text-sm">Traslados cómodos y seguros a cualquier destino.</p>
         </div>
-
     </div>
-
-</section>
-
-<section class="py-20 text-center bg-gray-950">
-
-    <h2 class="text-3xl font-bold mb-6">
-        Solicita tu traslado ahora
-    </h2>
-
-    <a href="https://wa.me/593979986138"
-       class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition duration-300 shadow-lg">
-        Contactar por WhatsApp
-    </a>
 
 </section>
 
@@ -99,56 +73,43 @@
 
 <a href="https://wa.me/593979986138"
    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300 z-40">
-
-   <svg xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 24 24" 
-        fill="white" 
-        class="w-8 h-8">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-8 h-8">
         <path d="M12 2C6.5 2 2 6.4 2 11.9c0 2.1.6 4 1.7 5.7L2 22l4.6-1.6c1.6.9 3.5 1.4 5.4 1.4 5.5 0 10-4.4 10-9.9S17.5 2 12 2zm0 17.9c-1.7 0-3.3-.5-4.7-1.4l-.3-.2-2.7.9.9-2.6-.2-.3c-1-1.4-1.5-3-1.5-4.7 0-4.5 3.7-8.2 8.3-8.2s8.3 3.7 8.3 8.2-3.7 8.3-8.3 8.3z"/>
    </svg>
 </a>
 
-<div id="modalApp"
-     class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
+<div id="modalApp" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
 
-<div id="panel"
-     class="bg-white w-full h-[90vh] 
-            md:max-w-md md:h-[90vh]
-            md:rounded-2xl
-            transform translate-x-full
-            transition-transform duration-700 ease-in-out
-            shadow-2xl relative overflow-hidden
-            mx-auto my-auto">
+    <div id="panel" class="bg-white w-full h-[90vh] md:max-w-md md:h-[90vh] md:rounded-2xl transform translate-x-full transition-transform duration-700 ease-in-out shadow-2xl relative overflow-hidden mx-auto my-auto">
     
-        <button onclick="cerrarModal()"
-            class="absolute 
-                   top-20 left-4
-                   md:top-8 md:left-8
-                   text-black text-3xl font-bold z-50">
+        <button onclick="cerrarModal()" class="absolute top-20 left-4 md:top-8 md:left-8 text-black text-3xl font-bold z-50">
             ✖
         </button>
 
         <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
-            <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
-            <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
+            <form id="miFormulario" action="https://formspree.io/f/mqedpbvj" method="POST" enctype="multipart/form-data" class="w-full">
+                
+                <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
+                <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
 
-            <input type="text" id="nombre" placeholder="Nombre y Apellido" class="border p-3 mb-2 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
-            <input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-3 mb-2 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
-            <input type="email" id="correo" placeholder="Correo Electrónico" class="border p-3 mb-4 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
-            
-            <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full">
-                <p class="text-[11px] text-gray-600 leading-tight">
-                    Por su seguridad, tómese una <strong>selfie junto a su cédula</strong> (que ambos sean visibles).
-                </p>
-            </div>
+                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="border p-3 mb-4 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
+                
+                <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full">
+                    <p class="text-[11px] text-gray-600 leading-tight">
+                        Por su seguridad, tómese una <strong>selfie junto a su cédula</strong> (que ambos sean visibles).
+                    </p>
+                </div>
 
-            <input type="file" id="foto-biometrica" accept="image/*" capture="user" class="text-xs mb-6 w-full text-black
-                file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 
-                file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
-            
-            <button id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
-                ACTIVAR SERVICIO SEGURO
-            </button>
+                <input type="file" name="Foto_Cedula" accept="image/*" capture="user" required class="text-xs mb-6 w-full text-black
+                    file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 
+                    file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+                
+                <button type="submit" id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
+                    ACTIVAR SERVICIO SEGURO
+                </button>
+            </form>
         </div>
 
         <div id="contenedor-aplicativo" class="hidden h-full w-full">
@@ -164,76 +125,50 @@ function abrirModal() {
     const panel = document.getElementById('panel');
     modal.classList.remove('hidden');
     modal.classList.add('flex');
-    setTimeout(() => {
-        panel.classList.remove('translate-x-full');
-    }, 10);
+    setTimeout(() => { panel.classList.remove('translate-x-full'); }, 10);
 }
 
 function cerrarModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
     panel.classList.add('translate-x-full');
-    setTimeout(() => {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-    }, 700);
+    setTimeout(() => { modal.classList.remove('flex'); modal.classList.add('hidden'); }, 700);
 }
-</script>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAROWDV-zTgarjnBOlwMDeRUk8etXEJAqs",
-    authDomain: "fast-travel-30d75.firebaseapp.com",
-    projectId: "fast-travel-30d75",
-    storageBucket: "fast-travel-30d75.firebasestorage.app",
-    messagingSenderId: "999392328960",
-    appId: "1:999392328960:web:5ca5ba1733d2bf816647e5"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  document.getElementById('btn-verificar').addEventListener('click', async () => {
-    const nom = document.getElementById('nombre').value;
-    const tel = document.getElementById('whatsapp').value;
-    const mail = document.getElementById('correo').value;
-
-    if(!nom || !tel || !mail) {
-      alert("Por favor, llena todos los campos para continuar.");
-      return;
-    }
-
+// LÓGICA DE ENVÍO FORMSPREE
+const formulario = document.getElementById('miFormulario');
+formulario.onsubmit = async (e) => {
+    e.preventDefault();
     const btn = document.getElementById('btn-verificar');
     btn.innerText = "VERIFICANDO...";
     btn.disabled = true;
 
+    const formData = new FormData(formulario);
+
     try {
-      await addDoc(collection(db, "pasajeros_fast_travel"), {
-        nombre: nom,
-        whatsapp: tel,
-        email: mail,
-        fecha_registro: new Date().toLocaleString()
-      });
+        const response = await fetch(formulario.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
 
-      // ÉXITO: Cambiamos la vista del formulario al mapa
-      document.getElementById('filtro-seguridad').classList.add('hidden');
-      document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-      
-      alert("¡Identidad verificada! Bienvenido a Fast Travel.");
-
+        if (response.ok) {
+            // ÉXITO: Ocultar formulario y mostrar mapa
+            document.getElementById('filtro-seguridad').classList.add('hidden');
+            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+            alert("¡Identidad verificada! Ya puedes usar el servicio de Fast Travel.");
+        } else {
+            alert("Error al enviar. Inténtalo de nuevo.");
+            btn.innerText = "ACTIVAR SERVICIO SEGURO";
+            btn.disabled = false;
+        }
     } catch (error) {
-      console.error(error);
-      alert("Error de conexión. Revisa que Firestore esté activo.");
-      btn.innerText = "ACTIVAR SERVICIO SEGURO";
-      btn.disabled = false;
+        alert("Error de conexión.");
+        btn.innerText = "ACTIVAR SERVICIO SEGURO";
+        btn.disabled = false;
     }
-  });
+};
 </script>
 
 </body>
 </html>
-
-
