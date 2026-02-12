@@ -9,7 +9,6 @@
 
 <body class="bg-black text-white font-sans">
 
-<!-- HERO -->
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
 
     <img src="logo_ft-removebg-preview (1).png" 
@@ -27,13 +26,11 @@
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
 
-        <!-- Botón App -->
         <button onclick="abrirModal()" 
             class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-semibold transition">
             🚗 Reservar en App
         </button>
 
-        <!-- Botón WhatsApp -->
         <a href="https://wa.me/593979986138" target="_blank"
             class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition">
             💬 WhatsApp
@@ -43,7 +40,6 @@
 
 </section>
 
-<!-- SERVICIOS -->
 <section class="py-20 px-6 bg-gray-950">
 
     <h2 class="text-3xl font-bold text-center mb-12 text-red-500">
@@ -84,7 +80,6 @@
 
 </section>
 
-<!-- CTA -->
 <section class="py-20 text-center bg-gray-950">
 
     <h2 class="text-3xl font-bold mb-6">
@@ -98,12 +93,10 @@
 
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-black py-6 text-center text-gray-500 text-sm border-t border-gray-800">
     © 2026 Fast Travel - Servicio de transporte VIP y logística
 </footer>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://wa.me/593979986138"
    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300 z-40">
 
@@ -115,7 +108,6 @@
    </svg>
 </a>
 
-<!-- MODAL APP WEB -->
 <div id="modalApp"
      class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
 
@@ -128,7 +120,6 @@
             shadow-2xl relative overflow-hidden
             mx-auto my-auto">
     
-        <!-- BOTÓN CERRAR -->
         <button onclick="cerrarModal()"
             class="absolute 
                    top-20 left-4
@@ -137,39 +128,42 @@
             ✖
         </button>
 
-        <!-- IFRAME -->
         <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
-    <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
-    <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
+            <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
+            <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
 
-<input type="text" id="nombre" placeholder="Nombre y Apellido" class="border p-3 mb-2 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none">
-<input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-3 mb-4 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none">
-<input type="email" id="correo" placeholder="Correo Electrónico" class="border p-3 mb-4 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none">
-    
-    <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full">
-        <p class="text-[11px] text-gray-600 leading-tight">
-            Por su seguridad, tómese una <strong>selfie junto a su cédula</strong> (que ambos sean visibles).
-        </p>
-    </div>
+            <input type="text" id="nombre" placeholder="Nombre y Apellido" class="border p-3 mb-2 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
+            <input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-3 mb-2 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
+            <input type="email" id="correo" placeholder="Correo Electrónico" class="border p-3 mb-4 w-full rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-400 outline-none text-black">
+            
+            <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full">
+                <p class="text-[11px] text-gray-600 leading-tight">
+                    Por su seguridad, tómese una <strong>selfie junto a su cédula</strong> (que ambos sean visibles).
+                </p>
+            </div>
 
-    <input type="file" id="foto-biometrica" accept="image/*" capture="user" class="text-xs mb-6 w-full 
-        file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 
-        file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
-    
-    <button id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
-        ACTIVAR SERVICIO SEGURO
-    </button>
-</div>
+            <input type="file" id="foto-biometrica" accept="image/*" capture="user" class="text-xs mb-6 w-full text-black
+                file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 
+                file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+            
+            <button id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
+                ACTIVAR SERVICIO SEGURO
+            </button>
+        </div>
+
+        <div id="contenedor-aplicativo" class="hidden h-full w-full">
+            <iframe src="https://fasttravel.ondelight.cloud/" width="100%" height="100%" style="border:0;" allow="geolocation"></iframe>
+        </div>
+
     </div>
 </div>
+
 <script>
 function abrirModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
-
     modal.classList.remove('hidden');
     modal.classList.add('flex');
-
     setTimeout(() => {
         panel.classList.remove('translate-x-full');
     }, 10);
@@ -178,21 +172,18 @@ function abrirModal() {
 function cerrarModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
-
     panel.classList.add('translate-x-full');
-
     setTimeout(() => {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
     }, 700);
 }
 </script>
-    <script type="module">
-  // 1. Conexión con las librerías de Google Firebase
+
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // 2. Tu configuración real (sacada de tu consola de Firebase)
   const firebaseConfig = {
     apiKey: "AIzaSyAROWDV-zTgarjnBOlwMDeRUk8etXEJAqs",
     authDomain: "fast-travel-30d75.firebaseapp.com",
@@ -202,20 +193,16 @@ function cerrarModal() {
     appId: "1:999392328960:web:5ca5ba1733d2bf816647e5"
   };
 
-  // Inicializar Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // 3. Lógica del botón "ACTIVAR SERVICIO SEGURO"
   document.getElementById('btn-verificar').addEventListener('click', async () => {
-    // Capturamos los datos de los 3 campos
     const nom = document.getElementById('nombre').value;
     const tel = document.getElementById('whatsapp').value;
     const mail = document.getElementById('correo').value;
 
-    // Validación: que no envíen campos vacíos
     if(!nom || !tel || !mail) {
-      alert("Por favor, llena todos los campos (Nombre, WhatsApp y Correo) para continuar.");
+      alert("Por favor, llena todos los campos para continuar.");
       return;
     }
 
@@ -224,7 +211,6 @@ function cerrarModal() {
     btn.disabled = true;
 
     try {
-      // Guardamos la información en la base de datos Firestore
       await addDoc(collection(db, "pasajeros_fast_travel"), {
         nombre: nom,
         whatsapp: tel,
@@ -232,15 +218,15 @@ function cerrarModal() {
         fecha_registro: new Date().toLocaleString()
       });
 
-      // ¡ÉXITO! Cerramos el filtro y mostramos el mapa
-      document.getElementById('filtro-seguridad').style.display = 'none';
+      // ÉXITO: Cambiamos la vista del formulario al mapa
+      document.getElementById('filtro-seguridad').classList.add('hidden');
+      document.getElementById('contenedor-aplicativo').classList.remove('hidden');
       
-      // Mensaje de bienvenida
-      alert("¡Identidad verificada! Ya puedes usar el servicio de Fast Travel.");
+      alert("¡Identidad verificada! Bienvenido a Fast Travel.");
 
     } catch (error) {
       console.error(error);
-      alert("Hubo un error de conexión. Asegúrate de que Firestore esté en 'Modo de Prueba' en tu consola de Firebase.");
+      alert("Error de conexión. Revisa que Firestore esté activo.");
       btn.innerText = "ACTIVAR SERVICIO SEGURO";
       btn.disabled = false;
     }
@@ -249,12 +235,3 @@ function cerrarModal() {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
