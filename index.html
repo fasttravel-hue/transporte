@@ -117,14 +117,15 @@
 
 <!-- MODAL APP WEB -->
 <div id="modalApp"
-     class="fixed inset-0 bg-black hidden z-50">
+     class="fixed inset-0 bg-black/90 hidden flex items-center justify-centerz-50">
 
-    <div id="panel"
-         class="bg-black w-full h-full
-                md:w-full md:h-full
-                transform translate-x-full
-                transition-transform duration-700 ease-in-out
-                shadow-2xl relative">
+<div id="panel"
+     class="bg-black w-full h-full
+            md:w-[1100px] md:h-[85vh]
+            md:rounded-2xl
+            transform translate-x-full
+            transition-transform duration-700 ease-in-out
+            shadow-2xl relative overflow-hidden">
 
         <!-- BOTÓN CERRAR -->
         <button onclick="cerrarModal()"
@@ -171,6 +172,7 @@ function cerrarModal() {
 
 </body>
 </html>
+
 
 
 
