@@ -1,453 +1,145 @@
 <!DOCTYPE html>
-
-
 <html lang="es">
-
-
 <head>
-
-
     <meta charset="UTF-8">
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>Fast Travel | Tu Seguridad es Primero</title>
-
-
-    <script src="[enlace sospechoso eliminado]"></script>
-
-
-    <link rel="stylesheet" href="[enlace sospechoso eliminado]">
-
-
-    <style>
-
-
-        .bg-conchevinos-negro {
-
-
-            background: linear-gradient(to right, #4A0000, #000000);
-
-
-        }
-
-
-        .whatsapp-button {
-
-
-            position: fixed;
-
-
-            bottom: 20px;
-
-
-            right: 20px;
-
-
-            z-index: 1000;
-
-
-            background-color: #25D366;
-
-
-            color: white;
-
-
-            padding: 15px;
-
-
-            border-radius: 50%;
-
-
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
-
-            display: flex;
-
-
-            align-items: center;
-
-
-            justify-content: center;
-
-
-            font-size: 24px;
-
-
-            text-decoration: none;
-
-
-            transition: transform 0.3s ease;
-
-
-        }
-
-
-        .whatsapp-button:hover {
-
-
-            transform: scale(1.1);
-
-
-        }
-
-
-        .whatsapp-modal {
-
-
-            display: none;
-
-
-            position: fixed;
-
-
-            z-index: 1001;
-
-
-            left: 0;
-
-
-            top: 0;
-
-
-            width: 100%;
-
-
-            height: 100%;
-
-
-            overflow: auto;
-
-
-            background-color: rgba(0,0,0,0.6);
-
-
-            justify-content: center;
-
-
-            align-items: center;
-
-
-        }
-
-
-        .whatsapp-modal-content {
-
-
-            background-color: #fefefe;
-
-
-            margin: auto;
-
-
-            padding: 30px;
-
-
-            border-radius: 10px;
-
-
-            width: 80%;
-
-
-            max-width: 400px;
-
-
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-
-
-            text-align: center;
-
-
-        }
-
-
-        .whatsapp-modal-content h3 {
-
-
-            color: #333;
-
-
-            margin-bottom: 20px;
-
-
-            font-size: 1.5rem;
-
-
-        }
-
-
-        .whatsapp-modal-content a {
-
-
-            display: block;
-
-
-            background-color: #25D366;
-
-
-            color: white;
-
-
-            padding: 12px 20px;
-
-
-            margin-bottom: 15px;
-
-
-            border-radius: 8px;
-
-
-            text-decoration: none;
-
-
-            font-size: 1.1rem;
-
-
-            transition: background-color 0.3s ease;
-
-
-        }
-
-
-        .whatsapp-modal-content a:hover {
-
-
-            background-color: #1DA851;
-
-
-        }
-
-
-        .close-button {
-
-
-            color: #aaa;
-
-
-            float: right;
-
-
-            font-size: 28px;
-
-
-            font-weight: bold;
-
-
-            cursor: pointer;
-
-
-        }
-
-
-    </style>
-
-
+    <title>Fast Travel | Transporte Ejecutivo VIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
+<body class="bg-black text-white font-sans">
+
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
+
+    <!-- LOGO -->
+    <img src="img/logo-fasttravel.png" 
+         alt="Fast Travel Logo"
+         class="w-48 md:w-64 mb-8">
+
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Transporte Ejecutivo Privado
+    </h1>
+
+    <p class="text-gray-400 max-w-xl mb-8">
+        Servicio VIP de traslados seguros, puntuales y exclusivos.
+        Atención 24/7 en Ecuador.
+    </p>
+
+    <a href="https://wa.me/593979986138"
+       class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition duration-300 shadow-lg">
+        Reservar Ahora
+    </a>
+
+</section>
+
+<!-- SERVICIOS -->
+<section class="py-20 px-6 bg-gray-950">
+
+    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">
+        Nuestros Servicios
+    </h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+            <h3 class="font-bold text-lg mb-3">Traslados Aeropuerto</h3>
+            <p class="text-gray-400 text-sm">
+                Servicio puerta a puerta con puntualidad garantizada.
+            </p>
+        </div>
+
+        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+            <h3 class="font-bold text-lg mb-3">Servicio Corporativo</h3>
+            <p class="text-gray-400 text-sm">
+                Movilización ejecutiva para empresas y reuniones.
+            </p>
+        </div>
+
+        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+            <h3 class="font-bold text-lg mb-3">Eventos Especiales</h3>
+            <p class="text-gray-400 text-sm">
+                Transporte privado para eventos y ocasiones especiales.
+            </p>
+        </div>
+
+        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
+            <h3 class="font-bold text-lg mb-3">Viajes Interprovinciales</h3>
+            <p class="text-gray-400 text-sm">
+                Traslados cómodos y seguros a cualquier destino.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BENEFICIOS -->
+<section class="py-20 px-6 bg-black">
+
+    <h2 class="text-3xl font-bold text-center mb-12">
+        ¿Por qué elegir Fast Travel?
+    </h2>
+
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+
+        <div>
+            <h4 class="text-red-500 font-bold mb-2">24/7</h4>
+            <p class="text-gray-400 text-sm">
+                Atención disponible todos los días del año.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="text-red-500 font-bold mb-2">Vehículos Premium</h4>
+            <p class="text-gray-400 text-sm">
+                Unidades modernas, limpias y cómodas.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="text-red-500 font-bold mb-2">Conductores Profesionales</h4>
+            <p class="text-gray-400 text-sm">
+                Personal capacitado y de confianza.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-20 text-center bg-gray-950">
 
-<body class="bg-gray-900 text-gray-100 font-sans">
+    <h2 class="text-3xl font-bold mb-6">
+        Solicita tu traslado ahora
+    </h2>
 
+    <a href="https://wa.me/593979986138"
+       class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-full font-semibold transition duration-300 shadow-lg">
+        Contactar por WhatsApp
+    </a>
 
-    <a href="#" id="openWhatsapp" class="whatsapp-button">
+</section>
 
+<!-- FOOTER -->
+<footer class="bg-black py-6 text-center text-gray-500 text-sm border-t border-gray-800">
+    © 2026 Fast Travel - Servicio de transporte VIP y logística
+</footer>
 
-        <i class="fab fa-whatsapp">_
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/593979986138"
+   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300">
 
+   <svg xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" 
+        fill="white" 
+        class="w-8 h-8">
+        <path d="M12 2C6.5 2 2 6.4 2 11.9c0 2.1.6 4 1.7 5.7L2 22l4.6-1.6c1.6.9 3.5 1.4 5.4 1.4 5.5 0 10-4.4 10-9.9S17.5 2 12 2zm0 17.9c-1.7 0-3.3-.5-4.7-1.4l-.3-.2-2.7.9.9-2.6-.2-.3c-1-1.4-1.5-3-1.5-4.7 0-4.5 3.7-8.2 8.3-8.2s8.3 3.7 8.3 8.2-3.7 8.3-8.3 8.3z"/>
+   </svg>
 
-    
-
-
-    <div id="whatsappModal" class="whatsapp-modal">
-
-
-        <div class="whatsapp-modal-content">
-
-
-            <span class="close-button" id="closeWhatsapp">&times;</span>
-
-
-            ¿Con quién deseas contactar?
-
-
-            <a href="[enlace sospechoso eliminado]" target="_blank">WhatsApp 1 (Reservas)
-
-
-            <a href="[enlace sospechoso eliminado]" target="_blank">WhatsApp 2 (Información)
-
-
-        
-
-
-    
-
-
-    <nav class="bg-black bg-opacity-70 backdrop-blur-sm px-8 py-4 flex justify-between items-center shadow-lg">
-
-
-        <div class="flex items-center">
-
-
-            <span class="text-3xl font-extrabold text-red-700 italic mr-2">Fast Travel</span>
-
-
-            <span class="text-xl font-light text-gray-300">| Tu seguridad es primero</span>
-
-
-        
-
-
-        <div class="hidden md:flex space-x-6">
-
-
-            <a href="#cotizar" class="text-gray-300 hover:text-red-500 transition">Cotizar Viaje
-
-
-            <a href="#unidad" class="text-gray-300 hover:text-red-500 transition">Pedir Unidad
-
-
-            <a href="#" class="bg-red-700 hover:bg-red-800 text-white px-5 py-2 rounded-full transition">Regístrate y obtén un descuento
-
-
-        
-
-
-    
-
-
-    <header class="relative h-[600px] flex items-center justify-center text-center bg-conchevinos-negro">
-
-
-        <div class="relative z-10 px-4 max-w-4xl">
-
-
-            <h1 class="text-6xl md:text-7xl font-extrabold text-white leading-tight mb-4">Viaja Seguro, Llega Rápido. # 
-
-
-            <p class="text-xl md:text-2xl text-red-200 mb-8">Tu destino en Guayaquil, a solo un clic de distancia.
-
-
-            <a href="#cotizar" class="bg-red-700 hover:bg-red-800 text-white text-lg px-8 py-3 rounded-full font-semibold transition">¡Cotiza tu Viaje Ahora!
-
-
-        
-
-
-    </header>
-
-
-    <section id="cotizar" class="py-20 px-4 bg-gray-900">
-
-
-        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl border border-red-900">
-
-
-            <h2 class="text-4xl font-bold text-center text-red-500 mb-8">Cotiza tu Viaje en Guayaquil ## 
-
-
-            <form class="space-y-6">
-
-
-                
-
-
-                    <label class="block text-gray-300 text-lg font-medium mb-2">Punto de Origen</label>
-
-
-                    <input type="text" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white" placeholder="Ej: Aeropuerto">
-
-
-                
-
-
-                
-
-
-                    <label class="block text-gray-300 text-lg font-medium mb-2">Punto de Destino</label>
-
-
-                    <input type="text" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white" placeholder="Ej: Malecón 2000">
-
-
-                
-
-
-                <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold text-lg py-3 rounded-lg">Obtener Cotización</button>
-
-
-            </form>
-
-
-        
-
-
-    </section>
-
-
-    <section id="unidad" class="py-20 px-4 bg-black">
-
-
-        <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg shadow-xl border border-red-700 text-center">
-
-
-            <h2 class="text-4xl font-bold text-red-500 mb-8">Pedir Unidad (OnDemand Cliente) ## 
-
-
-            <div class="bg-gray-800 rounded-lg p-6 h-[400px] flex items-center justify-center text-gray-400 border border-red-800">
-
-
-                Aquí se cargará tu aplicativo web de cliente OnDemand.
-
-
-            
-
-
-        
-
-
-    </section>
-
-
-    <footer class="bg-black py-10 text-center text-gray-500 border-t border-red-900">
-
-
-        © 2024 Fast Travel. Tu seguridad es nuestra prioridad.
-
-
-    </footer>
-
-
-    <script>
-
-
-        const openWhatsappBtn = document.getElementById('openWhatsapp');
-
-
-        const whatsappModal = document.getElementById('whatsappModal');
-
-
-        const closeWhatsappBtn = document.getElementById('closeWhatsapp');
-
-
-        openWhatsappBtn.addEventListener('click', (e) => { e.preventDefault(); whatsappModal.style.display = 'flex'; });
-
-
-        closeWhatsappBtn.addEventListener('click', () => { whatsappModal.style.display = 'none'; });
-
-
-        window.addEventListener('click', (e) => { if (e.target == whatsappModal) whatsappModal.style.display = 'none'; });
-
-
-    </script>
-
+</a>
 
 </body>
-
-
 </html>
-
-
-```
-
 
