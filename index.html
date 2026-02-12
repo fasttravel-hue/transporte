@@ -1,56 +1,453 @@
 <!DOCTYPE html>
+
+
 <html lang="es">
+
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fast Travel | Viaja a la velocidad del clic</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Fast Travel | Tu Seguridad es Primero</title>
+
+
+    <script src="[enlace sospechoso eliminado]"></script>
+
+
+    <link rel="stylesheet" href="[enlace sospechoso eliminado]">
+
+
+    <style>
+
+
+        .bg-conchevinos-negro {
+
+
+            background: linear-gradient(to right, #4A0000, #000000);
+
+
+        }
+
+
+        .whatsapp-button {
+
+
+            position: fixed;
+
+
+            bottom: 20px;
+
+
+            right: 20px;
+
+
+            z-index: 1000;
+
+
+            background-color: #25D366;
+
+
+            color: white;
+
+
+            padding: 15px;
+
+
+            border-radius: 50%;
+
+
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+
+            display: flex;
+
+
+            align-items: center;
+
+
+            justify-content: center;
+
+
+            font-size: 24px;
+
+
+            text-decoration: none;
+
+
+            transition: transform 0.3s ease;
+
+
+        }
+
+
+        .whatsapp-button:hover {
+
+
+            transform: scale(1.1);
+
+
+        }
+
+
+        .whatsapp-modal {
+
+
+            display: none;
+
+
+            position: fixed;
+
+
+            z-index: 1001;
+
+
+            left: 0;
+
+
+            top: 0;
+
+
+            width: 100%;
+
+
+            height: 100%;
+
+
+            overflow: auto;
+
+
+            background-color: rgba(0,0,0,0.6);
+
+
+            justify-content: center;
+
+
+            align-items: center;
+
+
+        }
+
+
+        .whatsapp-modal-content {
+
+
+            background-color: #fefefe;
+
+
+            margin: auto;
+
+
+            padding: 30px;
+
+
+            border-radius: 10px;
+
+
+            width: 80%;
+
+
+            max-width: 400px;
+
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+
+            text-align: center;
+
+
+        }
+
+
+        .whatsapp-modal-content h3 {
+
+
+            color: #333;
+
+
+            margin-bottom: 20px;
+
+
+            font-size: 1.5rem;
+
+
+        }
+
+
+        .whatsapp-modal-content a {
+
+
+            display: block;
+
+
+            background-color: #25D366;
+
+
+            color: white;
+
+
+            padding: 12px 20px;
+
+
+            margin-bottom: 15px;
+
+
+            border-radius: 8px;
+
+
+            text-decoration: none;
+
+
+            font-size: 1.1rem;
+
+
+            transition: background-color 0.3s ease;
+
+
+        }
+
+
+        .whatsapp-modal-content a:hover {
+
+
+            background-color: #1DA851;
+
+
+        }
+
+
+        .close-button {
+
+
+            color: #aaa;
+
+
+            float: right;
+
+
+            font-size: 28px;
+
+
+            font-weight: bold;
+
+
+            cursor: pointer;
+
+
+        }
+
+
+    </style>
+
+
 </head>
-<body class="bg-slate-50 font-sans">
 
-	<nav class="p-6 flex justify-between items-center bg-white shadow-sm">
-    	<h1 class="text-2xl font-bold text-blue-600"> Fast Travel</h1>
-    	<div class="space-x-6 hidden md:block text-gray-600 font-medium">
-        	<a href="#" class="hover:text-blue-500">Destinos</a>
-        	<a href="#" class="hover:text-blue-500">Ofertas</a>
-        	<a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">Reservar Ahora</a>
-    	</div>
-	</nav>
 
-	<header class="py-20 px-6 text-center bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-    	<h2 class="text-4xl md:text-6xl font-extrabold mb-4">El mundo, más cerca que nunca</h2>
-    	<p class="text-xl mb-8 opacity-90">Viaja rapido, seguro y confortable.</p>
-    	<div class="max-w-md mx-auto bg-white p-2 rounded-lg shadow-xl flex">
-        	<input type="text" placeholder="¿A dónde quieres volar?" class="w-full p-3 text-gray-800 focus:outline-none">
-        	<button class="bg-orange-500 text-white px-6 py-3 rounded-md font-bold hover:bg-orange-600 transition">Buscar</button>
-    	</div>
-	</header>
+<body class="bg-gray-900 text-gray-100 font-sans">
 
-	<section class="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-        	<i class="fa-solid fa-bolt text-4xl text-yellow-500 mb-4"></i>
-        	<h3 class="text-xl font-bold mb-2">Check-in Express</h3>
-        	<p class="text-gray-500">Sin filas, sin esperas. Todo desde tu móvil en segundos.</p>
-    	</div>
-    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-        	<i class="fa-solid fa-earth-americas text-4xl text-blue-500 mb-4"></i>
-        	<h3 class="text-xl font-bold mb-2">Destinos Globales</h3>
-        	<p class="text-gray-500">Conexiones directas a las capitales más importantes del mundo.</p>
-    	</div>
-    	<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
-        	<i class="fa-solid fa-shield-halved text-4xl text-green-500 mb-4"></i>
-        	<h3 class="text-xl font-bold mb-2">Seguro Total</h3>
-        	<p class="text-gray-500">Protección ante cambios de último minuto garantizada.</p>
-    	</div>
-	</section>
 
-	<footer class="py-10 text-center text-gray-400 border-t">
-    	<p>© 2026 Fast Travel. Todos los derechos reservados.</p>
-	</footer>
+    <a href="#" id="openWhatsapp" class="whatsapp-button">
+
+
+        <i class="fab fa-whatsapp">_
+
+
+    
+
+
+    <div id="whatsappModal" class="whatsapp-modal">
+
+
+        <div class="whatsapp-modal-content">
+
+
+            <span class="close-button" id="closeWhatsapp">&times;</span>
+
+
+            ¿Con quién deseas contactar?
+
+
+            <a href="[enlace sospechoso eliminado]" target="_blank">WhatsApp 1 (Reservas)
+
+
+            <a href="[enlace sospechoso eliminado]" target="_blank">WhatsApp 2 (Información)
+
+
+        
+
+
+    
+
+
+    <nav class="bg-black bg-opacity-70 backdrop-blur-sm px-8 py-4 flex justify-between items-center shadow-lg">
+
+
+        <div class="flex items-center">
+
+
+            <span class="text-3xl font-extrabold text-red-700 italic mr-2">Fast Travel</span>
+
+
+            <span class="text-xl font-light text-gray-300">| Tu seguridad es primero</span>
+
+
+        
+
+
+        <div class="hidden md:flex space-x-6">
+
+
+            <a href="#cotizar" class="text-gray-300 hover:text-red-500 transition">Cotizar Viaje
+
+
+            <a href="#unidad" class="text-gray-300 hover:text-red-500 transition">Pedir Unidad
+
+
+            <a href="#" class="bg-red-700 hover:bg-red-800 text-white px-5 py-2 rounded-full transition">Regístrate y obtén un descuento
+
+
+        
+
+
+    
+
+
+    <header class="relative h-[600px] flex items-center justify-center text-center bg-conchevinos-negro">
+
+
+        <div class="relative z-10 px-4 max-w-4xl">
+
+
+            <h1 class="text-6xl md:text-7xl font-extrabold text-white leading-tight mb-4">Viaja Seguro, Llega Rápido. # 
+
+
+            <p class="text-xl md:text-2xl text-red-200 mb-8">Tu destino en Guayaquil, a solo un clic de distancia.
+
+
+            <a href="#cotizar" class="bg-red-700 hover:bg-red-800 text-white text-lg px-8 py-3 rounded-full font-semibold transition">¡Cotiza tu Viaje Ahora!
+
+
+        
+
+
+    </header>
+
+
+    <section id="cotizar" class="py-20 px-4 bg-gray-900">
+
+
+        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl border border-red-900">
+
+
+            <h2 class="text-4xl font-bold text-center text-red-500 mb-8">Cotiza tu Viaje en Guayaquil ## 
+
+
+            <form class="space-y-6">
+
+
+                
+
+
+                    <label class="block text-gray-300 text-lg font-medium mb-2">Punto de Origen</label>
+
+
+                    <input type="text" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white" placeholder="Ej: Aeropuerto">
+
+
+                
+
+
+                
+
+
+                    <label class="block text-gray-300 text-lg font-medium mb-2">Punto de Destino</label>
+
+
+                    <input type="text" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white" placeholder="Ej: Malecón 2000">
+
+
+                
+
+
+                <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold text-lg py-3 rounded-lg">Obtener Cotización</button>
+
+
+            </form>
+
+
+        
+
+
+    </section>
+
+
+    <section id="unidad" class="py-20 px-4 bg-black">
+
+
+        <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg shadow-xl border border-red-700 text-center">
+
+
+            <h2 class="text-4xl font-bold text-red-500 mb-8">Pedir Unidad (OnDemand Cliente) ## 
+
+
+            <div class="bg-gray-800 rounded-lg p-6 h-[400px] flex items-center justify-center text-gray-400 border border-red-800">
+
+
+                Aquí se cargará tu aplicativo web de cliente OnDemand.
+
+
+            
+
+
+        
+
+
+    </section>
+
+
+    <footer class="bg-black py-10 text-center text-gray-500 border-t border-red-900">
+
+
+        © 2024 Fast Travel. Tu seguridad es nuestra prioridad.
+
+
+    </footer>
+
+
+    <script>
+
+
+        const openWhatsappBtn = document.getElementById('openWhatsapp');
+
+
+        const whatsappModal = document.getElementById('whatsappModal');
+
+
+        const closeWhatsappBtn = document.getElementById('closeWhatsapp');
+
+
+        openWhatsappBtn.addEventListener('click', (e) => { e.preventDefault(); whatsappModal.style.display = 'flex'; });
+
+
+        closeWhatsappBtn.addEventListener('click', () => { whatsappModal.style.display = 'none'; });
+
+
+        window.addEventListener('click', (e) => { if (e.target == whatsappModal) whatsappModal.style.display = 'none'; });
+
+
+    </script>
+
 
 </body>
+
+
 </html>
 
- 
+
+```
+
 
