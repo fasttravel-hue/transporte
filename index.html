@@ -115,40 +115,41 @@
    </svg>
 </a>
 
-<!-- PANEL LATERAL -->
+<!-- MODAL APP WEB -->
 <div id="modalApp"
-     onclick="cerrarModal()"
-     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50">
+     class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50">
 
- <div id="panel"
-    class="bg-white w-full h-full
-           md:w-[98vw] md:h-[95vh] md:rounded-2xl
-           transform translate-x-full
-           transition-transform duration-1000 ease-in-out
-           shadow-2xl relative">
+    <div id="panel"
+         class="bg-black w-full h-full
+                md:w-[95vw] md:h-[95vh]
+                transform translate-x-full
+                transition-transform duration-700 ease-in-out
+                shadow-2xl relative">
 
-  <button onclick="cerrarModal()" 
-    class="absolute top-20 left-4 md:top-4 md:left-auto md:right-6
-           text-black text-2xl font-bold z-50 
-           bg-white/90 backdrop-blur-sm 
-           rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-    ✖
-</button>
+        <!-- BOTÓN CERRAR -->
+        <button onclick="cerrarModal()"
+            class="absolute 
+                   top-20 left-4
+                   md:top-8 md:left-8
+                   text-white text-3xl font-bold z-50">
+            ✖
+        </button>
 
+        <!-- IFRAME -->
         <iframe src="https://fasttravelec.ondelight.app/"
-            class="w-full h-full"
-            frameborder="0">
+                class="w-full h-full"
+                frameborder="0">
         </iframe>
 
     </div>
 </div>
-
 <script>
 function abrirModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
 
     modal.classList.remove('hidden');
+    modal.classList.add('flex');
 
     setTimeout(() => {
         panel.classList.remove('translate-x-full');
@@ -162,13 +163,15 @@ function cerrarModal() {
     panel.classList.add('translate-x-full');
 
     setTimeout(() => {
+        modal.classList.remove('flex');
         modal.classList.add('hidden');
-    }, 500);
+    }, 700);
 }
 </script>
 
 </body>
 </html>
+
 
 
 
