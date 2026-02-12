@@ -116,8 +116,13 @@
 </a>
 
 <!-- MODAL APP WEB -->
-<div id="modalApp"
-     class="fixed inset-0 bg-black/90 hidden flex items-center justify-centerz-50">
+<div id="panel"
+     class="absolute right-0 top-0
+            bg-black w-full h-full
+            md:w-[900px] md:h-full
+            transform translate-x-full
+            transition-transform duration-700 ease-in-out
+            shadow-2xl relative overflow-hidden">
 
 <div id="panel"
      class="bg-white w-full h-[90vh] 
@@ -130,13 +135,12 @@
     
         <!-- BOTÓN CERRAR -->
         <button onclick="cerrarModal()"
-            class="absolute 
-                   top-20 left-4
-                   md:top-8 md:left-8
-                   text-white text-3xl font-bold z-50">
-            ✖
-        </button>
-
+    class="absolute
+           top-28 left-6
+           md:top-10 md:left-6
+           text-white text-3xl font-bold z-50">
+    ✖
+</button>
         <!-- IFRAME -->
         <iframe src="https://fasttravelec.ondelight.app/"
                 class="w-full h-full"
@@ -173,3 +177,4 @@ function cerrarModal() {
 
 </body>
 </html>
+
