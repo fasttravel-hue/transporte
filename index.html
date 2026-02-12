@@ -12,7 +12,6 @@
 <!-- HERO -->
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
 
-    <!-- LOGO -->
     <img src="img/logo-fasttravel.png" 
          alt="Fast Travel Logo"
          class="w-48 md:w-64 mb-8">
@@ -26,21 +25,21 @@
         Atención 24/7 en Ecuador.
     </p>
 
-<div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
 
-    <!-- Botón Reservar en App -->
-    <button onclick="abrirModal()" 
-        class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-semibold transition">
-        🚗 Reservar en App
-    </button>
+        <!-- Botón App -->
+        <button onclick="abrirModal()" 
+            class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-semibold transition">
+            🚗 Reservar en App
+        </button>
 
-    <!-- Botón WhatsApp -->
-    <a href="https://wa.me/593979986138" target="_blank"
-        class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition">
-        💬 WhatsApp
-    </a>
+        <!-- Botón WhatsApp -->
+        <a href="https://wa.me/593979986138" target="_blank"
+            class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition">
+            💬 WhatsApp
+        </a>
 
-</div>
+    </div>
 
 </section>
 
@@ -85,41 +84,7 @@
 
 </section>
 
-<!-- BENEFICIOS -->
-<section class="py-20 px-6 bg-black">
-
-    <h2 class="text-3xl font-bold text-center mb-12">
-        ¿Por qué elegir Fast Travel?
-    </h2>
-
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-10 text-center">
-
-        <div>
-            <h4 class="text-red-500 font-bold mb-2">24/7</h4>
-            <p class="text-gray-400 text-sm">
-                Atención disponible todos los días del año.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-red-500 font-bold mb-2">Vehículos Premium</h4>
-            <p class="text-gray-400 text-sm">
-                Unidades modernas, limpias y cómodas.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-red-500 font-bold mb-2">Conductores Profesionales</h4>
-            <p class="text-gray-400 text-sm">
-                Personal capacitado y de confianza.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CTA FINAL -->
+<!-- CTA -->
 <section class="py-20 text-center bg-gray-950">
 
     <h2 class="text-3xl font-bold mb-6">
@@ -140,7 +105,7 @@
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://wa.me/593979986138"
-   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300">
+   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300 z-40">
 
    <svg xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 24 24" 
@@ -148,40 +113,53 @@
         class="w-8 h-8">
         <path d="M12 2C6.5 2 2 6.4 2 11.9c0 2.1.6 4 1.7 5.7L2 22l4.6-1.6c1.6.9 3.5 1.4 5.4 1.4 5.5 0 10-4.4 10-9.9S17.5 2 12 2zm0 17.9c-1.7 0-3.3-.5-4.7-1.4l-.3-.2-2.7.9.9-2.6-.2-.3c-1-1.4-1.5-3-1.5-4.7 0-4.5 3.7-8.2 8.3-8.2s8.3 3.7 8.3 8.2-3.7 8.3-8.3 8.3z"/>
    </svg>
-
 </a>
-    
+
+<!-- PANEL LATERAL -->
+<div id="modalApp"
+     onclick="cerrarModal()"
+     class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50">
+
+    <div id="panel"
+         onclick="event.stopPropagation()"
+         class="absolute right-0 top-0 h-full w-full md:w-[80%] bg-white shadow-[ -25px_0_50px_rgba(0,0,0,0.7) ] transform translate-x-full transition-transform duration-500 ease-in-out">
+
+        <button onclick="cerrarModal()"
+            class="absolute top-4 right-6 text-black text-2xl font-bold z-50">
+            ✖
+        </button>
+
+        <iframe src="https://fasttravelec.ondelight.app/"
+            class="w-full h-full"
+            frameborder="0">
+        </iframe>
+
+    </div>
+</div>
+
 <script>
 function abrirModal() {
-    document.getElementById('modalApp').classList.remove('hidden');
+    const modal = document.getElementById('modalApp');
+    const panel = document.getElementById('panel');
+
+    modal.classList.remove('hidden');
+
     setTimeout(() => {
-        document.getElementById('panel').classList.remove('translate-x-full');
+        panel.classList.remove('translate-x-full');
     }, 10);
 }
 
 function cerrarModal() {
-    document.getElementById('panel').classList.add('translate-x-full');
-    setTimeout(() => {
-        document.getElementById('modalApp').classList.add('hidden');
-    }, 300);
-}
-</script>
-<script>
-function abrirModal() {
-    document.getElementById('modalApp').classList.remove('hidden');
-    document.getElementById('modalApp').classList.add('flex');
-}
+    const modal = document.getElementById('modalApp');
+    const panel = document.getElementById('panel');
 
-function cerrarModal() {
-    document.getElementById('modalApp').classList.remove('flex');
-    document.getElementById('modalApp').classList.add('hidden');
+    panel.classList.add('translate-x-full');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 500);
 }
 </script>
-    
+
 </body>
 </html>
-
-
-
-
-
