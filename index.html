@@ -120,9 +120,12 @@
      onclick="cerrarModal()"
      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50">
 
-    <div id="panel"
-         onclick="event.stopPropagation()"
-         class="absolute right-0 top-0 h-full w-full md:w-[90vh] w-full md:w-1000px] bg-white shadow-[ -25px_0_50px_rgba(0,0,0,0.7) ] transform translate-x-full transition-transform duration-700 ease-in-out">
+ <div id="panel"
+    class="bg-white w-full h-full
+           md:w-[900px] md:h-[90vh] md:rounded-2xl
+           transform translate-x-full
+           transition-transform duration-1000 ease-in-out
+           shadow-2xl relative">
 
         <button onclick="cerrarModal()"
             class="absolute top-4 right-6 text-black text-2xl font-bold z-50">
@@ -163,4 +166,5 @@ function cerrarModal() {
 
 </body>
 </html>
+
 
