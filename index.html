@@ -30,22 +30,28 @@
             box-shadow: 0 20px 25px -5px rgba(220, 38, 38, 0.2);
         }
 
-        /* Animación para el botón flotante */
+        /* Color Oficial WhatsApp Business y Sombra Profunda */
+        .bg-whatsapp { background-color: #25D366; }
+        
         .float-btn {
-            animation: bounce 2s infinite;
+            animation: bounceCustom 2.5s infinite;
+            filter: drop-shadow(0px 10px 15px rgba(37, 211, 102, 0.3));
         }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+
+        @keyframes bounceCustom {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) scale(1);}
+            40% {transform: translateY(-12px) scale(1.05);}
+            60% {transform: translateY(-6px) scale(1);}
         }
     </style>
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
 
-<a href="https://wa.me/593979986138" target="_blank" class="fixed bottom-6 right-6 z-[100] bg-green-500 p-4 rounded-full shadow-2xl float-btn hover:bg-green-600 transition-all border-2 border-white/20">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-8 h-8 invert" alt="WhatsApp">
+<a href="https://wa.me/593979986138" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-whatsapp p-0 rounded-full float-btn hover:scale-110 transition-transform active:scale-90 shadow-2xl overflow-hidden flex items-center justify-center w-16 h-16">
+    <svg viewBox="0 0 24 24" class="w-10 h-10 fill-white">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path>
+    </svg>
 </a>
 
 <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
@@ -67,7 +73,7 @@
         <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold shadow-2xl active:scale-95 transition-all uppercase tracking-widest text-[10px]">
             🚗 Reservar en App
         </button>
-        <a href="https://wa.me/593979986138" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">
+        <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">
             💬 WhatsApp
         </a>
     </div>
@@ -154,7 +160,6 @@
 </div>
 
 <script>
-// CONFIGURACIÓN DE MOVIMIENTO
 ScrollReveal().reveal('#hero h1', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
 ScrollReveal().reveal('#hero img', { delay: 300, scale: 0.8, duration: 1000 });
 ScrollReveal().reveal('#hero h2, #hero p', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
@@ -175,11 +180,7 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
     const redNombre = document.getElementById('inputRedSocialNombre').value;
     const redLink = document.getElementById('inputRedSocialLink').value;
-
-    if (!redNombre) {
-        alert("Selecciona una red social arriba.");
-        return;
-    }
+    if (!redNombre) { alert("Selecciona una red social."); return; }
 
     const btn = document.getElementById('btn-verificar');
     btn.innerText = "VALIDANDO ACCESO...";
