@@ -1,9 +1,28 @@
-<!DOCTYPE html>
+[21:00, 12/2/2026] Fast Travel: function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  
+  // 1. Obtener los datos del formulario
+  var nombre = e.parameter.Nombre;
+  var whatsapp = e.parameter.WhatsApp;
+  var correo = e.parameter.Correo;
+  var fotoBase64 = e.parameter.fotoBase64;
+  var fotoMimeType = e.parameter.fotoMimeType;
+  
+  var urlFoto = "Sin foto";
+
+  // 2. Si hay una foto, guardarla en Google Drive
+  if (fotoBase64) {
+    var carpetaId = "root"; // Se guardará en tu unidad principal. Puedes cambiarlo por el ID de una carpeta específica.
+    var nombreArchivo = "Cedula_" + nombre + "_" + new Date().getTime();
+    var archivoBlob = Utilities.newBlob(Utilities.base64Decode(fotoBase64), fotoMimeType, nombreArchivo);
+    var archivo = DriveApp.getF…
+[21:01, 12/2/2026] Fast Travel: https://script.google.com/macros/s/AKfycbwFAy6JUK51MzsVt0zjIR-QiwrnoR1cGZB53gtf5RKZG_w75LlgqwbVzFsXrCcRtqMubA/exec
+[21:02, 12/2/2026] Fast Travel: <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fast Travel | Transporte Ejecutivo VIP</title>
+    <title>Fast Travel | Transporte VIP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Deslizamiento Suave Estilo Apple */
@@ -28,7 +47,7 @@
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
     <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 md:w-64 mb-8">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Transporte Ejecutivo Privado</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">Transporte Ejecutivo Privado</h1>
     <p class="text-gray-400 max-w-xl mb-8">
         Servicio VIP de traslados seguros, puntuales y exclusivos. Atención 24/7 en Ecuador.
     </p>
@@ -46,26 +65,26 @@
 <section class="py-20 px-6 bg-gray-950 border-t border-gray-800">
     <h2 class="text-3xl font-bold text-center mb-12 text-red-600 uppercase tracking-widest">Nuestros Servicios</h2>
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
-            <h3 class="font-bold text-xl mb-3">Traslados Aeropuerto</h3>
-            <p class="text-gray-400 text-sm">Servicio puerta a puerta con puntualidad garantizada.</p>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Traslados Aeropuerto</h3>
+            <p class="text-gray-500 text-sm italic">Puntualidad garantizada en cada vuelo.</p>
         </div>
-        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
-            <h3 class="font-bold text-xl mb-3">Servicio Corporativo</h3>
-            <p class="text-gray-400 text-sm">Movilización ejecutiva para empresas y reuniones.</p>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Servicio Corporativo</h3>
+            <p class="text-gray-500 text-sm italic">Movilización ejecutiva para empresas.</p>
         </div>
-        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
-            <h3 class="font-bold text-xl mb-3">Eventos Especiales</h3>
-            <p class="text-gray-400 text-sm">Transporte privado para ocasiones de alto nivel.</p>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Eventos Especiales</h3>
+            <p class="text-gray-500 text-sm italic">Transporte privado de alto nivel.</p>
         </div>
-        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
-            <h3 class="font-bold text-xl mb-3">Viajes Interprovinciales</h3>
-            <p class="text-gray-400 text-sm">Traslados cómodos y seguros a cualquier destino.</p>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Viajes Nacionales</h3>
+            <p class="text-gray-500 text-sm italic">Seguridad y confort en todo el país.</p>
         </div>
     </div>
 </section>
 
-<footer class="bg-black py-10 text-center text-gray-500 text-xs border-t border-gray-900">
+<footer class="bg-black py-10 text-center text-gray-600 text-[10px] uppercase tracking-widest">
     © 2026 FAST TRAVEL ECUADOR - SEGURIDAD Y EXCLUSIVIDAD
 </footer>
 
@@ -77,14 +96,14 @@
         <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black">
             <div class="text-center mb-8">
                 <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Seguridad Fast Travel</span>
-                <h2 class="text-2xl font-bold mt-1">Verificación</h2>
+                <h2 class="text-2xl font-bold mt-1">Verificación VIP</h2>
                 <p class="text-gray-500 text-xs">Sube tu foto con cédula para activar el servicio.</p>
             </div>
 
             <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
-                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
+                <input type="text" name="Nombre" placeholder="Nombre completo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
+                <input type="tel" name="WhatsApp" placeholder="Número de WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
+                <input type="email" name="Correo" placeholder="Correo electrónico" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
                 
                 <div class="bg-blue-50 p-5 rounded-2xl border-2 border-dashed border-blue-200">
                     <p class="text-[10px] text-blue-800 font-bold mb-3 uppercase">📸 Selfie con Cédula</p>
@@ -104,7 +123,7 @@
 </div>
 
 <script>
-// USANDO TU LINK DE APPS SCRIPT
+// LINK DE TU SCRIPT DE GOOGLE YA INTEGRADO
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxt_BOKSdRTi3a4qDMC5qWkwDU4Dv0tyxBCC4raw2Fo78GruI3m_b8c03nEANX6dPkv2A/exec';
 
 function abrirModal() {
@@ -128,38 +147,43 @@ function cerrarModal() {
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('btn-verificar');
-    btn.innerText = "VERIFICANDO...";
+    btn.innerText = "PROCESANDO FOTO...";
     btn.disabled = true;
 
     const file = document.getElementById('fotoInput').files[0];
     const reader = new FileReader();
 
-    reader.onload = function() {
-        const base64 = reader.result.split(',')[1];
-        
-        // Enviamos los datos como URLSearchParams para máxima compatibilidad con el Apps Script
-        const formData = new URLSearchParams();
-        formData.append('Nombre', e.target.Nombre.value);
-        formData.append('WhatsApp', e.target.WhatsApp.value);
-        formData.append('Correo', e.target.Correo.value);
-        formData.append('fotoBase64', base64);
-        formData.append('fotoMimeType', file.type);
+    reader.onload = function(event) {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = function() {
+            // COMPRESIÓN DE IMAGEN PARA QUE GOOGLE NO RECHACE EL ENVÍO
+            const canvas = document.createElement('canvas');
+            const scale = 0.5; 
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+            const base64 = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
 
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: formData,
-            mode: 'no-cors' 
-        })
-        .then(() => {
-            // ÉXITO: Mostramos el mapa
-            document.getElementById('filtro-seguridad').classList.add('hidden');
-            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-        })
-        .catch(err => {
-            alert("Error al enviar datos.");
-            btn.innerText = "ACTIVAR SERVICIO";
-            btn.disabled = false;
-        });
+            const params = new URLSearchParams();
+            params.append('Nombre', e.target.Nombre.value);
+            params.append('WhatsApp', e.target.WhatsApp.value);
+            params.append('Correo', e.target.Correo.value);
+            params.append('fotoBase64', base64);
+            params.append('fotoMimeType', 'image/jpeg');
+
+            fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
+            .then(() => {
+                // ÉXITO: MOSTRAR APP
+                document.getElementById('filtro-seguridad').classList.add('hidden');
+                document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+            })
+            .catch(() => {
+                alert("Error de conexión");
+                btn.innerText = "ACTIVAR SERVICIO";
+                btn.disabled = false;
+            });
+        };
     };
     if (file) reader.readAsDataURL(file);
 });
