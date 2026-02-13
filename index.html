@@ -17,21 +17,25 @@
         .reveal-item { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal-item.active { opacity: 1; transform: translateY(0); }
 
-        /* Mensaje Deslizante (Toast) */
+        /* Mensaje Deslizante (Toast) - AHORA BLANCO */
         #promoToast { 
             transform: translateX(-110%); 
             transition: transform 0.8s cubic-bezier(0.32, 0.72, 0, 1);
-            box-shadow: 10px 0 30px rgba(220, 38, 38, 0.2);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
         }
-        #promoToast.show { transform: translateX(0); }
+        #promoToast.show { transform: translateX(20px); }
 
         /* Panel App */
         #panel { transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
         .translate-x-full { transform: translateX(100%); }
 
-        /* Botones Redes en Registro */
-        .social-dot { transition: all 0.3s ease; filter: grayscale(1); opacity: 0.6; }
-        .social-dot.active { filter: grayscale(0); opacity: 1; transform: scale(1.1); border-color: #25D366; }
+        /* Estilo del Modal del Juego */
+        #modalPromo { transition: backdrop-filter 0.5s ease; backdrop-filter: blur(0px); }
+        .bg-active { backdrop-filter: blur(15px) !important; }
+        .promo-card { transform: scale(0.8); opacity: 0; transition: all 0.4s ease; }
+        .promo-card.show { transform: scale(1); opacity: 1; }
+
+        .social-btn.active { border-color: #25D366; background: rgba(37, 211, 102, 0.1); transform: scale(1.05); }
 
         .bg-whatsapp { background-color: #25D366; }
         .float-btn { animation: bounceCustom 2.5s infinite; }
@@ -48,12 +52,12 @@
     <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path></svg>
 </a>
 
-<div id="promoToast" class="fixed bottom-32 left-0 z-[110] bg-zinc-900 border-l-4 border-red-600 p-4 pr-8 rounded-r-2xl cursor-pointer hover:bg-zinc-800 transition-all" onclick="abrirModalApp()">
+<div id="promoToast" class="fixed bottom-32 left-0 z-[110] bg-white border-l-4 border-red-600 p-4 pr-10 rounded-r-2xl cursor-pointer hover:bg-gray-100 transition-all" onclick="abrirJuegoPromo()">
     <div class="flex items-center gap-4">
         <div class="text-2xl animate-bounce">🎁</div>
         <div>
-            <p class="text-white font-black text-xs uppercase italic leading-none">¿Reto de Descuento?</p>
-            <p class="text-gray-500 text-[9px] uppercase mt-1 tracking-tighter">Regístrate y gana hasta 80%</p>
+            <p class="text-black font-black text-[11px] uppercase italic leading-none">¿Reto de Descuento?</p>
+            <p class="text-gray-500 text-[9px] uppercase mt-1 font-bold tracking-tighter">Gana hasta el 80% aquí</p>
         </div>
     </div>
 </div>
@@ -63,7 +67,7 @@
         <h1 class="font-title text-6xl md:text-8xl font-black italic uppercase tracking-tighter mb-4">FAST <span class="text-red-600">TRAVEL</span></h1>
     </div>
     <div class="reveal-item">
-        <img src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-44 md:w-60 mb-8 drop-shadow-2xl">
+        <img src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-44 md:w-56 mb-8 drop-shadow-2xl">
     </div>
     <div class="reveal-item">
         <h2 class="text-[10px] md:text-xs font-light mb-12 uppercase tracking-[0.5em] text-gray-400">Transporte Ejecutivo Privado</h2>
@@ -76,72 +80,85 @@
 
 <section id="servicios" class="py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center hover:border-red-600/50 transition-all">
+        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center">
             <div class="text-4xl mb-4">🏙️</div>
-            <h4 class="font-bold text-white uppercase text-sm mb-2">Urbanos</h4>
-            <p class="text-gray-500 text-xs leading-relaxed">Traslados ejecutivos con la mayor seguridad en la ciudad.</p>
+            <h4 class="font-bold text-white uppercase text-xs mb-2 tracking-widest">Servicio Urbano</h4>
+            <p class="text-gray-500 text-[11px] leading-relaxed">Traslados VIP con la mayor seguridad en la ciudad.</p>
         </div>
-        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center hover:border-red-600/50 transition-all">
+        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center">
             <div class="text-4xl mb-4">✈️</div>
-            <h4 class="font-bold text-white uppercase text-sm mb-2">Aeropuerto</h4>
-            <p class="text-gray-500 text-xs leading-relaxed">Puntualidad garantizada para sus vuelos nacionales e internacionales.</p>
+            <h4 class="font-bold text-white uppercase text-xs mb-2 tracking-widest">Aeropuerto</h4>
+            <p class="text-gray-500 text-[11px] leading-relaxed">Puntualidad garantizada 24/7 para sus vuelos.</p>
         </div>
-        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center hover:border-red-600/50 transition-all">
+        <div class="p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 text-center">
             <div class="text-4xl mb-4">🛣️</div>
-            <h4 class="font-bold text-white uppercase text-sm mb-2">Provincias</h4>
-            <p class="text-gray-500 text-xs leading-relaxed">Viajes interprovinciales en unidades modernas y confortables.</p>
+            <h4 class="font-bold text-white uppercase text-xs mb-2 tracking-widest">Provincias</h4>
+            <p class="text-gray-500 text-[11px] leading-relaxed">Viajes interprovinciales en unidades modernas.</p>
         </div>
     </div>
 </section>
 
-<div id="modalApp" class="fixed inset-0 bg-black/95 z-[150] hidden items-center justify-center backdrop-blur-md">
-    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[95vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
-        <button onclick="cerrarModalApp()" class="absolute top-8 left-8 text-black text-3xl font-light z-50">✕</button>
+<div id="modalPromo" class="fixed inset-0 bg-black/90 z-[200] hidden items-center justify-center p-4">
+    <div id="promoCard" class="promo-card bg-zinc-900 border border-zinc-800 p-8 rounded-[45px] max-w-md w-full text-center relative shadow-2xl">
+        <button onclick="cerrarJuegoPromo()" class="absolute top-6 right-6 text-gray-500 hover:text-white">✕</button>
+        <h2 class="font-title text-xl font-black italic uppercase text-white mb-2">Reto de Seguidores</h2>
+        <p class="text-gray-500 text-[10px] uppercase mb-8 tracking-widest">Sigue cada red para ganar +20%</p>
         
-        <div id="filtro-seguridad" class="p-10 flex flex-col justify-start h-full text-black overflow-y-auto">
-            <div class="text-center mt-4 mb-8">
-                <h2 class="font-title text-xl font-black uppercase italic">Fast Travel <span class="text-red-600">ID</span></h2>
-                <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Validación de Usuario VIP</p>
-            </div>
-
-            <div class="bg-gray-50 p-6 rounded-[30px] mb-6 border border-gray-100">
-                <p class="text-[10px] font-black uppercase text-center mb-4 tracking-tighter">Paso 1: ¡Activa tu descuento!</p>
-                <div class="grid grid-cols-4 gap-3">
-                    <button onclick="clickRed('tt', 'https://tiktok.com/@fasttravelec')" class="social-dot border-2 border-transparent p-2 rounded-2xl bg-white shadow-sm flex items-center justify-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-6 h-6">
-                    </button>
-                    <button onclick="clickRed('ig', 'https://instagram.com/fasttravelec')" class="social-dot border-2 border-transparent p-2 rounded-2xl bg-white shadow-sm flex items-center justify-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-6 h-6">
-                    </button>
-                    <button onclick="clickRed('fb', 'https://facebook.com/fasttravelec')" class="social-dot border-2 border-transparent p-2 rounded-2xl bg-white shadow-sm flex items-center justify-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6">
-                    </button>
-                    <button onclick="clickRed('wa', 'https://wa.me/593979986138')" class="social-dot border-2 border-transparent p-2 rounded-2xl bg-white shadow-sm flex items-center justify-center">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6">
-                    </button>
-                </div>
-                <div id="statusCupon" class="text-center mt-4 text-[11px] font-black text-red-600 uppercase tracking-widest animate-pulse">
-                    Descuento: 0%
-                </div>
-            </div>
-
-            <form id="miFormulario" class="space-y-3">
-                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none border-none focus:ring-1 focus:ring-red-600" required>
-                <input type="text" name="Cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none border-none focus:ring-1 focus:ring-red-600" required>
-                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold outline-none" required>
-                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
-                
-                <input type="text" name="Cupon" id="inputCupon" placeholder="CUPÓN PENDIENTE" readonly class="w-full p-4 rounded-2xl bg-red-50 text-red-600 font-black text-center text-[10px] tracking-[0.2em] border border-dashed border-red-200">
-                
-                <button type="submit" id="btn-submit" class="w-full bg-black text-white font-bold py-5 rounded-[25px] text-[10px] uppercase tracking-widest hover:bg-red-700 transition-all shadow-xl mt-2">
-                    Activar Servicio VIP
-                </button>
-            </form>
+        <div class="mb-8 bg-black/50 py-5 rounded-3xl border border-red-600/20">
+            <span id="pctDisplay" class="text-6xl font-black text-red-600">0%</span>
         </div>
 
-        <div id="contenedor-aplicativo" class="hidden h-full w-full flex flex-col">
-            <div class="bg-black p-4 text-center text-[9px] font-bold text-white uppercase tracking-widest">Fast Travel Soporte 24/7</div>
-            <iframe src="https://fasttravelec.ondelight.app/" class="flex-grow w-full border-0" allow="geolocation"></iframe>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <button onclick="handleSocial('tt', 'https://tiktok.com/@fasttravelec')" class="social-btn border border-zinc-800 p-5 rounded-3xl flex flex-col items-center gap-2 hover:bg-zinc-800">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-8 h-8">
+                <span class="text-[9px] font-black uppercase text-white">TikTok (+20%)</span>
+            </button>
+            <button onclick="handleSocial('ig', 'https://instagram.com/fasttravelec')" class="social-btn border border-zinc-800 p-5 rounded-3xl flex flex-col items-center gap-2 hover:bg-zinc-800">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-8 h-8">
+                <span class="text-[9px] font-black uppercase text-white">Instagram (+20%)</span>
+            </button>
+            <button onclick="handleSocial('fb', 'https://facebook.com/fasttravelec')" class="social-btn border border-zinc-800 p-5 rounded-3xl flex flex-col items-center gap-2 hover:bg-zinc-800">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-8 h-8">
+                <span class="text-[9px] font-black uppercase text-white">Facebook (+20%)</span>
+            </button>
+            <button onclick="handleSocial('wa', 'https://wa.me/593979986138')" class="social-btn border border-zinc-800 p-5 rounded-3xl flex flex-col items-center gap-2 hover:bg-zinc-800">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-8 h-8">
+                <span class="text-[9px] font-black uppercase text-white">WhatsApp (+20%)</span>
+            </button>
+        </div>
+
+        <div id="claimArea" class="hidden">
+            <button onclick="reclamarCupon()" class="w-full bg-red-600 text-white font-black py-5 rounded-3xl text-[11px] uppercase tracking-widest shadow-xl animate-bounce">
+                🎁 Aplicar y Registrarse
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="modalApp" class="fixed inset-0 bg-black/95 z-[150] hidden items-center justify-center">
+    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[60px] shadow-2xl relative overflow-hidden translate-x-full">
+        <button onclick="cerrarModalApp()" class="absolute top-10 left-10 text-black text-3xl font-light">✕</button>
+        <div id="filtro-seguridad" class="p-10 flex flex-col justify-center h-full text-black">
+            <div class="text-center mb-8">
+                <h2 class="font-title text-xl font-black uppercase italic">Fast Travel <span class="text-red-600">ID</span></h2>
+                <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">Acceso Exclusivo</p>
+            </div>
+            
+            <form id="miFormulario" class="space-y-4">
+                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs border-none" required>
+                <input type="text" name="Cedula" placeholder="Cédula de Identidad" class="w-full p-4 rounded-2xl bg-gray-50 text-xs border-none" required>
+                <input type="number" name="WhatsApp" placeholder="Número de Celular" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold border-none" required>
+                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-50 text-xs border-none" required>
+                
+                <div class="pt-2">
+                    <input type="text" name="Cupon" id="inputCupon" placeholder="SIN CUPÓN" readonly class="w-full p-4 rounded-2xl bg-red-50 text-red-600 font-black text-center text-[10px] tracking-widest border border-dashed border-red-200">
+                </div>
+
+                <button type="submit" id="btn-submit" class="w-full bg-black text-white font-bold py-6 rounded-[30px] text-[10px] uppercase mt-4 shadow-xl">Activar Servicio VIP</button>
+            </form>
+        </div>
+        <div id="contenedor-aplicativo" class="hidden h-full w-full">
+            <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full border-0" allow="geolocation"></iframe>
         </div>
     </div>
 </div>
@@ -151,57 +168,64 @@
     let totalDiscount = 0;
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec';
 
-    // ANIMACIÓN DE ENTRADA HERO
+    // 1. Animación de entrada
     window.onload = () => {
-        const items = document.querySelectorAll('.reveal-item');
-        items.forEach((item, index) => {
-            setTimeout(() => { item.classList.add('active'); }, index * 250);
+        document.querySelectorAll('.reveal-item').forEach((item, i) => {
+            setTimeout(() => { item.classList.add('active'); }, i * 250);
         });
-        
-        // MOSTRAR MENSAJITO DESLIZANTE A LOS 3 SEGUNDOS
-        setTimeout(() => {
-            document.getElementById('promoToast').classList.add('show');
-        }, 3000);
+        // Mostrar mensajito a los 3 seg
+        setTimeout(() => { document.getElementById('promoToast').classList.add('show'); }, 3000);
     };
 
-    // REDES SOCIALES EN REGISTRO
-    function clickRed(key, link) {
+    // 2. Juego de Redes
+    function abrirJuegoPromo() {
+        document.getElementById('promoToast').classList.remove('show');
+        const m = document.getElementById('modalPromo');
+        const c = document.getElementById('promoCard');
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+        setTimeout(() => { m.classList.add('bg-active'); c.classList.add('show'); }, 10);
+    }
+
+    function handleSocial(key, link) {
         if (!clickedSocials.has(key)) {
             clickedSocials.add(key);
             totalDiscount += 20;
-            document.getElementById('statusCupon').innerText = "¡Descuento: " + totalDiscount + "%!";
+            document.getElementById('pctDisplay').innerText = totalDiscount + "%";
             event.currentTarget.classList.add('active');
-            
-            const code = totalDiscount === 80 ? "MAXVIP80" : "FASTVIP" + totalDiscount;
-            document.getElementById('inputCupon').value = code;
-
-            if (totalDiscount === 80) {
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 } });
-            }
+            document.getElementById('claimArea').classList.remove('hidden');
+            if (totalDiscount === 80) confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
         }
         window.open(link, '_blank');
     }
 
+    // 3. Pasar del Juego al Registro
+    function reclamarCupon() {
+        const code = totalDiscount === 80 ? "MAXVIP80" : "FASTVIP" + totalDiscount;
+        document.getElementById('inputCupon').value = code;
+        cerrarJuegoPromo();
+        abrirModalApp();
+    }
+
+    function cerrarJuegoPromo() {
+        document.getElementById('modalPromo').classList.add('hidden');
+    }
+
     function abrirModalApp() {
-        document.getElementById('promoToast').classList.remove('show');
         document.getElementById('modalApp').classList.replace('hidden', 'flex');
-        setTimeout(() => { 
-            document.getElementById('panel').classList.remove('translate-x-full'); 
-        }, 10);
+        setTimeout(() => { document.getElementById('panel').classList.remove('translate-x-full'); }, 10);
     }
 
     function cerrarModalApp() {
         document.getElementById('panel').classList.add('translate-x-full');
-        setTimeout(() => { 
-            document.getElementById('modalApp').classList.replace('flex', 'hidden'); 
-        }, 600);
+        setTimeout(() => { document.getElementById('modalApp').classList.replace('flex', 'hidden'); }, 600);
     }
 
-    // ENVÍO DE FORMULARIO
+    // 4. Formulario
     document.getElementById('miFormulario').addEventListener('submit', function(e) {
         e.preventDefault();
         const btn = document.getElementById('btn-submit');
-        btn.innerText = "VALIDANDO ACCESO VIP...";
+        btn.innerText = "ACTIVANDO ACCESO VIP...";
         btn.disabled = true;
 
         const params = new URLSearchParams(new FormData(e.target));
@@ -209,10 +233,6 @@
         .then(() => {
             document.getElementById('filtro-seguridad').classList.add('hidden');
             document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-        })
-        .catch(() => {
-            alert("Error. Inténtalo de nuevo.");
-            btn.disabled = false;
         });
     });
 
