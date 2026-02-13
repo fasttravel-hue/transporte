@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body class="bg-black text-white font-sans overflow-x-hidden">
+<body class="bg-black text-white font-sans overflow-x-auto">
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
     <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 md:w-64 mb-8">
@@ -40,6 +40,32 @@
         </a>
     </div>
 </section>
+
+<section class="py-20 px-6 bg-gray-950 border-t border-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-12 text-red-600 uppercase tracking-widest">Nuestros Servicios</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Traslados Aeropuerto</h3>
+            <p class="text-gray-500 text-sm italic">Puntualidad garantizada en sus vuelos.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Servicio Corporativo</h3>
+            <p class="text-gray-500 text-sm italic">Movilización ejecutiva para empresas.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Eventos Especiales</h3>
+            <p class="text-gray-500 text-sm italic">Transporte de alto nivel para galas.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
+            <h3 class="font-bold text-xl mb-3 text-white">Viajes Nacionales</h3>
+            <p class="text-gray-500 text-sm italic">Seguridad y confort en todo el país.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-black py-10 text-center text-gray-600 text-[10px] uppercase border-t border-gray-900">
+    © 2026 FAST TRAVEL ECUADOR - SEGURIDAD Y EXCLUSIVIDAD | <a href="#" class="hover:text-white">Políticas de Privacidad</a>
+</footer>
 
 <div id="modalApp" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
     <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
@@ -118,10 +144,8 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
     btn.innerText = "VINCULANDO...";
     btn.disabled = true;
 
-    // 1. ABRIR RED SOCIAL
     window.open(redLink, '_blank');
 
-    // 2. ENVIAR DATOS
     const params = new URLSearchParams();
     params.append('Nombre', e.target.Nombre.value);
     params.append('Cedula', e.target.Cedula.value);
@@ -158,4 +182,3 @@ function cerrarModal() {
 
 </body>
 </html>
-
