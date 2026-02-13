@@ -71,24 +71,25 @@
     
         <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl font-bold z-50">✖</button>
 
-        <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
+        <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center text-black">
             <form id="miFormulario" class="w-full">
                 
                 <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
-                <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
+                <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Registro con Foto de Cédula</p>
 
-                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
-                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="border p-3 mb-4 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="border p-3 mb-4 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
                 
-                <div class="bg-gray-100 rounded-lg p-3 mb-6 w-full">
-                    <p class="text-[11px] text-gray-600 leading-tight">
-                        Sus datos serán verificados para garantizar un servicio seguro y exclusivo.
+                <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full text-left">
+                    <p class="text-[11px] text-gray-600 leading-tight mb-2">
+                        <strong>Requisito:</strong> Selfie sosteniendo su cédula.
                     </p>
+                    <input type="file" id="fotoInput" accept="image/*" capture="user" required class="text-xs w-full file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-600 file:text-white">
                 </div>
                 
                 <button type="submit" id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
-                    REGISTRAR Y ENTRAR
+                    REGISTRAR Y ENVIAR FOTO
                 </button>
             </form>
         </div>
@@ -101,55 +102,18 @@
 </div>
 
 <script>
-// Funciones para manejar el Modal
-function abrirModal() {
-    const modal = document.getElementById('modalApp');
-    const panel = document.getElementById('panel');
-    modal.classList.replace('hidden', 'flex');
-    setTimeout(() => { panel.classList.remove('translate-x-full'); }, 10);
-}
+// URL de tu Google Apps Script actualizado
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxt_BOKSdRTi3a4qDMC5qWkwDU4Dv0tyxBCC4raw2Fo78GruI3m_b8c03nEANX6dPkv2A/exec';
 
-function cerrarModal() {
-    const modal = document.getElementById('modalApp');
-    const panel = document.getElementById('panel');
-    panel.classList.add('translate-x-full');
-    setTimeout(() => { 
-        modal.classList.replace('flex', 'hidden'); 
-    }, 700);
-}
-
-// LÓGICA DE ENVÍO A GOOGLE SHEETS
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwOSuoTaw9RyhnWDOahx_71MVZlpw_OjWmbKcxWrnn7VQHBY6lSmgXWbnKtqX2D_iaxHA/exec';
 const form = document.getElementById('miFormulario');
+const btn = document.getElementById('btn-verificar');
 
+// Manejo del envío del formulario
 form.addEventListener('submit', e => {
     e.preventDefault();
-    const btn = document.getElementById('btn-verificar');
-    btn.innerText = "VERIFICANDO...";
+    btn.innerText = "PROCESANDO FOTO Y REGISTRO...";
     btn.disabled = true;
 
-    // Preparamos los datos del formulario
-    const data = new FormData(form);
-
-    fetch(scriptURL, { 
-        method: 'POST', 
-        body: data
-    })
-    .then(response => {
-        // Al recibir éxito de Google Sheets
-        document.getElementById('filtro-seguridad').classList.add('hidden');
-        document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-        alert("¡Identidad verificada! Ya puedes usar el servicio de Fast Travel.");
-    })
-    .catch(error => {
-        // En caso de error de red o de Google
-        console.error('Error!', error.message);
-        alert("Error de conexión. Inténtalo de nuevo.");
-        btn.innerText = "REGISTRAR Y ENTRAR";
-        btn.disabled = false;
-    });
-});
-</script>
-
-</body>
-</html>
+    const fileInput = document.getElementById('fotoInput');
+    const file = fileInput.files[0];
+    const reader
