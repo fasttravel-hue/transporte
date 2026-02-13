@@ -6,14 +6,12 @@
     <title>Fast Travel | Transporte Ejecutivo VIP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Deslizamiento Suave Estilo Apple */
         #panel {
             transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
         }
         .translate-x-full { transform: translateX(100%); }
         .translate-x-0 { transform: translateX(0); }
 
-        /* Desenfoque de fondo al abrir el panel */
         #modalApp {
             transition: backdrop-filter 0.5s ease;
             backdrop-filter: blur(0px);
@@ -104,7 +102,7 @@
 </div>
 
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyv9nTsE_pYTnWI6rw6MYskkoT26LxaLn8PtAcv7IE6JABhrhPddk-KlRtFwhb1UNGj/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycby2f4XJve04_ywubXeifM9b7zKExEPo4uWHUqAXfhBKhA8675Bkgr6h7ylvvTbnPELgDw/exec';
 
 function abrirModal() {
     const modal = document.getElementById('modalApp');
@@ -150,29 +148,31 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
             canvas.width = img.width * scale;
             canvas.height = img.height * scale;
             canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-            const base64 = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
 
-            const params = new URLSearchParams();
-            params.append('Nombre', e.target.Nombre.value);
-            params.append('WhatsApp', e.target.WhatsApp.value);
-            params.append('Correo', e.target.Correo.value);
-            params.append('fotoBase64', base64);
-            params.append('fotoMimeType', 'image/jpeg');
+            const base64 = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
 
             fetch(scriptURL, {
                 method: 'POST',
-                body: params
+                body: JSON.stringify({
+                    nombre: e.target.Nombre.value,
+                    whatsapp: e.target.WhatsApp.value,
+                    correo: e.target.Correo.value,
+                    name: file.name,
+                    type: 'image/jpeg',
+                    file: base64
+                })
             })
-            .then(response => response.text())
+            .then(res => res.json())
             .then(data => {
-                if (data.includes("Éxito")) {
+                if (data.status === "ok") {
                     document.getElementById('filtro-seguridad').classList.add('hidden');
                     document.getElementById('contenedor-aplicativo').classList.remove('hidden');
                 } else {
                     throw new Error("No guardado");
                 }
             })
-            .catch(() => {
+            .catch((error) => {
+                console.error(error);
                 alert("Error enviando datos.");
                 btn.innerText = "ACTIVAR SERVICIO";
                 btn.disabled = false;
