@@ -26,7 +26,7 @@
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
     <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 md:w-64 mb-8">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase">Transporte Ejecutivo Privado</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase text-white">Transporte Ejecutivo Privado</h1>
     <p class="text-gray-400 max-w-xl mb-8">
         Servicio VIP de traslados seguros, puntuales y exclusivos. Atención 24/7 en Ecuador.
     </p>
@@ -41,101 +41,53 @@
     </div>
 </section>
 
-<section class="py-20 px-6 bg-gray-950 border-t border-gray-800">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-600 uppercase tracking-widest">Nuestros Servicios</h2>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Traslados Aeropuerto</h3>
-            <p class="text-gray-500 text-sm italic">Puntualidad garantizada.</p>
-        </div>
-        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Servicio Corporativo</h3>
-            <p class="text-gray-500 text-sm italic">Movilización ejecutiva.</p>
-        </div>
-        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Eventos Especiales</h3>
-            <p class="text-gray-500 text-sm italic">Transporte de alto nivel.</p>
-        </div>
-        <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Viajes Nacionales</h3>
-            <p class="text-gray-500 text-sm italic">Seguridad y confort.</p>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-black py-10 text-center text-gray-600 text-[10px] uppercase">
-    © 2026 FAST TRAVEL ECUADOR - SEGURIDAD Y EXCLUSIVIDAD
-</footer>
-
 <div id="modalApp" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
-    [02:06, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
-    
-    <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
+    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
+        
+        <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
 
-    <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
-        <div class="text-center mb-6">
-            <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
-            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Inicie sesión para solicitar unidad</p>
-        </div>
-
-        <div class="flex justify-center gap-4 mb-8">
-            <div class=…
-[02:12, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
-    
-    <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
-
-    <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
-        <div class="text-center mb-6">
-            <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
-            <p id="instruccion" class="text-[10px] text-red-600 font-bold uppercase tracking-widest">Paso 1: Seleccione su red social para vincular</p>
-        </div>
-
-        <div class="flex justify-center gap-4 mb-…
-[02:18, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
-    
-    <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
-
-    <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
-        <div class="text-center mb-6">
-            <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
-            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Inicie sesión para solicitar unidad</p>
-        </div>
-
-        <div class="flex justify-center gap-4 mb-8">
-            <div id="icon-ig" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Instagram', 'https://www.instagram.com/fasttravelec/?hl=es')">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-10 h-10 mb-1">
-                <span class="text-[8px] font-bold">INSTAGRAM</span>
+        <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
+            <div class="text-center mb-6">
+                <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
+                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Inicie sesión para solicitar unidad</p>
             </div>
-            <div id="icon-tk" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('TikTok', 'https://www.tiktok.com/search?q=fast%20travel%20guayaquil&t=1770967315830')">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-10 h-10 mb-1">
-                <span class="text-[8px] font-bold">TIKTOK</span>
+
+            <div class="flex justify-center gap-4 mb-8">
+                <div id="icon-ig" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Instagram', 'https://www.instagram.com/fasttravelec/?hl=es')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-10 h-10 mb-1">
+                    <span class="text-[8px] font-bold">INSTAGRAM</span>
+                </div>
+                <div id="icon-tk" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('TikTok', 'https://www.tiktok.com/@fasttravelec')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-10 h-10 mb-1">
+                    <span class="text-[8px] font-bold">TIKTOK</span>
+                </div>
+                <div id="icon-fb" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-10 h-10 mb-1">
+                    <span class="text-[8px] font-bold">FACEBOOK</span>
+                </div>
             </div>
-            <div id="icon-fb" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-10 h-10 mb-1">
-                <span class="text-[8px] font-bold">FACEBOOK</span>
-            </div>
+
+            <form id="miFormulario" class="space-y-3">
+                <input type="hidden" name="RedSocialNombre" id="inputRedSocialNombre" value="">
+                <input type="hidden" name="RedSocialLink" id="inputRedSocialLink" value="">
+                
+                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
+                <input type="text" name="Cedula" placeholder="Número de Cédula" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
+                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-3 rounded-xl bg-gray-100 border border-gray-200 text-sm focus:border-red-500 outline-none font-bold" required>
+                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
+                
+                <button type="submit" id="btn-verificar" class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl hover:bg-red-700 transition shadow-lg active:scale-95 mt-4">
+                    VINCULAR Y ACTIVAR APP
+                </button>
+            </form>
         </div>
 
-        <form id="miFormulario" class="space-y-3">
-            <input type="hidden" name="RedSocialNombre" id="inputRedSocialNombre" value="">
-            <input type="hidden" name="RedSocialLink" id="inputRedSocialLink" value="">
-            
-            <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
-            <input type="text" name="Cedula" placeholder="Número de Cédula" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
-            <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-3 rounded-xl bg-gray-100 border border-gray-200 text-sm focus:border-red-500 outline-none font-bold" required>
-            <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
-            
-            <button type="submit" id="btn-verificar" class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl hover:bg-red-700 transition shadow-lg active:scale-95 mt-4">
-                VINCULAR Y ACTIVAR APP
-            </button>
-        </form>
-    </div>
-
-    <div id="contenedor-aplicativo" class="hidden h-full w-full flex flex-col">
-        <div class="bg-black p-2 text-center text-[9px] font-bold text-white uppercase tracking-wider">
-            🚕 ¿Sin unidades? <a href="https://wa.me/593979986138" target="_blank" class="text-yellow-400 underline ml-1 text-[11px]">SOPORTE AQUÍ</a>
+        <div id="contenedor-aplicativo" class="hidden h-full w-full flex flex-col">
+            <div class="bg-black p-2 text-center text-[9px] font-bold text-white uppercase tracking-wider">
+                🚕 ¿Sin unidades? <a href="https://wa.me/593979986138" target="_blank" class="text-yellow-400 underline ml-1 text-[11px]">SOPORTE AQUÍ</a>
+            </div>
+            <iframe src="https://fasttravelec.ondelight.app/" class="flex-grow w-full border-0" allow="geolocation"></iframe>
         </div>
-        <iframe src="https://fasttravelec.ondelight.app/" class="flex-grow w-full border-0" allow="geolocation"></iframe>
     </div>
 </div>
 
@@ -146,7 +98,6 @@ function seleccionarRed(nombre, link) {
     document.getElementById('inputRedSocialNombre').value = nombre;
     document.getElementById('inputRedSocialLink').value = link;
     
-    // Resaltar icono seleccionado
     const icons = document.querySelectorAll('#filtro-seguridad div.flex.flex-col.items-center');
     icons.forEach(icon => icon.classList.replace('opacity-100', 'opacity-40'));
     event.currentTarget.classList.replace('opacity-40', 'opacity-100');
@@ -167,10 +118,10 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
     btn.innerText = "VINCULANDO...";
     btn.disabled = true;
 
-    // 1. ABRIR RED SOCIAL OBLIGATORIAMENTE
+    // 1. ABRIR RED SOCIAL
     window.open(redLink, '_blank');
 
-    // 2. ENVIAR TODOS LOS DATOS (AHORA SÍ LLEGAN)
+    // 2. ENVIAR DATOS
     const params = new URLSearchParams();
     params.append('Nombre', e.target.Nombre.value);
     params.append('Cedula', e.target.Cedula.value);
@@ -207,7 +158,3 @@ function cerrarModal() {
 
 </body>
 </html>
-
-
-
-
