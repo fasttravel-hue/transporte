@@ -66,20 +66,13 @@
     © 2026 Fast Travel - Servicio de transporte VIP y logística
 </footer>
 
-<a href="https://wa.me/593979986138"
-   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition duration-300 z-40">
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-8 h-8">
-        <path d="M12 2C6.5 2 2 6.4 2 11.9c0 2.1.6 4 1.7 5.7L2 22l4.6-1.6c1.6.9 3.5 1.4 5.4 1.4 5.5 0 10-4.4 10-9.9S17.5 2 12 2zm0 17.9c-1.7 0-3.3-.5-4.7-1.4l-.3-.2-2.7.9.9-2.6-.2-.3c-1-1.4-1.5-3-1.5-4.7 0-4.5 3.7-8.2 8.3-8.2s8.3 3.7 8.3 8.2-3.7 8.3-8.3 8.3z"/>
-   </svg>
-</a>
-
 <div id="modalApp" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
     <div id="panel" class="bg-white w-full h-[90vh] md:max-w-md md:h-[90vh] md:rounded-2xl transform translate-x-full transition-transform duration-700 ease-in-out shadow-2xl relative overflow-hidden mx-auto my-auto">
     
         <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl font-bold z-50">✖</button>
 
         <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center">
-            <form id="miFormulario" action="https://formspree.io/f/mqedpbvj" method="POST" enctype="multipart/form-data" class="w-full">
+            <form id="miFormulario" class="w-full">
                 
                 <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
                 <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Paso obligatorio para habilitar el servicio</p>
@@ -88,18 +81,14 @@
                 <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
                 <input type="email" name="Correo" placeholder="Correo Electrónico" required class="border p-3 mb-4 w-full rounded-xl bg-gray-50 text-black outline-none focus:ring-2 focus:ring-blue-400">
                 
-                <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full">
+                <div class="bg-gray-100 rounded-lg p-3 mb-6 w-full">
                     <p class="text-[11px] text-gray-600 leading-tight">
-                        Por su seguridad, tómese una <strong>selfie junto a su cédula</strong> (que ambos sean visibles).
+                        Sus datos serán verificados para garantizar un servicio seguro y exclusivo.
                     </p>
                 </div>
-
-                <input type="file" name="Foto_Cedula" accept="image/*" capture="user" required class="text-xs mb-6 w-full text-black
-                    file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 
-                    file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
                 
                 <button type="submit" id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
-                    ACTIVAR SERVICIO SEGURO
+                    REGISTRAR Y ENTRAR
                 </button>
             </form>
         </div>
@@ -112,12 +101,11 @@
 </div>
 
 <script>
-// Funciones del Modal
+// Funciones para manejar el Modal
 function abrirModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+    modal.classList.replace('hidden', 'flex');
     setTimeout(() => { panel.classList.remove('translate-x-full'); }, 10);
 }
 
@@ -125,44 +113,42 @@ function cerrarModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
     panel.classList.add('translate-x-full');
-    setTimeout(() => { modal.classList.remove('flex'); modal.classList.add('hidden'); }, 700);
+    setTimeout(() => { 
+        modal.classList.replace('flex', 'hidden'); 
+    }, 700);
 }
 
-// Lógica de Envío Corregida
-const formulario = document.getElementById('miFormulario');
-formulario.onsubmit = async (e) => {
+// LÓGICA DE ENVÍO A GOOGLE SHEETS
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwOSuoTaw9RyhnWDOahx_71MVZlpw_OjWmbKcxWrnn7VQHBY6lSmgXWbnKtqX2D_iaxHA/exec';
+const form = document.getElementById('miFormulario');
+
+form.addEventListener('submit', e => {
     e.preventDefault();
     const btn = document.getElementById('btn-verificar');
     btn.innerText = "VERIFICANDO...";
     btn.disabled = true;
 
-    const formData = new FormData(formulario);
+    // Preparamos los datos del formulario
+    const data = new FormData(form);
 
-    try {
-        const response = await fetch(formulario.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-            // ÉXITO: Ocultamos formulario y mostramos el aplicativo
-            document.getElementById('filtro-seguridad').classList.add('hidden');
-            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-            alert("¡Identidad verificada! Ya puedes usar el servicio de Fast Travel.");
-        } else {
-            // ERROR: Recuperamos el mensaje de Formspree
-            const data = await response.json();
-            alert("Atención: " + (data.error || "Debes activar el formulario desde tu correo electrónico antes de usarlo."));
-            btn.innerText = "ACTIVAR SERVICIO SEGURO";
-            btn.disabled = false;
-        }
-    } catch (error) {
-        alert("Error de conexión. Revisa tu internet.");
-        btn.innerText = "ACTIVAR SERVICIO SEGURO";
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: data
+    })
+    .then(response => {
+        // Al recibir éxito de Google Sheets
+        document.getElementById('filtro-seguridad').classList.add('hidden');
+        document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+        alert("¡Identidad verificada! Ya puedes usar el servicio de Fast Travel.");
+    })
+    .catch(error => {
+        // En caso de error de red o de Google
+        console.error('Error!', error.message);
+        alert("Error de conexión. Inténtalo de nuevo.");
+        btn.innerText = "REGISTRAR Y ENTRAR";
         btn.disabled = false;
-    }
-};
+    });
+});
 </script>
 
 </body>
