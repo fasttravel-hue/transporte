@@ -97,7 +97,7 @@
 </div>
 
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxyLJ1XAgpn40WIyYnQjWpygQA8_mg92BFyktjUwQO0JhC2bWjj6iYkddSXBD4ZgOhFSg/exec'; // <--- Pon tu último link aquí
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxyLJ1XAgpn40WIyYnQjWpygQA8_mg92BFyktjUwQO0JhC2bWjj6iYkddSXBD4ZgOhFSg/exec';
 
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -117,8 +117,9 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         mode: 'no-cors'
     })
     .then(() => {
-        // Esto oculta el formulario y muestra tu app (Ondelight)
-        document.getElementById('filtro-seguridad').classList.add('hidden');
+        // 1. Ocultamos el modal que tiene el formulario
+        document.getElementById('modalApp').classList.add('hidden');
+        // 2. Mostramos el contenedor de la aplicación
         document.getElementById('contenedor-aplicativo').classList.remove('hidden');
     })
     .catch(error => {
@@ -131,6 +132,7 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
