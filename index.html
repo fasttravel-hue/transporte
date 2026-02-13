@@ -3,52 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fast Travel | Transporte VIP</title>
+    <title>Fast Travel | Transporte Ejecutivo VIP</title>
     <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Efecto Apple: Suave, elástico y elegante */
+    #panel {
+        transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    
+    /* Estado inicial: escondido totalmente a la derecha */
+    .translate-x-full {
+        transform: translateX(100%);
+    }
+    
+    /* Estado activo: entra suavemente a su posición */
+    .translate-x-0 {
+        transform: translateX(0);
+    }
+
+    /* Desenfoque de fondo premium al abrir */
+    #modalApp {
+        transition: backdrop-filter 0.5s ease;
+        backdrop-filter: blur(0px);
+    }
+    #modalApp.bg-active {
+        backdrop-filter: blur(5px);
+    }
+</style>
 </head>
 
 <body class="bg-black text-white font-sans overflow-x-hidden">
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
-    <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 mb-8">
-    <h1 class="text-4xl font-bold mb-4">Transporte Ejecutivo Privado</h1>
-    <p class="text-gray-400 mb-8">Servicio VIP 24/7 en Ecuador</p>
-    
-    <div class="flex flex-col gap-4 w-full max-w-xs">
-        <button onclick="abrirModal()" class="bg-red-800 text-white px-8 py-4 rounded-xl font-bold shadow-lg active:scale-95 transition">
+    <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 md:w-64 mb-8">
+
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Transporte Ejecutivo Privado
+    </h1>
+
+    <p class="text-gray-400 max-w-xl mb-8">
+        Servicio VIP de traslados seguros, puntuales y exclusivos.
+        Atención 24/7 en Ecuador.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6 w-full max-w-xs sm:max-w-none">
+        <button onclick="abrirModal()" 
+            class="bg-red-800 hover:bg-red-900 text-white px-8 py-4 rounded-xl font-bold shadow-lg active:scale-95 transition">
             🚗 Reservar en App
         </button>
-        <a href="https://wa.me/593979986138" class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-center">
+
+        <a href="https://wa.me/593979986138" target="_blank"
+            class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-center active:scale-95 transition">
             💬 WhatsApp
         </a>
     </div>
 </section>
 
+<section class="py-20 px-6 bg-gray-950 border-t border-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-12 text-red-600 uppercase tracking-widest">
+        Nuestros Servicios
+    </h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
+            <h3 class="font-bold text-xl mb-3">Traslados Aeropuerto</h3>
+            <p class="text-gray-400 text-sm">Servicio puerta a puerta con puntualidad garantizada.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
+            <h3 class="font-bold text-xl mb-3">Servicio Corporativo</h3>
+            <p class="text-gray-400 text-sm">Movilización ejecutiva para empresas y reuniones.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
+            <h3 class="font-bold text-xl mb-3">Eventos Especiales</h3>
+            <p class="text-gray-400 text-sm">Transporte privado para ocasiones de alto nivel.</p>
+        </div>
+        <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-800 hover:border-red-800 transition">
+            <h3 class="font-bold text-xl mb-3">Viajes Interprovinciales</h3>
+            <p class="text-gray-400 text-sm">Traslados cómodos y seguros a cualquier destino.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-black py-10 text-center text-gray-500 text-xs border-t border-gray-900 uppercase tracking-widest">
+    © 2026 Fast Travel Ecuador - Seguridad y Exclusividad
+</footer>
+
 <div id="modalApp" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
     
-    <div id="panel" class="bg-white w-full h-[100vh] md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden transform translate-x-full transition-transform duration-500 ease-in-out">
+    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
         
-        <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-50">✕</button>
+        <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60] active:scale-90 transition">✕</button>
 
         <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black">
-            <div class="text-center mb-6">
+            <div class="text-center mb-8">
                 <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Seguridad Fast Travel</span>
-                <h2 class="text-2xl font-bold">Verificación</h2>
-                <p class="text-gray-500 text-xs">Sube tu foto con cédula para desbloquear el mapa.</p>
+                <h2 class="text-2xl font-bold mt-2">Verificación</h2>
+                <p class="text-gray-500 text-xs mt-1">Complete sus datos para habilitar el servicio.</p>
             </div>
 
             <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none">
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none">
-                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none">
+                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required 
+                    class="w-full p-4 bg-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-red-600 transition">
                 
-                <div class="bg-blue-50 p-4 rounded-2xl border-2 border-dashed border-blue-200">
-                    <p class="text-[10px] text-blue-800 font-bold mb-2 uppercase">📸 Selfie con Cédula</p>
-                    <input type="file" id="fotoInput" accept="image/*" capture="user" required class="text-xs w-full">
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required 
+                    class="w-full p-4 bg-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-red-600 transition">
+                
+                <input type="email" name="Correo" placeholder="Correo Electrónico" required 
+                    class="w-full p-4 bg-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-red-600 transition">
+                
+                <div class="bg-red-50 p-5 rounded-2xl border-2 border-dashed border-red-200">
+                    <p class="text-[10px] text-red-800 font-bold mb-3 uppercase tracking-tighter">📸 Selfie con Cédula (Obligatorio)</p>
+                    <input type="file" id="fotoInput" accept="image/*" capture="user" required 
+                        class="text-xs w-full file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-red-600 file:text-white hover:file:bg-red-700 cursor-pointer">
                 </div>
                 
-                <button type="submit" id="btn-verificar" class="w-full bg-red-700 text-white p-5 rounded-2xl font-bold shadow-xl active:scale-95 transition">
-                    ACTIVAR SERVICIO
+                <button type="submit" id="btn-verificar" 
+                    class="w-full bg-black text-white p-5 rounded-2xl font-bold text-lg shadow-xl active:scale-95 transition mt-4 uppercase">
+                    Activar Servicio
                 </button>
             </form>
         </div>
@@ -61,27 +131,26 @@
 </div>
 
 <script>
+// Tu link de Google Apps Script
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxt_BOKSdRTi3a4qDMC5qWkwDU4Dv0tyxBCC4raw2Fo78GruI3m_b8c03nEANX6dPkv2A/exec';
 
 function abrirModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    // Pequeño delay para que la transición de deslizamiento funcione
+    modal.classList.replace('hidden', 'flex');
+    // Forzamos el deslizamiento
     setTimeout(() => {
-        panel.classList.remove('translate-x-full');
+        panel.classList.replace('translate-x-full', 'translate-x-0');
     }, 10);
 }
 
 function cerrarModal() {
     const modal = document.getElementById('modalApp');
     const panel = document.getElementById('panel');
-    panel.classList.add('translate-x-full');
-    // Esperamos a que termine la animación para ocultar el fondo
+    panel.classList.replace('translate-x-0', 'translate-x-full');
+    // Esperamos la animación antes de ocultar
     setTimeout(() => {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
+        modal.classList.replace('flex', 'hidden');
     }, 500);
 }
 
@@ -105,16 +174,24 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 
         fetch(scriptURL, { method: 'POST', body: params })
         .then(() => {
+            // Cambiamos el formulario por el aplicativo de Ondelight
             document.getElementById('filtro-seguridad').classList.add('hidden');
             document.getElementById('contenedor-aplicativo').classList.remove('hidden');
         })
-        .catch(() => {
-            alert("Error de conexión");
+        .catch(err => {
+            console.error(err);
+            alert("Error al conectar con la base de datos.");
             btn.innerText = "ACTIVAR SERVICIO";
             btn.disabled = false;
         });
     };
-    reader.readAsDataURL(file);
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        alert("Por favor suba la foto requerida.");
+        btn.disabled = false;
+        btn.innerText = "ACTIVAR SERVICIO";
+    }
 });
 </script>
 
