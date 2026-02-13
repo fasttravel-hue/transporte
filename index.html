@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +13,7 @@
         .translate-x-full { transform: translateX(100%); }
         .translate-x-0 { transform: translateX(0); }
 
-        /* Desenfoque de fondo premium */
+        /* Desenfoque de fondo al abrir el panel */
         #modalApp {
             transition: backdrop-filter 0.5s ease;
             backdrop-filter: blur(0px);
@@ -29,7 +28,7 @@
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
     <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 md:w-64 mb-8">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">Transporte Ejecutivo Privado</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 uppercase">Transporte Ejecutivo Privado</h1>
     <p class="text-gray-400 max-w-xl mb-8">
         Servicio VIP de traslados seguros, puntuales y exclusivos. Atención 24/7 en Ecuador.
     </p>
@@ -48,25 +47,25 @@
     <h2 class="text-3xl font-bold text-center mb-12 text-red-600 uppercase tracking-widest">Nuestros Servicios</h2>
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Aeropuerto</h3>
-            <p class="text-gray-500 text-sm italic">Puntualidad garantizada en cada vuelo.</p>
+            <h3 class="font-bold text-xl mb-3 text-white">Traslados Aeropuerto</h3>
+            <p class="text-gray-500 text-sm italic">Puntualidad garantizada.</p>
         </div>
         <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Corporativo</h3>
-            <p class="text-gray-500 text-sm italic">Movilización ejecutiva para empresas.</p>
+            <h3 class="font-bold text-xl mb-3 text-white">Servicio Corporativo</h3>
+            <p class="text-gray-500 text-sm italic">Movilización ejecutiva.</p>
         </div>
         <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Eventos VIP</h3>
-            <p class="text-gray-500 text-sm italic">Transporte privado de alto nivel.</p>
+            <h3 class="font-bold text-xl mb-3 text-white">Eventos Especiales</h3>
+            <p class="text-gray-500 text-sm italic">Transporte de alto nivel.</p>
         </div>
         <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-            <h3 class="font-bold text-xl mb-3 text-white">Nacional</h3>
-            <p class="text-gray-500 text-sm italic">Seguridad y confort en todo el país.</p>
+            <h3 class="font-bold text-xl mb-3 text-white">Viajes Nacionales</h3>
+            <p class="text-gray-500 text-sm italic">Seguridad y confort.</p>
         </div>
     </div>
 </section>
 
-<footer class="bg-black py-10 text-center text-gray-600 text-[10px] uppercase tracking-widest">
+<footer class="bg-black py-10 text-center text-gray-600 text-[10px] uppercase">
     © 2026 FAST TRAVEL ECUADOR - SEGURIDAD Y EXCLUSIVIDAD
 </footer>
 
@@ -77,15 +76,15 @@
 
         <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black">
             <div class="text-center mb-8">
-                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Seguridad Fast Travel</span>
-                <h2 class="text-2xl font-bold mt-1">Verificación</h2>
+                <span class="text-[10px] font-bold text-blue-600 uppercase">Seguridad Fast Travel</span>
+                <h2 class="text-2xl font-bold mt-1">Verificación VIP</h2>
                 <p class="text-gray-500 text-xs">Sube tu foto con cédula para activar el servicio.</p>
             </div>
 
             <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre completo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black">
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black">
-                <input type="email" name="Correo" placeholder="Correo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black">
+                <input type="text" name="Nombre" placeholder="Nombre completo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
+                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
+                <input type="email" name="Correo" placeholder="Correo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none text-black border-none">
                 
                 <div class="bg-blue-50 p-5 rounded-2xl border-2 border-dashed border-blue-200">
                     <p class="text-[10px] text-blue-800 font-bold mb-3 uppercase">📸 Selfie con Cédula</p>
@@ -105,8 +104,8 @@
 </div>
 
 <script>
-// URL DE TU FOTO ACTUALIZADA
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyoqOt6hKpULqFROnqychKF5wcv2KQZ0t0kA4LZrIKnOAOFDfpK0MO_Q1muPeJWj3pcIw/exec';
+// PEGA TU NUEVA URL DE GOOGLE AQUÍ ABAJO
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyv9nTsE_pYTnWI6rw6MYskkoT26LxaLn8PtAcv7IE6JABhrhPddk-KlRtFwhb1UNGj/exec';
 
 function abrirModal() {
     const modal = document.getElementById('modalApp');
@@ -129,7 +128,7 @@ function cerrarModal() {
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('btn-verificar');
-    btn.innerText = "PROCESANDO...";
+    btn.innerText = "PROCESANDO FOTO...";
     btn.disabled = true;
 
     const file = document.getElementById('fotoInput').files[0];
@@ -139,7 +138,7 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         const img = new Image();
         img.src = event.target.result;
         img.onload = function() {
-            // COMPRESIÓN PARA GOOGLE SHEETS
+            // COMPRESIÓN PARA GOOGLE
             const canvas = document.createElement('canvas');
             const scale = 0.5; 
             canvas.width = img.width * scale;
@@ -156,6 +155,7 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 
             fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
             .then(() => {
+                // ÉXITO: MOSTRAR APP
                 document.getElementById('filtro-seguridad').classList.add('hidden');
                 document.getElementById('contenedor-aplicativo').classList.remove('hidden');
             })
@@ -171,5 +171,3 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
 </script>
 </body>
 </html>
-
-
