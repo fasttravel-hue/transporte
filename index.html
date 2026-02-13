@@ -3,117 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fast Travel | Transporte Ejecutivo VIP</title>
+    <title>Fast Travel | Transporte VIP</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #modalApp { display: none; }
+        #modalApp.active { display: flex; }
+        /* Efecto de desenfoque para el mapa mientras no se verifique */
+        .blur-map { filter: blur(8px); pointer-events: none; }
+    </style>
 </head>
 
 <body class="bg-black text-white font-sans">
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
-
-    <img src="logo_ft-removebg-preview (1).png" 
-         alt="Fast Travel Logo"
-         class="w-48 md:w-64 mb-8">
-
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        Transporte Ejecutivo Privado
-    </h1>
-
-    <p class="text-gray-400 max-w-xl mb-8">
-        Servicio VIP de traslados seguros, puntuales y exclusivos.
-        Atención 24/7 en Ecuador.
-    </p>
-
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-        <button onclick="abrirModal()" 
-            class="bg-red-800 hover:bg-red-900 text-white px-8 py-3 rounded-xl font-semibold transition">
+    <img src="logo_ft-removebg-preview (1).png" alt="Fast Travel Logo" class="w-48 mb-8">
+    <h1 class="text-4xl font-bold mb-4 text-red-600">Fast Travel</h1>
+    <p class="mb-8 text-gray-400">Servicio Ejecutivo en Ecuador</p>
+    
+    <div class="flex flex-col gap-4 w-full max-w-xs">
+        <button onclick="abrirModal()" class="bg-red-800 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transform active:scale-95 transition">
             🚗 Reservar en App
         </button>
-
-        <a href="https://wa.me/593979986138" target="_blank"
-            class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition">
+        <a href="https://wa.me/593979986138" class="bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-center">
             💬 WhatsApp
         </a>
     </div>
-
 </section>
 
-<section class="py-20 px-6 bg-gray-950">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">
-        Nuestros Servicios
-    </h2>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-            <h3 class="font-bold text-lg mb-3">Traslados Aeropuerto</h3>
-            <p class="text-gray-400 text-sm">Servicio puerta a puerta con puntualidad garantizada.</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-            <h3 class="font-bold text-lg mb-3">Servicio Corporativo</h3>
-            <p class="text-gray-400 text-sm">Movilización ejecutiva para empresas y reuniones.</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-            <h3 class="font-bold text-lg mb-3">Eventos Especiales</h3>
-            <p class="text-gray-400 text-sm">Transporte privado para eventos y ocasiones especiales.</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition">
-            <h3 class="font-bold text-lg mb-3">Viajes Interprovinciales</h3>
-            <p class="text-gray-400 text-sm">Traslados cómodos y seguros a cualquier destino.</p>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-black py-6 text-center text-gray-500 text-sm border-t border-gray-800">
-    © 2026 Fast Travel - Servicio de transporte VIP y logística
-</footer>
-
-<div id="modalApp" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-50">
-    <div id="panel" class="bg-white w-full h-[90vh] md:max-w-md md:h-[90vh] md:rounded-2xl transform translate-x-full transition-transform duration-700 ease-in-out shadow-2xl relative overflow-hidden mx-auto my-auto">
+<div id="modalApp" class="fixed inset-0 bg-black z-50 items-center justify-center">
     
-        <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl font-bold z-50">✖</button>
+    <div class="relative w-full h-full flex flex-col">
+        
+        <button onclick="cerrarModal()" class="absolute top-5 left-5 bg-white/20 text-white w-10 h-10 rounded-full z-[70] flex items-center justify-center backdrop-blur-md">✕</button>
 
-        <div id="filtro-seguridad" class="p-6 flex flex-col items-center justify-center h-full text-center text-black">
-            <form id="miFormulario" class="w-full">
-                
-                <h2 class="text-xl font-bold mb-1 text-gray-800">Verificación de Fast Travel</h2>
-                <p class="text-[10px] uppercase tracking-widest mb-4 text-blue-600 font-bold">Registro con Foto de Cédula</p>
-
-                <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
-                <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="border p-3 mb-2 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
-                <input type="email" name="Correo" placeholder="Correo Electrónico" required class="border p-3 mb-4 w-full rounded-xl bg-gray-50 outline-none focus:ring-2 focus:ring-blue-400">
-                
-                <div class="bg-gray-100 rounded-lg p-3 mb-4 w-full text-left">
-                    <p class="text-[11px] text-gray-600 leading-tight mb-2">
-                        <strong>Requisito:</strong> Selfie sosteniendo su cédula.
-                    </p>
-                    <input type="file" id="fotoInput" accept="image/*" capture="user" required class="text-xs w-full file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-600 file:text-white">
-                </div>
-                
-                <button type="submit" id="btn-verificar" class="bg-black text-white p-4 rounded-2xl w-full font-bold shadow-lg active:scale-95 transition-all">
-                    REGISTRAR Y ENVIAR FOTO
-                </button>
-            </form>
+        <div id="mapa-container" class="w-full h-full blur-map">
+            <iframe src="https://fasttravel.ondelight.cloud/" width="100%" height="100%" style="border:0;" allow="geolocation"></iframe>
         </div>
 
-        <div id="contenedor-aplicativo" class="hidden h-full w-full">
-            <iframe src="https://fasttravel.ondelight.cloud/" width="100%" height="100%" style="border:0;" allow="geolocation"></iframe>
+        <div id="filtro-seguridad" class="absolute inset-0 bg-black/60 backdrop-blur-md z-[60] flex items-center justify-center p-6">
+            <div class="bg-white w-full max-w-sm rounded-[2.5rem] p-8 shadow-2xl text-black">
+                <div class="text-center mb-6">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Seguridad Fast Travel</span>
+                    <h2 class="text-2xl font-bold">Verificación</h2>
+                    <p class="text-gray-500 text-xs">Sube tu foto con cédula para desbloquear el mapa.</p>
+                </div>
+
+                <form id="miFormulario" class="space-y-3">
+                    <input type="text" name="Nombre" placeholder="Nombre y Apellido" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
+                    <input type="tel" name="WhatsApp" placeholder="WhatsApp" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
+                    <input type="email" name="Correo" placeholder="Correo" required class="w-full p-4 bg-gray-100 rounded-2xl outline-none border-none">
+                    
+                    <div class="bg-blue-50 p-4 rounded-2xl border-2 border-dashed border-blue-200">
+                        <p class="text-[10px] text-blue-800 font-bold mb-2">📸 SELFIE CON CÉDULA</p>
+                        <input type="file" id="fotoInput" accept="image/*" capture="user" required class="text-xs w-full">
+                    </div>
+                    
+                    <button type="submit" id="btn-verificar" class="w-full bg-red-700 text-white p-4 rounded-2xl font-bold shadow-lg mt-4 active:scale-95 transition">
+                        ACTIVAR SERVICIO
+                    </button>
+                </form>
+            </div>
         </div>
 
     </div>
 </div>
 
 <script>
-// URL de tu Google Apps Script actualizado
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxt_BOKSdRTi3a4qDMC5qWkwDU4Dv0tyxBCC4raw2Fo78GruI3m_b8c03nEANX6dPkv2A/exec';
 
-const form = document.getElementById('miFormulario');
-const btn = document.getElementById('btn-verificar');
+function abrirModal() {
+    document.getElementById('modalApp').classList.add('active');
+}
 
-// Manejo del envío del formulario
-form.addEventListener('submit', e => {
+function cerrarModal() {
+    document.getElementById('modalApp').classList.remove('active');
+}
+
+document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
-    btn.innerText = "PROCESANDO FOTO Y REGISTRO...";
+    const btn = document.getElementById('btn-verificar');
+    btn.innerText = "VERIFICANDO...";
     btn.disabled = true;
 
-    const fileInput = document.getElementById('fotoInput');
-    const file = fileInput.files[0];
-    const reader
+    const file = document.getElementById('fotoInput').files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const base64 = reader.result.split(',')[1];
+        const params = new URLSearchParams();
+        params.append('Nombre', e.target.Nombre.value);
+        params.append('WhatsApp', e.target.WhatsApp.value);
+        params.append('Correo', e.target.Correo.value);
+        params.append('fotoBase64', base64);
+        params.append('fotoMimeType', file.type);
+
+        fetch(scriptURL, { method: 'POST', body: params })
+        .then(() => {
+            // ÉXITO: Quitamos el filtro y el desenfoque
+            document.getElementById('filtro-seguridad').classList.add('hidden');
+            document.getElementById('mapa-container').classList.remove('blur-map');
+            alert("¡Identidad Confirmada! El mapa se ha desbloqueado.");
+        })
+        .catch(() => {
+            alert("Error al conectar con el servidor.");
+            btn.innerText = "ACTIVAR SERVICIO";
+            btn.disabled = false;
+        });
+    };
+    reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
