@@ -68,7 +68,7 @@
 </footer>
 
 <div id="modalApp" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
-    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
+    [02:06, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
     
     <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
 
@@ -79,22 +79,47 @@
         </div>
 
         <div class="flex justify-center gap-4 mb-8">
-            <div class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Instagram')">
+            <div class=…
+[02:12, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
+    
+    <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
+
+    <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
+            <p id="instruccion" class="text-[10px] text-red-600 font-bold uppercase tracking-widest">Paso 1: Seleccione su red social para vincular</p>
+        </div>
+
+        <div class="flex justify-center gap-4 mb-…
+[02:18, 13/2/2026] Fast Travel: <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-3xl shadow-2xl relative overflow-hidden translate-x-full">
+    
+    <button onclick="cerrarModal()" class="absolute top-6 left-6 text-black text-3xl font-bold z-[60]">✕</button>
+
+    <div id="filtro-seguridad" class="p-8 flex flex-col justify-center h-full text-black overflow-y-auto">
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
+            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Inicie sesión para solicitar unidad</p>
+        </div>
+
+        <div class="flex justify-center gap-4 mb-8">
+            <div id="icon-ig" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Instagram', 'https://www.instagram.com/fasttravelec/?hl=es')">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-10 h-10 mb-1">
                 <span class="text-[8px] font-bold">INSTAGRAM</span>
             </div>
-            <div class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('TikTok')">
+            <div id="icon-tk" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('TikTok', 'https://www.tiktok.com/search?q=fast%20travel%20guayaquil&t=1770967315830')">
                 <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-10 h-10 mb-1">
                 <span class="text-[8px] font-bold">TIKTOK</span>
             </div>
-            <div class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Facebook')">
+            <div id="icon-fb" class="flex flex-col items-center opacity-40 hover:opacity-100 transition cursor-pointer" onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')">
                 <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-10 h-10 mb-1">
                 <span class="text-[8px] font-bold">FACEBOOK</span>
             </div>
         </div>
 
         <form id="miFormulario" class="space-y-3">
-            <input type="hidden" name="RedSocial" id="inputRedSocial" value="No especificada">
+            <input type="hidden" name="RedSocialNombre" id="inputRedSocialNombre" value="">
+            <input type="hidden" name="RedSocialLink" id="inputRedSocialLink" value="">
+            
             <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
             <input type="text" name="Cedula" placeholder="Número de Cédula" class="w-full p-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:border-red-500 outline-none" required>
             <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-3 rounded-xl bg-gray-100 border border-gray-200 text-sm focus:border-red-500 outline-none font-bold" required>
@@ -108,7 +133,7 @@
 
     <div id="contenedor-aplicativo" class="hidden h-full w-full flex flex-col">
         <div class="bg-black p-2 text-center text-[9px] font-bold text-white uppercase tracking-wider">
-            🚕 ¿Sin unidades? <a href="https://wa.me/593TU_NUMERO" target="_blank" class="text-yellow-400 underline ml-1 text-[11px]">SOPORTE AQUÍ</a>
+            🚕 ¿Sin unidades? <a href="https://wa.me/593979986138" target="_blank" class="text-yellow-400 underline ml-1 text-[11px]">SOPORTE AQUÍ</a>
         </div>
         <iframe src="https://fasttravelec.ondelight.app/" class="flex-grow w-full border-0" allow="geolocation"></iframe>
     </div>
@@ -117,32 +142,41 @@
 <script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbyt5Ya_aUPwxfgTvlVe4FVklvjQsnGzzqeA3Jo0Nq3PnWxK4AP8C5_fLTRCnvSaXyWk_Q/exec'; 
 
-function seleccionarRed(red) {
-    document.getElementById('inputRedSocial').value = red;
+function seleccionarRed(nombre, link) {
+    document.getElementById('inputRedSocialNombre').value = nombre;
+    document.getElementById('inputRedSocialLink').value = link;
+    
+    // Resaltar icono seleccionado
     const icons = document.querySelectorAll('#filtro-seguridad div.flex.flex-col.items-center');
-    icons.forEach(icon => {
-        if(icon.innerText.includes(red.toUpperCase())) {
-            icon.classList.replace('opacity-40', 'opacity-100');
-            icon.classList.add('scale-110');
-        } else {
-            icon.classList.replace('opacity-100', 'opacity-40');
-            icon.classList.remove('scale-110');
-        }
-    });
+    icons.forEach(icon => icon.classList.replace('opacity-100', 'opacity-40'));
+    event.currentTarget.classList.replace('opacity-40', 'opacity-100');
 }
 
 document.getElementById('miFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    const redNombre = document.getElementById('inputRedSocialNombre').value;
+    const redLink = document.getElementById('inputRedSocialLink').value;
+
+    if (!redNombre) {
+        alert("Por favor, selecciona una red social arriba para vincular tu cuenta.");
+        return;
+    }
+
     const btn = document.getElementById('btn-verificar');
     btn.innerText = "VINCULANDO...";
     btn.disabled = true;
 
+    // 1. ABRIR RED SOCIAL OBLIGATORIAMENTE
+    window.open(redLink, '_blank');
+
+    // 2. ENVIAR TODOS LOS DATOS (AHORA SÍ LLEGAN)
     const params = new URLSearchParams();
     params.append('Nombre', e.target.Nombre.value);
     params.append('Cedula', e.target.Cedula.value);
     params.append('WhatsApp', e.target.WhatsApp.value);
     params.append('Correo', e.target.Correo.value);
-    params.append('RedSocial', e.target.RedSocial.value);
+    params.append('RedSocial', redNombre);
 
     fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
     .then(() => {
@@ -150,7 +184,7 @@ document.getElementById('miFormulario').addEventListener('submit', function(e) {
         document.getElementById('contenedor-aplicativo').classList.remove('hidden');
     })
     .catch(() => {
-        alert("Error.");
+        alert("Error de conexión.");
         btn.disabled = false;
         btn.innerText = "VINCULAR Y ACTIVAR APP";
     });
@@ -167,14 +201,13 @@ function abrirModal() {
 function cerrarModal() {
     document.getElementById('panel').classList.replace('translate-x-0', 'translate-x-full');
     document.getElementById('modalApp').classList.remove('bg-active');
-    setTimeout(() => { 
-        document.getElementById('modalApp').classList.replace('flex', 'hidden'); 
-    }, 600);
+    setTimeout(() => { document.getElementById('modalApp').classList.replace('flex', 'hidden'); }, 600);
 }
 </script>
 
 </body>
 </html>
+
 
 
 
