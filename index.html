@@ -148,19 +148,25 @@
                 <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-1">Validación de Usuario</p>
             </div>
 
+            <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-3 italic">Selecciona tu red favorita para validar tu perfil:</p>
             <div class="flex justify-center gap-8 mb-10">
-                <a href="https://www.instagram.com/fasttravelec/?hl=es" target="_blank" class="flex flex-col items-center group">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="Instagram">
-                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">IG</span>
-                </a>
-                <a href="https://www.tiktok.com/@fasttravelec" target="_blank" class="flex flex-col items-center group">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="TikTok">
-                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">TikTok</span>
-                </a>
-                <a href="https://facebook.com/fasttravelec" target="_blank" class="flex flex-col items-center group">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="Facebook">
-                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">FB</span>
-                </a>
+                <label class="flex flex-col items-center group cursor-pointer">
+                    <input type="radio" name="RedSocial" value="Instagram" class="hidden peer" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="Instagram">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">IG</span>
+                </label>
+
+                <label class="flex flex-col items-center group cursor-pointer">
+                    <input type="radio" name="RedSocial" value="TikTok" class="hidden peer" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="TikTok">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">TikTok</span>
+                </label>
+
+                <label class="flex flex-col items-center group cursor-pointer">
+                    <input type="radio" name="RedSocial" value="Facebook" class="hidden peer" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="Facebook">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">FB</span>
+                </label>
             </div>
 
             <form id="miFormulario" class="space-y-4">
@@ -264,7 +270,7 @@
     params.append('Cedula', e.target.Cedula.value);
     params.append('WhatsApp', e.target.WhatsApp.value);
     params.append('Correo', e.target.Correo.value);
-    params.append('RedSocial', redSeleccionada.value); // <--- AQUÍ ESTÁ LA LÍNEA NUEVA
+    params.append('RedSocial', redSeleccionada.value); 
     params.append('Cupon', cuponIngresado || "Ninguno");
 
     fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
@@ -287,5 +293,3 @@
 
 </body>
 </html>
-
-
