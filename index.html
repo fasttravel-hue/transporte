@@ -245,31 +245,47 @@
 
     // ENVÍO DE FORMULARIO
     document.getElementById('miFormulario').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('btn-verificar');
-        btn.innerText = "VALIDANDO ACCESO...";
-        btn.disabled = true;
+    e.preventDefault();
+    
+    // 1. Validar que seleccionó una red social
+    const redSeleccionada = e.target.querySelector('input[name="RedSocial"]:checked');
+    if (!redSeleccionada) {
+        alert("⚠️ Por favor, selecciona una red social para activar tu perfil VIP.");
+        return;
+    }
 
-        const params = new URLSearchParams();
-        params.append('Nombre', e.target.Nombre.value);
-        params.append('Cedula', e.target.Cedula.value);
-        params.append('WhatsApp', e.target.WhatsApp.value);
-        params.append('Correo', e.target.Correo.value);
-        params.append('Cupon', e.target.Cupon.value || "Ninguno");
+    const btn = document.getElementById('btn-verificar');
+    const cuponIngresado = document.getElementById('inputCuponReal').value;
+    btn.innerText = "VALIDANDO ACCESO...";
+    btn.disabled = true;
 
-        fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
-        .then(() => {
-            document.getElementById('filtro-seguridad').classList.add('hidden');
-            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-        })
-        .catch(() => {
-            alert("Error de conexión.");
-            btn.disabled = false;
-            btn.innerText = "Activar Servicio VIP";
-        });
+    const params = new URLSearchParams();
+    params.append('Nombre', e.target.Nombre.value);
+    params.append('Cedula', e.target.Cedula.value);
+    params.append('WhatsApp', e.target.WhatsApp.value);
+    params.append('Correo', e.target.Correo.value);
+    params.append('RedSocial', redSeleccionada.value); // <--- AQUÍ ESTÁ LA LÍNEA NUEVA
+    params.append('Cupon', cuponIngresado || "Ninguno");
+
+    fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
+    .then(() => {
+        // 2. Aviso de validación por WhatsApp
+        if (cuponIngresado && cuponIngresado !== "" && cuponIngresado !== "Ninguno") {
+            alert("✅ ¡REGISTRO EXITOSO!\n\nIMPORTANTE: Para aplicar tu descuento " + cuponIngresado + ", debes enviarnos una captura de este código a nuestro WhatsApp después de hacer tu pedido en la App para validarlo.");
+        }
+        
+        document.getElementById('filtro-seguridad').classList.add('hidden');
+        document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+    })
+    .catch(() => {
+        alert("Error de conexión.");
+        btn.disabled = false;
+        btn.innerText = "Activar Servicio VIP";
     });
+});
 </script>
 
 </body>
 </html>
+
 
