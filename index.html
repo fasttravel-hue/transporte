@@ -141,22 +141,44 @@
 <div id="modalApp" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center backdrop-blur">
     <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
         <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl font-light z-[60]">✕</button>
+        
         <div id="filtro-seguridad" class="p-12 flex flex-col justify-center h-full text-black overflow-y-auto">
             <div class="text-center mb-8">
                 <h2 class="font-title text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
                 <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-1">Validación de Usuario</p>
             </div>
+
+            <div class="flex justify-center gap-8 mb-10">
+                <a href="https://www.instagram.com/fasttravelec/?hl=es" target="_blank" class="flex flex-col items-center group">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="Instagram">
+                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">IG</span>
+                </a>
+                <a href="https://www.tiktok.com/@fasttravelec" target="_blank" class="flex flex-col items-center group">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="TikTok">
+                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">TikTok</span>
+                </a>
+                <a href="https://facebook.com/fasttravelec" target="_blank" class="flex flex-col items-center group">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" alt="Facebook">
+                    <span class="text-[7px] font-black text-gray-400 group-hover:text-black uppercase tracking-widest">FB</span>
+                </a>
+            </div>
+
             <form id="miFormulario" class="space-y-4">
                 <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
                 <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
                 <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none font-bold" required>
                 <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
+                
                 <div class="pt-2">
                     <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 border border-dashed border-red-200 text-[10px] font-black text-red-600 uppercase tracking-[0.2em] outline-none">
                 </div>
-                <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-red-700 transition-all shadow-xl active:scale-95 mt-4 uppercase tracking-widest text-[10px]">Activar Servicio VIP</button>
+
+                <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-red-700 transition-all shadow-xl active:scale-95 mt-4 uppercase tracking-widest text-[10px]">
+                    Activar Servicio VIP
+                </button>
             </form>
         </div>
+
         <div id="contenedor-aplicativo" class="hidden h-full w-full flex flex-col">
             <iframe src="https://fasttravelec.ondelight.app/" class="flex-grow w-full border-0" allow="geolocation"></iframe>
         </div>
@@ -250,3 +272,4 @@
 
 </body>
 </html>
+
