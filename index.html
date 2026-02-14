@@ -3,125 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fast Travel | VIP</title>
+    <title>Fast Travel | Transporte Ejecutivo VIP</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: black; color: white; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: black; color: white; scroll-behavior: smooth; overflow-x: hidden; }
         .font-title { font-family: 'Montserrat', sans-serif; }
         
-        /* Efecto de Vidrio para el Formulario */
-        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        /* Animación de entrada Hero */
+        .reveal-hero { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal-hero.active { opacity: 1; transform: translateY(0); }
 
-        /* Iconos Realistas */
-        .social-icon-real {
-            width: 50px; height: 50px;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            object-fit: contain;
-        }
-        .social-icon-real:hover { transform: scale(1.2); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
-        .social-icon-real.active { border-bottom: 3px solid #ff0000; padding-bottom: 5px; }
-
-        /* Animación de entrada para servicios */
-        .service-card { opacity: 0; visibility: hidden; }
-
-        /* Toast de Regalo */
+        /* Estilo Notificación de Regalo */
         #promoToast { 
             transform: translateX(-110%); 
-            transition: transform 0.6s ease-out;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
         }
         #promoToast.show { transform: translateX(20px); }
+
+        /* Iconos de Redes Estilo Original */
+        .social-icon-box {
+            width: 55px; height: 55px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 15px;
+            background: #f8f8f8;
+        }
+        .social-icon-box:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .social-icon-box img { width: 32px; height: 32px; object-fit: contain; }
+        .social-icon-box.active { border: 2px solid #ef4444; background: #fff1f2; }
+
+        /* Ajustes de Servicios para ScrollReveal */
+        .service-card { opacity: 0; }
+        
+        /* Panel Deslizante Registro */
+        #panel { transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
     </style>
 </head>
 <body>
 
-<div id="promoToast" class="fixed bottom-10 left-0 z-[110] bg-white p-4 pr-10 rounded-r-2xl shadow-2xl cursor-pointer" onclick="abrirJuego()">
-    <div class="flex items-center gap-4 text-black italic">
-        <span class="text-2xl">🎁</span>
+<div id="promoToast" class="fixed bottom-32 left-0 z-[110] bg-white border-l-8 border-red-600 p-5 pr-12 rounded-r-3xl cursor-pointer" onclick="abrirJuegoPromo()">
+    <div class="flex items-center gap-5 text-black">
+        <span class="text-3xl animate-bounce">🎁</span>
         <div>
-            <p class="font-black text-xs uppercase leading-none">Bono de Regalo</p>
-            <p class="text-gray-500 text-[9px] font-bold uppercase">Toca para ganar</p>
+            <p class="font-black text-xs uppercase italic tracking-tighter">¡Cupón de Regalo!</p>
+            <p class="text-gray-500 text-[10px] font-bold uppercase">Haz clic para ganar</p>
         </div>
     </div>
 </div>
 
-<section class="h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="font-title text-6xl md:text-8xl font-black italic uppercase mb-4 tracking-tighter">FAST <span class="text-red-600">TRAVEL</span></h1>
-    <img src="logo_ft-removebg-preview (1).png" class="w-48 mb-8 drop-shadow-2xl">
-    <p class="text-[10px] uppercase tracking-[0.6em] text-gray-400 mb-10">Servicio Ejecutivo de Clase Mundial</p>
-    <button onclick="abrirRegistro()" class="bg-red-700 text-white px-12 py-5 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-red-600 transition-all">Reservar Ahora</button>
-</section>
-
-<section id="servicios" class="py-32 px-6 bg-zinc-950">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        
-        <div class="service-card bg-zinc-900 p-12 rounded-[40px] border border-white/5 text-center">
-            <div class="text-5xl mb-6">🏙️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-4">Urbano VIP</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Traslados ejecutivos dentro de la ciudad con seguridad máxima.</p>
-        </div>
-
-        <div class="service-card bg-zinc-900 p-12 rounded-[40px] border border-white/5 text-center">
-            <div class="text-5xl mb-6">✈️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-4">Aeropuerto</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Recogida y traslados puntuales a terminales aéreas 24/7.</p>
-        </div>
-
-        <div class="service-card bg-zinc-900 p-12 rounded-[40px] border border-white/5 text-center">
-            <div class="text-5xl mb-6">🛣️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-4">Interprovincial</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Viajes de larga distancia en unidades premium de alto confort.</p>
-        </div>
-
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-zinc-950">
+    <div class="reveal-hero"><h1 class="font-title text-6xl md:text-8xl font-black italic uppercase mb-4 tracking-tighter">FAST <span class="text-red-600">TRAVEL</span></h1></div>
+    <div class="reveal-hero"><img src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-44 md:w-56 mb-8 drop-shadow-2xl"></div>
+    <div class="reveal-hero"><h2 class="text-[10px] md:text-xs font-light mb-12 uppercase tracking-[0.5em] text-gray-400">Transporte Ejecutivo Privado</h2></div>
+    <div class="flex flex-col sm:flex-row gap-4 reveal-hero">
+        <button onclick="abrirModalApp()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-5 rounded-full font-bold shadow-2xl transition-all uppercase tracking-widest text-[11px] active:scale-95">🚗 Reservar en App</button>
+        <a href="https://wa.me/593979986138" target="_blank" class="bg-[#25D366] text-white px-10 py-5 rounded-full font-bold shadow-2xl transition-all uppercase tracking-widest text-[11px] text-center active:scale-95">💬 WhatsApp</a>
     </div>
 </section>
 
-<div id="modalRegistro" class="fixed inset-0 bg-black/95 z-[150] hidden items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-md p-10 rounded-[50px] text-black relative shadow-2xl overflow-y-auto max-h-[90vh]">
-        <button onclick="cerrarRegistro()" class="absolute top-8 right-8 text-2xl">✕</button>
+<section id="servicios" class="py-32 px-6 bg-black">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 service-card">
+            <h2 class="font-title text-3xl font-black italic uppercase">Nuestros <span class="text-red-600">Servicios</span></h2>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest mt-2">Excelencia en cada kilómetro</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="service-card bg-zinc-900/40 p-12 rounded-[50px] border border-white/5 text-center hover:border-red-600/30 transition-all">
+                <div class="text-5xl mb-6">🏙️</div>
+                <h4 class="font-bold text-white uppercase text-xs mb-4 tracking-widest">Urbano VIP</h4>
+                <p class="text-gray-500 text-[11px] leading-relaxed">Traslados ejecutivos dentro de la ciudad con choferes certificados.</p>
+            </div>
+            <div class="service-card bg-zinc-900/40 p-12 rounded-[50px] border border-white/5 text-center hover:border-red-600/30 transition-all">
+                <div class="text-5xl mb-6">✈️</div>
+                <h4 class="font-bold text-white uppercase text-xs mb-4 tracking-widest">Aeropuerto</h4>
+                <p class="text-gray-500 text-[11px] leading-relaxed">Puntualidad garantizada para tus viajes nacionales e internacionales.</p>
+            </div>
+            <div class="service-card bg-zinc-900/40 p-12 rounded-[50px] border border-white/5 text-center hover:border-red-600/30 transition-all">
+                <div class="text-5xl mb-6">🛣️</div>
+                <h4 class="font-bold text-white uppercase text-xs mb-4 tracking-widest">Provincias</h4>
+                <p class="text-gray-500 text-[11px] leading-relaxed">Viajes interprovinciales en unidades modernas de alto confort.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="modalApp" class="fixed inset-0 bg-black/95 z-[150] hidden items-center justify-center">
+    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[95vh] md:rounded-[60px] shadow-2xl relative overflow-hidden translate-x-full">
+        <button onclick="cerrarModalApp()" class="absolute top-10 left-10 text-black text-3xl font-light z-50">✕</button>
         
-        <div class="text-center mb-8">
-            <h2 class="font-title text-2xl font-black uppercase italic">REGISTRO <span class="text-red-600">VIP</span></h2>
-            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Completa los campos para activar</p>
-        </div>
-
-        <div class="flex justify-between mb-10 px-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" onclick="marcarRed('tt')" class="social-icon-real" title="TikTok">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" onclick="marcarRed('ig')" class="social-icon-real" title="Instagram">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" onclick="marcarRed('fb')" class="social-icon-real" title="Facebook">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" onclick="marcarRed('wa')" class="social-icon-real" title="WhatsApp">
-        </div>
-
-        <form id="formVip" class="space-y-4">
-            <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 border-none text-sm" required>
-            
-            <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-100 border-none text-sm" required>
-            
-            <input type="number" name="Celular" placeholder="WhatsApp (Ej: 099...)" class="w-full p-4 rounded-2xl bg-gray-100 border-none text-sm font-bold" required>
-            
-            <div class="relative">
-                <input type="text" name="Cupon" id="displayCupon" placeholder="CÓDIGO DE DESCUENTO" readonly class="w-full p-4 rounded-2xl bg-red-50 text-red-600 font-black text-center text-xs border-2 border-dashed border-red-200">
+        <div id="filtro-seguridad" class="p-10 flex flex-col justify-center h-full text-black">
+            <div class="text-center mb-8">
+                <h2 class="font-title text-2xl font-black uppercase italic">Fast Travel <span class="text-red-600">ID</span></h2>
+                <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Registro de Usuario VIP</p>
             </div>
 
-            <button type="submit" class="w-full bg-black text-white font-black py-5 rounded-3xl uppercase text-[11px] tracking-widest shadow-xl hover:bg-zinc-800 transition-all">Activar Servicio y Validar Cupón</button>
-        </form>
+            <div class="mb-8">
+                <p class="text-[10px] font-black text-center uppercase mb-5 text-gray-500 tracking-tighter">1. Síguenos para activar el servicio:</p>
+                <div class="flex justify-between px-2">
+                    <div onclick="markReg('r1')" id="r1" class="social-icon-box"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"></div>
+                    <div onclick="markReg('r2')" id="r2" class="social-icon-box"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></div>
+                    <div onclick="markReg('r3')" id="r3" class="social-icon-box"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></div>
+                    <div onclick="markReg('r4')" id="r4" class="social-icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></div>
+                </div>
+            </div>
+
+            <form id="miFormulario" class="space-y-4">
+                <input type="text" name="Nombre" id="regNombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs border-none outline-none focus:ring-1 focus:ring-red-600" required>
+                
+                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-50 text-xs border-none outline-none focus:ring-1 focus:ring-red-600" required>
+                
+                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold border-none" required>
+                
+                <div class="pt-2">
+                    <input type="text" name="Cupon" id="inputCupon" placeholder="SIN CUPÓN" readonly class="w-full p-4 rounded-2xl bg-red-50 text-red-600 font-black text-center text-[10px] tracking-widest">
+                </div>
+
+                <button type="submit" id="btn-submit" class="w-full bg-black text-white font-black py-5 rounded-[30px] text-[10px] uppercase shadow-2xl active:scale-95 transition-all mt-4">Activar Servicio VIP</button>
+            </form>
+        </div>
+
+        <div id="contenedor-aplicativo" class="hidden h-full w-full">
+            <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full border-0" allow="geolocation"></iframe>
+        </div>
     </div>
 </div>
 
 <script>
-    let redesVisitadas = new Set();
+    let regFollowed = new Set();
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec';
 
-    // 1. INICIALIZAR MOVIMIENTO DE SERVICIOS
     window.onload = () => {
-        setTimeout(() => document.getElementById('promoToast').classList.add('show'), 2000);
+        // Animación inicial Hero
+        document.querySelectorAll('.reveal-hero').forEach((el, i) => setTimeout(() => el.classList.add('active'), i * 200));
         
-        // CONFIGURACIÓN DE DESLIZAMIENTO
+        // Mostrar Pop de Regalo
+        setTimeout(() => document.getElementById('promoToast').classList.add('show'), 3000);
+
+        // CONFIGURACIÓN MOVIMIENTO SERVICIOS (SCROLL REVEAL)
         ScrollReveal().reveal('.service-card', {
             delay: 200,
-            distance: '100px',
+            distance: '80px',
             origin: 'bottom',
             duration: 1000,
             interval: 200,
@@ -130,50 +158,65 @@
         });
     };
 
-    function abrirRegistro() { document.getElementById('modalRegistro').classList.replace('hidden', 'flex'); }
-    function cerrarRegistro() { document.getElementById('modalRegistro').classList.replace('flex', 'hidden'); }
-
-    function marcarRed(red) {
-        redesVisitadas.add(red);
-        // Simular apertura de red social
-        const links = {
-            'tt': 'https://tiktok.com/@fasttravelec',
-            'ig': 'https://instagram.com/fasttravelec',
-            'fb': 'https://facebook.com/fasttravelec',
-            'wa': 'https://whatsapp.com/channel/0029VbBTr2dK5cDGtfZGFq0q'
-        };
-        window.open(links[red], '_blank');
-        event.target.classList.add('active');
+    function abrirJuegoPromo() {
+        document.getElementById('inputCupon').value = "PROMO-80-VIP";
+        abrirModalApp();
     }
 
-    // 2. ENVÍO Y VALIDACIÓN WHATSAPP
-    document.getElementById('formVip').addEventListener('submit', function(e) {
+    function abrirModalApp() {
+        document.getElementById('modalApp').classList.replace('hidden', 'flex');
+        setTimeout(() => document.getElementById('panel').classList.remove('translate-x-full'), 10);
+    }
+
+    function cerrarModalApp() {
+        document.getElementById('panel').classList.add('translate-x-full');
+        setTimeout(() => document.getElementById('modalApp').classList.replace('flex', 'hidden'), 600);
+    }
+
+    function markReg(id) {
+        document.getElementById(id).classList.add('active');
+        regFollowed.add(id);
+        
+        // Abrir red social correspondiente
+        const links = {
+            'r1': 'https://tiktok.com/@fasttravelec',
+            'r2': 'https://instagram.com/fasttravelec',
+            'r3': 'https://facebook.com/fasttravelec',
+            'r4': 'https://whatsapp.com/channel/0029VbBTr2dK5cDGtfZGFq0q'
+        };
+        window.open(links[id], '_blank');
+    }
+
+    // ENVÍO DE FORMULARIO + MENSAJE WHATSAPP
+    document.getElementById('miFormulario').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        if(redesVisitadas.size < 1) {
-            alert("Por favor, interactúa con nuestras redes sociales para validar el registro.");
-            return;
+        if (regFollowed.size < 1) { 
+            alert("⚠️ Por favor, sigue nuestras redes sociales para activar tu beneficio VIP."); 
+            return; 
         }
 
-        const nombre = e.target.Nombre.value;
-        const cupon = document.getElementById('displayCupon').value || "FAST-VIP-NUEVO";
+        const nombre = document.getElementById('regNombre').value;
+        const cupon = document.getElementById('inputCupon').value;
+        const btn = document.getElementById('btn-submit');
         
-        // Mensaje de validación para WhatsApp
-        const msj = `¡Hola Fast Travel! Soy ${nombre}. Acabo de registrarme en la web. Mi código de cupón para validar es: ${cupon}. Quedo atento a la confirmación para mi viaje en la App.`;
-        const urlWa = `https://wa.me/593979986138?text=${encodeURIComponent(msj)}`;
+        btn.innerText = "VALIDANDO...";
+        btn.disabled = true;
 
-        // Abrir WhatsApp en pestaña nueva
-        window.open(urlWa, '_blank');
+        // 1. Enviar a Google Sheets
+        const params = new URLSearchParams(new FormData(e.target));
+        fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
+
+        // 2. Abrir WhatsApp para validar (Como pediste en el punto 2)
+        const mensajeWA = `¡Hola Fast Travel! Soy ${nombre}. Acabo de registrarme y mi código para validar el descuento es: ${cupon}. Por favor, confírmenme para usarlo en la App.`;
+        const linkWA = `https://wa.me/593979986138?text=${encodeURIComponent(mensajeWA)}`;
         
-        // Aquí podrías redirigir a la URL de la aplicación si deseas
-        alert("¡Registro enviado! Se ha abierto WhatsApp para validar tu cupón.");
+        setTimeout(() => {
+            window.open(linkWA, '_blank');
+            document.getElementById('filtro-seguridad').classList.add('hidden');
+            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+        }, 1200);
     });
-
-    function abrirJuego() {
-        // Al tocar el regalo, se les asigna un cupón automáticamente y se abre el registro
-        document.getElementById('displayCupon').value = "PROMO-80-FAST";
-        abrirRegistro();
-    }
 </script>
 
 </body>
