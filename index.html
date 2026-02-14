@@ -12,43 +12,31 @@
         body { font-family: 'Inter', sans-serif; background-color: black; color: white; overflow-x: hidden; scroll-behavior: smooth; }
         .font-title { font-family: 'Montserrat', sans-serif; }
         
-        /* Botón WhatsApp Flotante Original */
+        /* Botón WhatsApp Flotante */
         .wa-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            z-index: 1000;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            position: fixed; bottom: 25px; right: 25px;
+            background-color: #25d366; color: white;
+            border-radius: 50px; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.5); z-index: 1000;
         }
-        .wa-float:hover { transform: scale(1.1); background-color: #20ba5a; }
 
-        /* Estilo Formulario VIP (Imagen 2) */
-        .glass-panel { background: white; border-radius: 40px; }
+        /* Notificación Pop-up (Popup de Regalo) */
+        #promoToast { 
+            position: fixed; bottom: 100px; left: 0; z-index: 110;
+            background: white; color: black; padding: 15px 30px;
+            border-radius: 0 20px 20px 0; border-left: 8px solid #ef4444;
+            transform: translateX(-110%); transition: transform 0.6s ease-out;
+            cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        #promoToast.show { transform: translateX(0); }
+
+        /* Estilo Formulario según tu foto */
+        .glass-panel { background: white; border-radius: 40px; color: black; }
         .input-vip { 
-            width: 100%; 
-            padding: 12px 20px; 
-            background-color: #f3f4f6; 
-            border-radius: 15px; 
-            border: none; 
-            font-size: 13px;
-            color: #333;
+            width: 100%; padding: 14px; background-color: #f3f4f6; 
+            border-radius: 15px; border: none; font-size: 14px; margin-bottom: 12px;
         }
-
-        /* Redes Sociales del Registro */
-        .social-grid-reg { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
-        .social-grid-reg img { width: 35px; height: 35px; cursor: pointer; transition: 0.3s; }
-        .social-grid-reg img:hover { transform: scale(1.2); }
 
         /* Servicios */
         .service-card { opacity: 0; }
@@ -57,93 +45,120 @@
 <body>
 
 <a href="https://wa.me/593979986138" class="wa-float" target="_blank">
-    <svg width="35" height="35" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"/></svg>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-8 h-8">
 </a>
 
+<div id="promoToast" onclick="abrirRegistroConBono()">
+    <div class="flex items-center gap-4">
+        <span class="text-2xl">🎁</span>
+        <div>
+            <p class="font-black text-xs uppercase leading-none">¿Quieres un Bono?</p>
+            <p class="text-gray-500 text-[10px] font-bold uppercase mt-1">Toca para ganar 80% OFF</p>
+        </div>
+    </div>
+</div>
+
 <section class="h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="font-title text-6xl md:text-8xl font-black italic uppercase mb-4 tracking-tighter">FAST <span class="text-red-600">TRAVEL</span></h1>
-    <img src="logo_ft-removebg-preview (1).png" class="w-48 mb-8 drop-shadow-2xl">
-    <div class="flex gap-4">
-        <button onclick="abrirRegistro()" class="bg-red-700 text-white px-8 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-red-600 transition-all">Reservar en App</button>
-        <a href="https://wa.me/593979986138" class="bg-[#25d366] text-white px-8 py-4 rounded-full font-black uppercase text-[10px] tracking-widest">WhatsApp</a>
+    <div class="mb-4">
+        <img src="logo_ft-removebg-preview (1).png" class="w-48 mx-auto drop-shadow-2xl">
+    </div>
+    <h1 class="font-title text-5xl md:text-7xl font-black italic uppercase mb-8 tracking-tighter">FAST <span class="text-red-600">TRAVEL</span></h1>
+    
+    <div class="flex flex-wrap justify-center gap-4">
+        <button onclick="abrirRegistro()" class="bg-red-600 text-white px-8 py-4 rounded-full font-black uppercase text-[11px] tracking-widest flex items-center gap-2 hover:bg-red-700 transition-all">
+            <span>🚗</span> RESERVAR EN APP
+        </button>
+        <a href="https://wa.me/593979986138" class="bg-[#25d366] text-white px-8 py-4 rounded-full font-black uppercase text-[11px] tracking-widest flex items-center gap-2 hover:bg-green-600 transition-all">
+            <span>💬</span> WHATSAPP
+        </a>
     </div>
 </section>
 
-<section id="servicios" class="py-24 px-6 bg-zinc-950">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="service-card bg-zinc-900 p-10 rounded-[30px] border border-white/5 text-center">
+<section class="py-24 px-6 bg-zinc-950">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="service-card bg-zinc-900 p-10 rounded-[40px] border border-white/5 text-center">
             <div class="text-4xl mb-4">🏙️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-3">Urbano VIP</h3>
-            <p class="text-gray-500 text-xs">Traslados rápidos dentro de la ciudad con choferes certificados.</p>
+            <h3 class="font-bold uppercase text-xs tracking-[0.2em] mb-4">Urbano VIP</h3>
+            <p class="text-gray-500 text-xs">Traslados ejecutivos dentro de la ciudad.</p>
         </div>
-        <div class="service-card bg-zinc-900 p-10 rounded-[30px] border border-white/5 text-center">
+        <div class="service-card bg-zinc-900 p-10 rounded-[40px] border border-white/5 text-center">
             <div class="text-4xl mb-4">✈️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-3">Aeropuerto</h3>
-            <p class="text-gray-500 text-xs">Puntualidad total en tus recogidas y traslados al aeropuerto 24/7.</p>
+            <h3 class="font-bold uppercase text-xs tracking-[0.2em] mb-4">Aeropuerto</h3>
+            <p class="text-gray-500 text-xs">Puntualidad en sus vuelos 24/7.</p>
         </div>
-        <div class="service-card bg-zinc-900 p-10 rounded-[30px] border border-white/5 text-center">
+        <div class="service-card bg-zinc-900 p-10 rounded-[40px] border border-white/5 text-center">
             <div class="text-4xl mb-4">🛣️</div>
-            <h3 class="font-bold uppercase text-xs tracking-widest mb-3">Provincias</h3>
-            <p class="text-gray-500 text-xs">Viajes interprovinciales con el máximo confort y seguridad.</p>
+            <h3 class="font-bold uppercase text-xs tracking-[0.2em] mb-4">Provincias</h3>
+            <p class="text-gray-500 text-xs">Viajes interprovinciales con confort.</p>
         </div>
     </div>
 </section>
 
 <div id="modalRegistro" class="fixed inset-0 bg-black/90 z-[150] hidden items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-sm p-8 text-black relative">
+    <div class="glass-panel w-full max-w-sm p-8 relative">
         <button onclick="cerrarRegistro()" class="absolute top-5 left-5 text-xl text-gray-400">✕</button>
         
         <div class="text-center mb-6">
             <h2 class="font-title text-xl font-black uppercase italic">FAST TRAVEL <span class="text-red-600">ID</span></h2>
-            <p class="text-[9px] font-bold text-gray-400 uppercase">Registro de Usuario VIP</p>
+            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Registro de Usuario VIP</p>
         </div>
 
-        <p class="text-[9px] text-center font-bold mb-4 text-gray-500 uppercase">1. Síguenos para activar el servicio:</p>
-        <div class="social-grid-reg">
-            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" onclick="window.open('https://tiktok.com/@fasttravelec')">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" onclick="window.open('https://instagram.com/fasttravelec')">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" onclick="window.open('https://facebook.com/fasttravelec')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" onclick="window.open('https://whatsapp.com/')">
+        <div class="flex justify-center gap-6 mb-8">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-8 h-8 cursor-pointer" onclick="window.open('https://tiktok.com/@fasttravelec')">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-8 h-8 cursor-pointer" onclick="window.open('https://instagram.com/fasttravelec')">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-8 h-8 cursor-pointer" onclick="window.open('https://facebook.com/fasttravelec')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-8 h-8 cursor-pointer" onclick="window.open('https://whatsapp.com/')">
         </div>
 
-        <form id="formVip" class="space-y-3">
+        <form id="formVip">
             <input type="text" name="Nombre" placeholder="Nombre Completo" class="input-vip" required>
-            
-            <input type="text" name="Cedula" placeholder="Número de Cédula" class="input-vip" required>
-            
+            <input type="text" name="Cedula" placeholder="Cédula de Identidad" class="input-vip" required>
             <input type="email" name="Correo" placeholder="Correo Electrónico" class="input-vip" required>
             <input type="number" name="Celular" placeholder="WhatsApp" class="input-vip" required>
             
-            <input type="text" name="Cupon" id="displayCupon" placeholder="SIN CUPÓN" readonly class="w-full p-3 rounded-xl bg-red-50 text-red-600 font-black text-center text-[10px] border border-dashed border-red-200">
+            <input type="text" name="Cupon" id="displayCupon" placeholder="SIN CUPÓN" readonly class="w-full p-3 rounded-xl bg-red-50 text-red-600 font-black text-center text-[10px] mb-4 border border-dashed border-red-200">
 
-            <button type="submit" class="w-full bg-black text-white font-black py-4 rounded-full uppercase text-[10px] tracking-widest shadow-lg">Activar Servicio VIP</button>
+            <button type="submit" class="w-full bg-black text-white font-black py-4 rounded-2xl uppercase text-[11px] tracking-widest shadow-xl">Activar Servicio VIP</button>
         </form>
     </div>
 </div>
 
 <script>
-    // Inicializar efectos deslizantes
+    // 1. Mostrar Pop-up a los 3 segundos
     window.onload = () => {
+        setTimeout(() => {
+            document.getElementById('promoToast').classList.add('show');
+        }, 3000);
+
+        // 2. Efecto servicios al bajar
         ScrollReveal().reveal('.service-card', {
-            delay: 200,
-            distance: '50px',
-            origin: 'bottom',
-            interval: 200
+            delay: 200, distance: '60px', origin: 'bottom', interval: 200
         });
     };
 
-    function abrirRegistro() { document.getElementById('modalRegistro').classList.replace('hidden', 'flex'); }
-    function cerrarRegistro() { document.getElementById('modalRegistro').classList.replace('flex', 'hidden'); }
+    function abrirRegistro() { 
+        document.getElementById('modalRegistro').classList.replace('hidden', 'flex'); 
+    }
+    
+    function abrirRegistroConBono() {
+        document.getElementById('displayCupon').value = "BONO-80-VIP";
+        abrirRegistro();
+    }
 
+    function cerrarRegistro() { 
+        document.getElementById('modalRegistro').classList.replace('flex', 'hidden'); 
+    }
+
+    // 3. Envío y WhatsApp
     document.getElementById('formVip').addEventListener('submit', function(e) {
         e.preventDefault();
         const nombre = e.target.Nombre.value;
-        const cupon = document.getElementById('displayCupon').value || "FAST-NUEVO";
+        const cupon = document.getElementById('displayCupon').value || "FAST-NEW";
         
-        const msj = `¡Hola! Soy ${nombre}. Me registré en la web. Mi cupón es: ${cupon}. Por favor valídenlo.`;
+        const msj = `¡Hola Fast Travel! Soy ${nombre}. Me registré y mi código es: ${cupon}. Por favor validen mi descuento.`;
         window.open(`https://wa.me/593979986138?text=${encodeURIComponent(msj)}`, '_blank');
         
-        alert("Registro enviado. Valida tu cupón en el WhatsApp que se acaba de abrir.");
+        alert("¡Registro exitoso! Valida tu cupón en el WhatsApp que se abrió.");
     });
 </script>
 
