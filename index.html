@@ -32,6 +32,7 @@
 
         .bg-whatsapp { background-color: #25D366; }
         
+        /* ANIMACIÓN REBOTE WHATSAPP */
         .float-btn {
             animation: bounceCustom 2.5s infinite;
             filter: drop-shadow(0px 10px 15px rgba(37, 211, 102, 0.3));
@@ -43,9 +44,9 @@
             60% {transform: translateY(-6px) scale(1);}
         }
 
-        /* NOTIFICACIÓN BONO CON Z-INDEX AJUSTADO */
+        /* NOTIFICACIÓN BONO */
         #notificacionPop { 
-            position: fixed; bottom: 100px; left: 0; z-index: 40;
+            position: fixed; bottom: 120px; left: 0; z-index: 40;
             background: white; color: black; padding: 10px 18px;
             border-radius: 0 20px 20px 0; display: flex; align-items: center; gap: 10px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -64,6 +65,10 @@
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
+
+<a href="https://wa.me/593979986138" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-whatsapp p-0 rounded-full float-btn hover:scale-110 transition-transform active:scale-90 shadow-2xl overflow-hidden flex items-center justify-center w-16 h-16">
+    <svg viewBox="0 0 24 24" class="w-10 h-10 fill-white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path></svg>
+</a>
 
 <div id="notificacionPop">
     <div onclick="mostrarModalJuego()" class="flex items-center gap-3 cursor-pointer">
@@ -94,15 +99,35 @@
     </div>
 </div>
 
-<a href="https://wa.me/593979986138" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-whatsapp p-0 rounded-full float-btn w-16 h-16 flex items-center justify-center">
-    <svg viewBox="0 0 24 24" class="w-10 h-10 fill-white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path></svg>
-</a>
-
-<section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="font-title text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-4">FAST <span class="text-red-600">TRAVEL</span></h1>
-    <img src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-40 mb-8">
+<section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
+    <h1 id="tituloPrincipal" class="font-title text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-4">FAST <span class="text-red-600">TRAVEL</span></h1>
+    <img id="logoPrincipal" src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-40 md:w-56 mb-8 drop-shadow-2xl">
+    <h2 class="text-xs md:text-sm font-light mb-8 uppercase tracking-[0.6em] text-gray-400">Transporte Ejecutivo Privado</h2>
     <div class="flex flex-col sm:flex-row gap-4">
-        <button onclick="abrirModal()" class="bg-red-700 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px]">🚗 Reservar en App</button>
+        <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-2xl transition-all active:scale-95">🚗 Reservar en App</button>
+        <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">💬 WhatsApp</a>
+    </div>
+</section>
+
+<section id="servicios" class="py-24 px-6 bg-black border-t border-zinc-900">
+    <h2 class="font-title text-2xl font-black text-center mb-16 text-red-600 uppercase tracking-widest italic">Nuestros Servicios</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Traslados Aeropuerto</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Puntualidad garantizada en sus vuelos nacionales e internacionales.</p>
+        </div>
+        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Servicio Corporativo</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Movilización ejecutiva premium para empresas y directivos.</p>
+        </div>
+        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Eventos Especiales</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Transporte de alto nivel para bodas, galas y eventos exclusivos.</p>
+        </div>
+        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Viajes Nacionales</h3>
+            <p class="text-gray-500 text-xs leading-relaxed">Seguridad y discreción absoluta en todo el territorio ecuatoriano.</p>
+        </div>
     </div>
 </section>
 
@@ -138,11 +163,11 @@
             </div>
 
             <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs" required>
-                <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs" required>
-                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold" required>
-                <input type="email" name="Correo" placeholder="Correo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs" required>
-                <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 text-[10px] font-black text-red-600 border border-dashed border-red-200 uppercase">
+                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold outline-none" required>
+                <input type="email" name="Correo" placeholder="Correo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 text-[10px] font-black text-red-600 border border-dashed border-red-200 uppercase outline-none">
                 <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl">Activar Servicio VIP</button>
             </form>
         </div>
@@ -154,10 +179,15 @@
 </div>
 
 <script>
+    // --- ANIMACIONES RESTAURADAS ---
+    ScrollReveal().reveal('#tituloPrincipal', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
+    ScrollReveal().reveal('#logoPrincipal', { delay: 300, scale: 0.8, duration: 1000 });
+    ScrollReveal().reveal('#hero h2, #hero div', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
+    ScrollReveal().reveal('.card-hover', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
+
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
 
     function abrirModal() {
-        // Al abrir el registro, quitamos el bono para que no estorbe
         document.getElementById('notificacionPop').classList.remove('show');
         document.getElementById('modalApp').classList.replace('hidden', 'flex');
         setTimeout(() => {
@@ -175,14 +205,10 @@
         }, 600);
     }
 
-    // FUNCIÓN CLAVE PARA LAS REDES SOCIALES
     function seleccionarRed(red, url) {
         const ids = { 'Instagram': 'radio-ig', 'TikTok': 'radio-tt', 'Facebook': 'radio-fb' };
-        const radio = document.getElementById(ids[red]);
-        if (radio) {
-            radio.checked = true; // Forzamos la selección interna
-        }
-        window.open(url, '_blank'); // Abrimos la red
+        document.getElementById(ids[red]).checked = true;
+        window.open(url, '_blank');
     }
 
     function cerrarBono(e) {
@@ -219,15 +245,12 @@
     document.getElementById('miFormulario').addEventListener('submit', function(e) {
         e.preventDefault();
         const redSeleccionada = document.querySelector('input[name="RedSocial"]:checked');
-        
         if (!redSeleccionada) {
             alert("⚠️ Por favor, selecciona una red social (toca el icono) para continuar.");
             return;
         }
-
         const btn = document.getElementById('btn-verificar');
         btn.innerText = "VALIDANDO..."; btn.disabled = true;
-
         const params = new URLSearchParams();
         params.append('Nombre', e.target.Nombre.value);
         params.append('Cedula', e.target.Cedula.value);
