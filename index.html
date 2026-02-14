@@ -11,19 +11,13 @@
         body { font-family: 'Inter', sans-serif; }
         .font-title { font-family: 'Montserrat', sans-serif; }
         
-        #panel {
-            transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
-        }
+        #panel { transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
         .translate-x-full { transform: translateX(100%); }
         .translate-x-0 { transform: translateX(0); }
 
-        #modalApp {
-            transition: backdrop-filter 0.5s ease;
-            backdrop-filter: blur(0px);
-        }
-        #modalApp.bg-active {
-            backdrop-filter: blur(12px);
-        }
+        #modalApp { transition: backdrop-filter 0.5s ease; backdrop-filter: blur(0px); }
+        #modalApp.bg-active { backdrop-filter: blur(12px); }
+        
         .card-hover:hover {
             transform: translateY(-10px);
             border-color: #dc2626;
@@ -43,15 +37,15 @@
             60% {transform: translateY(-6px) scale(1);}
         }
 
-        /* ESTILOS DEL POP-UP Y JUEGO */
+        /* ESTILO DEL BONO CON BOTÓN CERRAR */
         #notificacionPop { 
             position: fixed; bottom: 120px; left: 0; z-index: 999;
-            background: white; color: black; padding: 14px 22px;
+            background: white; color: black; padding: 12px 20px;
             border-radius: 0 20px 20px 0; display: flex; align-items: center; gap: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transform: translateX(-110%);
             transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-            cursor: pointer; border-left: 6px solid #dc2626;
+            border-left: 6px solid #dc2626;
         }
         #notificacionPop.show { transform: translateX(0); }
 
@@ -59,19 +53,22 @@
         .grid-redes { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
         .red-box { background: #f3f4f6; border-radius: 20px; padding: 15px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; display: flex; justify-content: center; }
         .red-box.active { border-color: #25d366; background: #f0fff4; }
-        .red-box:hover { transform: translateY(-3px); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
         #codigoGenerado { background: #fee2e2; color: #dc2626; font-weight: 900; padding: 15px; border-radius: 15px; border: 2px dashed #f87171; display: none; margin-top: 15px; cursor: pointer; }
     </style>
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
 
-<div id="notificacionPop" onclick="mostrarModalJuego()">
-    <div style="font-size: 22px;">🎁</div>
-    <div>
-        <h4 style="margin:0; font-size: 10px; font-weight: 900; text-transform: uppercase;">Bono VIP</h4>
-        <p style="margin:0; font-size: 9px; color: #666; font-weight: 700; text-transform: uppercase;">Gana 60% de descuento aquí</p>
+<div id="notificacionPop">
+    <div onclick="mostrarModalJuego()" class="flex items-center gap-3 cursor-pointer">
+        <div style="font-size: 22px;">🎁</div>
+        <div>
+            <h4 style="margin:0; font-size: 10px; font-weight: 900; text-transform: uppercase;">Bono VIP</h4>
+            <p style="margin:0; font-size: 9px; color: #666; font-weight: 700; text-transform: uppercase;">Gana 60% de descuento aquí</p>
+        </div>
     </div>
+    <button onclick="cerrarNotificacion(event)" class="ml-4 text-gray-400 hover:text-black font-bold text-lg">✕</button>
 </div>
 
 <div id="modalJuego" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(8px);">
@@ -116,20 +113,20 @@
     <h2 class="font-title text-2xl font-black text-center mb-16 text-red-600 uppercase tracking-widest italic">Nuestros Servicios</h2>
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Traslados Aeropuerto</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Puntualidad garantizada en sus vuelos nacionales e internacionales.</p>
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight text-xs md:text-sm">Traslados Aeropuerto</h3>
+            <p class="text-gray-500 text-[10px] leading-relaxed">Puntualidad garantizada en sus vuelos nacionales e internacionales.</p>
         </div>
         <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Servicio Corporativo</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Movilización ejecutiva premium para empresas y directivos.</p>
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight text-xs md:text-sm">Servicio Corporativo</h3>
+            <p class="text-gray-500 text-[10px] leading-relaxed">Movilización ejecutiva premium para empresas y directivos.</p>
         </div>
         <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Eventos Especiales</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Transporte de alto nivel para bodas, galas y eventos exclusivos.</p>
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight text-xs md:text-sm">Eventos Especiales</h3>
+            <p class="text-gray-500 text-[10px] leading-relaxed">Transporte de alto nivel para bodas, galas y eventos exclusivos.</p>
         </div>
         <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Viajes Nacionales</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Seguridad y discreción absoluta en todo el territorio ecuatoriano.</p>
+            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight text-xs md:text-sm">Viajes Nacionales</h3>
+            <p class="text-gray-500 text-[10px] leading-relaxed">Seguridad y discreción absoluta en todo el territorio ecuatoriano.</p>
         </div>
     </div>
 </section>
@@ -142,46 +139,38 @@
     <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
         <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl font-light z-[60]">✕</button>
         
-        <div id="filtro-seguridad" class="p-12 flex flex-col justify-center h-full text-black overflow-y-auto">
-            <div class="text-center mb-8">
+        <div id="filtro-seguridad" class="p-10 flex flex-col justify-center h-full text-black overflow-y-auto">
+            <div class="text-center mb-6">
                 <h2 class="font-title text-xl font-black uppercase italic tracking-tighter text-gray-900">Fast Travel <span class="text-red-600">ID</span></h2>
                 <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-1">Validación de Usuario</p>
             </div>
 
-            <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-3 italic">Selecciona tu red favorita para validar tu perfil:</p>
-            <div class="flex justify-center gap-8 mb-10">
-                <label class="flex flex-col items-center group cursor-pointer">
-                    <input type="radio" name="RedSocial" value="Instagram" class="hidden peer" required>
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="Instagram">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">IG</span>
-                </label>
-
-                <label class="flex flex-col items-center group cursor-pointer">
-                    <input type="radio" name="RedSocial" value="TikTok" class="hidden peer" required>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="TikTok">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">TikTok</span>
-                </label>
-
-                <label class="flex flex-col items-center group cursor-pointer">
-                    <input type="radio" name="RedSocial" value="Facebook" class="hidden peer" required>
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all duration-300 transform group-hover:scale-110" alt="Facebook">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase tracking-widest">FB</span>
-                </label>
+            <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-4">Toca tu red favorita para continuar:</p>
+            <div class="flex justify-center gap-6 mb-8">
+                <div onclick="forzarSeleccionRed('Instagram', 'https://instagram.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                    <input type="radio" name="RedSocial" value="Instagram" id="radio-ig" class="hidden peer" required>
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-1 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all" alt="IG">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black">IG</span>
+                </div>
+                <div onclick="forzarSeleccionRed('TikTok', 'https://tiktok.com/@fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                    <input type="radio" name="RedSocial" value="TikTok" id="radio-tt" class="hidden peer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-1 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all" alt="TT">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black">TIKTOK</span>
+                </div>
+                <div onclick="forzarSeleccionRed('Facebook', 'https://facebook.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                    <input type="radio" name="RedSocial" value="Facebook" id="radio-fb" class="hidden peer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-1 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all" alt="FB">
+                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black">FB</span>
+                </div>
             </div>
 
-            <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
-                <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
-                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none font-bold" required>
-                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-2xl bg-gray-50 border-none text-xs focus:ring-1 focus:ring-red-600 outline-none" required>
-                
-                <div class="pt-2">
-                    <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 border border-dashed border-red-200 text-[10px] font-black text-red-600 uppercase tracking-[0.2em] outline-none">
-                </div>
-
-                <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-red-700 transition-all shadow-xl active:scale-95 mt-4 uppercase tracking-widest text-[10px]">
-                    Activar Servicio VIP
-                </button>
+            <form id="miFormulario" class="space-y-3">
+                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-xl bg-gray-50 text-xs outline-none border border-transparent focus:border-red-600" required>
+                <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-xl bg-gray-50 text-xs outline-none border border-transparent focus:border-red-600" required>
+                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-xl bg-gray-100 text-xs font-bold outline-none border border-transparent focus:border-red-600" required>
+                <input type="email" name="Correo" placeholder="Correo Electrónico" class="w-full p-4 rounded-xl bg-gray-50 text-xs outline-none border border-transparent focus:border-red-600" required>
+                <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-xl bg-red-50 text-[10px] font-black text-red-600 uppercase border border-dashed border-red-200">
+                <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-4 rounded-xl hover:bg-red-700 transition-all uppercase text-[10px] mt-4 shadow-xl">Activar Servicio VIP</button>
             </form>
         </div>
 
@@ -192,16 +181,13 @@
 </div>
 
 <script>
-    // INICIALIZAR MOVIMIENTOS (ScrollReveal)
     ScrollReveal().reveal('#hero h1', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
     ScrollReveal().reveal('#hero img', { delay: 300, scale: 0.8, duration: 1000 });
     ScrollReveal().reveal('#hero h2, #hero p', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
-    ScrollReveal().reveal('#hero div', { delay: 900, distance: '20px', origin: 'bottom', duration: 1000 });
     ScrollReveal().reveal('.card-hover', { delay: 300, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
 
-    // LÓGICA DEL PANEL DE REGISTRO
     function abrirModal() {
         document.getElementById('modalApp').classList.replace('hidden', 'flex');
         setTimeout(() => {
@@ -216,21 +202,28 @@
         setTimeout(() => { document.getElementById('modalApp').classList.replace('flex', 'hidden'); }, 600);
     }
 
-    // LÓGICA DEL JUEGO DE DESCUENTO
-    let acum = 0;
-    let visitadas = new Set();
+    // NUEVA FUNCIÓN PARA CERRAR EL BONO
+    function cerrarNotificacion(e) {
+        e.stopPropagation(); // Evita que al dar clic en la X se abra el juego
+        document.getElementById('notificacionPop').classList.remove('show');
+    }
 
-    window.addEventListener('load', () => {
-        setTimeout(() => { document.getElementById('notificacionPop').classList.add('show'); }, 3000);
-    });
+    // NUEVA FUNCIÓN PARA SELECCIONAR RED Y ABRIR LINK AL TIEMPO
+    function forzarSeleccionRed(red, url) {
+        const ids = { 'Instagram': 'radio-ig', 'TikTok': 'radio-tt', 'Facebook': 'radio-fb' };
+        document.getElementById(ids[red]).checked = true;
+        window.open(url, '_blank');
+    }
+
+    let acum = 0; let visitadas = new Set();
+    window.addEventListener('load', () => { setTimeout(() => { document.getElementById('notificacionPop').classList.add('show'); }, 3000); });
 
     function mostrarModalJuego() { document.getElementById('modalJuego').style.display = 'flex'; }
     function cerrarModalJuego() { document.getElementById('modalJuego').style.display = 'none'; }
 
     function clickRed(id, link) {
         if(!visitadas.has(id)) {
-            visitadas.add(id);
-            acum += 15;
+            visitadas.add(id); acum += 15;
             document.getElementById('numDesc').innerText = acum;
             document.getElementById('box-' + id).classList.add('active');
             document.getElementById('txtCodigo').innerText = "FAST" + acum + "VIP";
@@ -242,54 +235,42 @@
     function copiarCodigo() {
         let codigo = document.getElementById('txtCodigo').innerText;
         navigator.clipboard.writeText(codigo).then(() => {
-            alert("¡Código " + codigo + " copiado! Pégalo en el formulario.");
-            document.getElementById('inputCuponReal').value = codigo; // Autocompleta el campo
-            cerrarModalJuego();
-            abrirModal(); // Abre automáticamente el registro
+            alert("¡Código " + codigo + " copiado!");
+            document.getElementById('inputCuponReal').value = codigo;
+            cerrarModalJuego(); abrirModal();
         });
     }
 
-    // ENVÍO DE FORMULARIO
     document.getElementById('miFormulario').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // 1. Validar que seleccionó una red social
-    const redSeleccionada = e.target.querySelector('input[name="RedSocial"]:checked');
-    if (!redSeleccionada) {
-        alert("⚠️ Por favor, selecciona una red social para activar tu perfil VIP.");
-        return;
-    }
-
-    const btn = document.getElementById('btn-verificar');
-    const cuponIngresado = document.getElementById('inputCuponReal').value;
-    btn.innerText = "VALIDANDO ACCESO...";
-    btn.disabled = true;
-
-    const params = new URLSearchParams();
-    params.append('Nombre', e.target.Nombre.value);
-    params.append('Cedula', e.target.Cedula.value);
-    params.append('WhatsApp', e.target.WhatsApp.value);
-    params.append('Correo', e.target.Correo.value);
-    params.append('RedSocial', redSeleccionada.value); 
-    params.append('Cupon', cuponIngresado || "Ninguno");
-
-    fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
-    .then(() => {
-        // 2. Aviso de validación por WhatsApp
-        if (cuponIngresado && cuponIngresado !== "" && cuponIngresado !== "Ninguno") {
-            alert("✅ ¡REGISTRO EXITOSO!\n\nIMPORTANTE: Para aplicar tu descuento " + cuponIngresado + ", debes enviarnos una captura de este código a nuestro WhatsApp después de hacer tu pedido en la App para validarlo.");
+        e.preventDefault();
+        const redSeleccionada = e.target.querySelector('input[name="RedSocial"]:checked');
+        if (!redSeleccionada) {
+            alert("⚠️ Por favor, toca un icono de red social para activar tu perfil VIP.");
+            return;
         }
-        
-        document.getElementById('filtro-seguridad').classList.add('hidden');
-        document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-    })
-    .catch(() => {
-        alert("Error de conexión.");
-        btn.disabled = false;
-        btn.innerText = "Activar Servicio VIP";
-    });
-});
-</script>
 
+        const btn = document.getElementById('btn-verificar');
+        const cupon = document.getElementById('inputCuponReal').value;
+        btn.innerText = "VALIDANDO..."; btn.disabled = true;
+
+        const params = new URLSearchParams();
+        params.append('Nombre', e.target.Nombre.value);
+        params.append('Cedula', e.target.Cedula.value);
+        params.append('WhatsApp', e.target.WhatsApp.value);
+        params.append('Correo', e.target.Correo.value);
+        params.append('RedSocial', redSeleccionada.value);
+        params.append('Cupon', cupon || "Ninguno");
+
+        fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
+        .then(() => {
+            if (cupon && cupon !== "Ninguno") {
+                alert("✅ ¡REGISTRO EXITOSO!\n\nRECUERDA: Para aplicar tu descuento, envía captura de tu código a WhatsApp después de pedir tu unidad.");
+            }
+            document.getElementById('filtro-seguridad').classList.add('hidden');
+            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+        })
+        .catch(() => { alert("Error de conexión."); btn.disabled = false; btn.innerText = "Activar Servicio VIP"; });
+    });
+</script>
 </body>
 </html>
