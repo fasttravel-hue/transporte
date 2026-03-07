@@ -299,7 +299,7 @@ document.getElementById('formConductor').addEventListener('submit', function(e) 
     btn.disabled = true;
 
     const formData = new FormData(this);
-fetch('https://www.fasttravelec.com/registro_conductor.php', {
+fetch('registro_conductor.php', {
         method: 'POST',
         body: formData
     })
@@ -325,5 +325,6 @@ fetch('https://www.fasttravelec.com/registro_conductor.php', {
  </script>
 </body>
 </html>
+
 
 
