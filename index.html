@@ -106,7 +106,8 @@
     <div class="flex flex-col sm:flex-row gap-4">
         <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-2xl transition-all active:scale-95">🚗 Reservar en App</button>
         <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">💬 WhatsApp</a>
-    </div>
+    <button onclick="abrirModalConductor()" class="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all active:scale-95">🤝 Trabaja con nosotros</button>
+</div>
 </section>
 
 <section id="servicios" class="py-24 px-6 bg-black border-t border-zinc-900">
@@ -186,7 +187,14 @@
     ScrollReveal().reveal('.card-hover', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
+function abrirModalConductor() {
+        document.getElementById('modalConductor').classList.replace('hidden', 'flex');
+    }
 
+    function cerrarModalConductor() {
+        document.getElementById('modalConductor').classList.replace('flex', 'hidden');
+    }
+    
     function abrirModal() {
         document.getElementById('notificacionPop').classList.remove('show');
         document.getElementById('modalApp').classList.replace('hidden', 'flex');
@@ -272,5 +280,36 @@
     });
 </script>
 
+   <div id="modalConductor" class="fixed inset-0 bg-black/95 z-[110] hidden items-center justify-center backdrop-blur-xl">
+    <div class="bg-white w-full h-full md:max-w-lg md:h-auto md:rounded-[40px] p-10 relative text-black overflow-y-auto max-h-[95vh]">
+        <button onclick="cerrarModalConductor()" class="absolute top-6 right-8 text-2xl font-bold">✕</button>
+        
+        <div class="text-center mb-6">
+            <h2 class="font-title text-2xl font-black uppercase italic text-red-600">Únete al Equipo</h2>
+            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Registro para nuevos conductores</p>
+        </div>
+
+        <form id="formConductor" class="space-y-3">
+            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Datos Personales</label>
+            <input type="text" name="nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none border-none" required>
+            <input type="text" name="cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <input type="tel" name="telefono" placeholder="Teléfono (WhatsApp)" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            
+            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2 block mt-4">Información del Vehículo</label>
+            <input type="text" name="vehiculo" placeholder="Modelo y Año (Ej: Toyota Fortuner 2022)" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <input type="text" name="placa" placeholder="Número de Placa" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            
+            <div class="p-4 bg-red-50 rounded-2xl border border-red-100 mt-4">
+                <p class="text-[9px] text-red-800 leading-tight font-bold uppercase">Aviso VIP:</p>
+                <p class="text-[8px] text-red-600 leading-tight">Tu solicitud será revisada por nuestro equipo técnico para validación de seguridad.</p>
+            </div>
+
+            <button type="submit" id="btnEnvioConductor" class="w-full bg-red-600 hover:bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl transition-all mt-4">
+                Enviar Solicitud de Ingreso
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
+
