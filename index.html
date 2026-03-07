@@ -32,7 +32,6 @@
 
         .bg-whatsapp { background-color: #25D366; }
         
-        /* ANIMACIÓN REBOTE WHATSAPP */
         .float-btn {
             animation: bounceCustom 2.5s infinite;
             filter: drop-shadow(0px 10px 15px rgba(37, 211, 102, 0.3));
@@ -44,7 +43,6 @@
             60% {transform: translateY(-6px) scale(1);}
         }
 
-        /* NOTIFICACIÓN BONO */
         #notificacionPop { 
             position: fixed; bottom: 120px; left: 0; z-index: 40;
             background: white; color: black; padding: 10px 18px;
@@ -106,8 +104,8 @@
     <div class="flex flex-col sm:flex-row gap-4">
         <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-2xl transition-all active:scale-95">🚗 Reservar en App</button>
         <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">💬 WhatsApp</a>
-    <button onclick="abrirModalConductor()" class="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all active:scale-95">🤝 Trabaja con nosotros</button>
-</div>
+        <button onclick="abrirModalConductor()" class="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all active:scale-95">🤝 Trabaja con nosotros</button>
+    </div>
 </section>
 
 <section id="servicios" class="py-24 px-6 bg-black border-t border-zinc-900">
@@ -135,13 +133,11 @@
 <div id="modalApp" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center backdrop-blur">
     <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
         <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl z-[60]">✕</button>
-        
         <div id="filtro-seguridad" class="p-12 flex flex-col justify-center h-full text-black overflow-y-auto">
             <div class="text-center mb-8">
                 <h2 class="font-title text-xl font-black uppercase italic tracking-tighter">Fast Travel <span class="text-red-600">ID</span></h2>
                 <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">Validación de Usuario</p>
             </div>
-
             <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-3 italic">Selecciona tu red favorita:</p>
             <div class="flex justify-center gap-8 mb-10 relative z-10">
                 <div onclick="seleccionarRed('Instagram', 'https://instagram.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
@@ -149,20 +145,17 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
                     <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">IG</span>
                 </div>
-
                 <div onclick="seleccionarRed('TikTok', 'https://tiktok.com/@fasttravelec')" class="flex flex-col items-center cursor-pointer group">
                     <input type="radio" name="RedSocial" value="TikTok" id="radio-tt" class="hidden peer">
                     <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
                     <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">TikTok</span>
                 </div>
-
                 <div onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
                     <input type="radio" name="RedSocial" value="Facebook" id="radio-fb" class="hidden peer">
                     <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
                     <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">FB</span>
                 </div>
             </div>
-
             <form id="miFormulario" class="space-y-4">
                 <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
                 <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
@@ -172,22 +165,41 @@
                 <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl">Activar Servicio VIP</button>
             </form>
         </div>
-
         <div id="contenedor-aplicativo" class="hidden h-full w-full">
             <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full border-0" allow="geolocation"></iframe>
         </div>
     </div>
 </div>
 
+<div id="modalConductor" class="fixed inset-0 bg-black/95 z-[110] hidden items-center justify-center backdrop-blur-xl">
+    <div class="bg-white w-full h-full md:max-w-lg md:h-auto md:rounded-[40px] p-10 relative text-black overflow-y-auto max-h-[95vh]">
+        <button onclick="cerrarModalConductor()" class="absolute top-6 right-8 text-2xl font-bold">✕</button>
+        <div class="text-center mb-6">
+            <h2 class="font-title text-2xl font-black uppercase italic text-red-600">Únete al Equipo</h2>
+            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Registro para nuevos conductores</p>
+        </div>
+        <form id="formConductor" class="space-y-3">
+            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Datos Personales</label>
+            <input type="text" name="nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <input type="text" name="cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <input type="tel" name="telefono" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2 block mt-4">Información del Vehículo</label>
+            <input type="text" name="vehiculo" placeholder="Modelo y Año del Vehículo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <input type="text" name="placa" placeholder="Número de Placa" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+            <button type="submit" id="btnEnvioConductor" class="w-full bg-red-600 text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl mt-4">Enviar Solicitud</button>
+        </form>
+    </div>
+</div>
+
 <script>
-    // --- ANIMACIONES RESTAURADAS ---
     ScrollReveal().reveal('#tituloPrincipal', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
     ScrollReveal().reveal('#logoPrincipal', { delay: 300, scale: 0.8, duration: 1000 });
     ScrollReveal().reveal('#hero h2, #hero div', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
     ScrollReveal().reveal('.card-hover', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
-function abrirModalConductor() {
+
+    function abrirModalConductor() {
         document.getElementById('modalConductor').classList.replace('hidden', 'flex');
     }
 
@@ -279,37 +291,5 @@ function abrirModalConductor() {
         });
     });
 </script>
-
-   <div id="modalConductor" class="fixed inset-0 bg-black/95 z-[110] hidden items-center justify-center backdrop-blur-xl">
-    <div class="bg-white w-full h-full md:max-w-lg md:h-auto md:rounded-[40px] p-10 relative text-black overflow-y-auto max-h-[95vh]">
-        <button onclick="cerrarModalConductor()" class="absolute top-6 right-8 text-2xl font-bold">✕</button>
-        
-        <div class="text-center mb-6">
-            <h2 class="font-title text-2xl font-black uppercase italic text-red-600">Únete al Equipo</h2>
-            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Registro para nuevos conductores</p>
-        </div>
-
-        <form id="formConductor" class="space-y-3">
-            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Datos Personales</label>
-            <input type="text" name="nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none border-none" required>
-            <input type="text" name="cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <input type="tel" name="telefono" placeholder="Teléfono (WhatsApp)" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            
-            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2 block mt-4">Información del Vehículo</label>
-            <input type="text" name="vehiculo" placeholder="Modelo y Año (Ej: Toyota Fortuner 2022)" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <input type="text" name="placa" placeholder="Número de Placa" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            
-            <div class="p-4 bg-red-50 rounded-2xl border border-red-100 mt-4">
-                <p class="text-[9px] text-red-800 leading-tight font-bold uppercase">Aviso VIP:</p>
-                <p class="text-[8px] text-red-600 leading-tight">Tu solicitud será revisada por nuestro equipo técnico para validación de seguridad.</p>
-            </div>
-
-            <button type="submit" id="btnEnvioConductor" class="w-full bg-red-600 hover:bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl transition-all mt-4">
-                Enviar Solicitud de Ingreso
-            </button>
-        </form>
-    </div>
-</div>
 </body>
 </html>
-
