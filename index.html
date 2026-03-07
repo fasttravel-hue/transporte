@@ -290,6 +290,39 @@
             btn.innerText = "Activar Servicio VIP";
         });
     });
-</script>
+document.getElementById('formConductor').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('btnEnvioConductor');
+    const textoOriginal = btn.innerText;
+    
+    btn.innerText = "ENVIANDO SOLICITUD...";
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+fetch('https://srv1957-files.hstgr.io/4dcb6f94fde8f4cc/files/domains/fasttravelec.com/public_html/registro_conductor', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if(data.trim() === "Exito") {
+            alert("¡Registro exitoso! Tu solicitud ha sido enviada correctamente.");
+            cerrarModalConductor();
+            this.reset(); // Limpia el formulario
+        } else {
+            alert("Error al guardar: " + data);
+        }
+        btn.innerText = textoOriginal;
+        btn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Error de conexión con el servidor.");
+        btn.innerText = textoOriginal;
+        btn.disabled = false;
+    });
+});
+ </script>
 </body>
 </html>
+
