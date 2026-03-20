@@ -333,17 +333,23 @@
             params.append('RedSocial', redSeleccionada.value);
             params.append('Cupon', document.getElementById('inputCuponReal').value || "Ninguno");
 
-            fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
-            .then(() => {
-                document.getElementById('filtro-seguridad').classList.add('hidden');
-                document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-            })
-            .catch(() => {
-                alert("Error de conexión.");
-                btn.disabled = false;
-                btn.innerText = "Activar Servicio VIP";
-            });
-        });
+fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
+
+    fetch('registro_cliente.php', {
+        method: 'POST',
+        body: params
+    })
+    .then(res => res.text())
+    .then(data => {
+        console.log("Respuesta Hostinger:", data);
+        document.getElementById('filtro-seguridad').classList.add('hidden');
+        document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+    })
+    .catch(error => {
+        alert("Error de conexión con Hostinger.");
+        btn.disabled = false;
+        btn.innerText = "Activar Servicio VIP";
+    });
 
         document.getElementById('formConductor').addEventListener('submit', function(e) {
             e.preventDefault();
