@@ -7,23 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; }
         .font-title { font-family: 'Montserrat', sans-serif; }
         
-        #panel {
-            transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
-        }
+        #panel { transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
         .translate-x-full { transform: translateX(100%); }
         .translate-x-0 { transform: translateX(0); }
 
-        #modalApp {
-            transition: backdrop-filter 0.5s ease;
-            backdrop-filter: blur(0px);
-        }
-        #modalApp.bg-active {
-            backdrop-filter: blur(12px);
-        }
+        #modalApp { transition: backdrop-filter 0.5s ease; backdrop-filter: blur(0px); }
+        #modalApp.bg-active { backdrop-filter: blur(12px); }
+        
         .card-hover:hover {
             transform: translateY(-10px);
             border-color: #dc2626;
@@ -59,281 +55,321 @@
         .red-box { background: #f3f4f6; border-radius: 20px; padding: 15px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; display: flex; justify-content: center; }
         .red-box.active { border-color: #25d366; background: #f0fff4; }
         #codigoGenerado { background: #fee2e2; color: #dc2626; font-weight: 900; padding: 15px; border-radius: 15px; border: 2px dashed #f87171; display: none; margin-top: 15px; cursor: pointer; }
-    </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18004613123"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18004613123');
-</script>
 
+        /* Estilos de los botones de Redes Sociales */
+        .fasttravel-redes-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 40px 20px;
+            background: black;
+            border-top: 1px solid #18181b;
+        }
+
+        .ft-btn-redes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ft-btn-redes:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .ft-btn-tiktok { background-color: white; color: black; }
+        .ft-btn-facebook { background-color: #1877F2; color: white; }
+        .ft-btn-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18004613123"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18004613123');
+    </script>
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
 
- <a href="https://wa.me/593979986138" onclick="gtag('event', 'conversion', {'send_to': 'AW-18004613123/contacto'});" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-whatsapp p-0 rounded-full float-btn hover:scale-110 transition-transform active:scale-90 shadow-2xl overflow-hidden flex items-center justify-center w-16 h-16">
-   <svg viewBox="0 0 24 24" class="w-10 h-10 fill-white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path></svg>
-</a>
+    <a href="https://wa.me/593979986138" onclick="gtag('event', 'conversion', {'send_to': 'AW-18004613123/contacto'});" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-whatsapp p-0 rounded-full float-btn hover:scale-110 transition-transform active:scale-90 shadow-2xl overflow-hidden flex items-center justify-center w-16 h-16">
+       <svg viewBox="0 0 24 24" class="w-10 h-10 fill-white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.539 2.016 2.126-.54c1.023.633 2.09.957 3.175.958h.001c3.182 0 5.767-2.587 5.768-5.766 0-3.181-2.585-5.721-5.782-5.721zm0 10.455h-.001c-.933 0-1.85-.252-2.651-.726l-.19-.111-1.241.325.331-1.21-.122-.194c-.521-.828-.796-1.786-.796-2.77 0-2.84 2.308-5.15 5.151-5.15 1.375 0 2.67.536 3.64 1.508a5.093 5.093 0 0 1 1.51 3.643c-.001 2.841-2.31 5.151-5.151 5.151zm2.822-3.858c-.155-.078-.916-.452-1.058-.503-.141-.051-.244-.078-.346.078-.103.155-.398.503-.487.605-.089.103-.178.116-.333.038-.155-.078-.655-.241-1.247-.77-.461-.41-.772-.916-.862-1.071-.089-.155-.01-.239.068-.316.069-.07.155-.181.232-.271.077-.09.103-.155.155-.258.052-.103.026-.194-.013-.271-.039-.078-.346-.834-.474-1.144-.125-.301-.252-.259-.346-.264-.089-.005-.192-.005-.294-.005s-.27.038-.41.19c-.141.155-.54.528-.54 1.287s.552 1.487.63 1.59c.077.103 1.085 1.657 2.628 2.322.367.158.653.252.876.323.369.117.704.1.97.06.297-.044.916-.374 1.045-.735.128-.36.128-.669.089-.735-.038-.065-.141-.103-.294-.181z"></path></svg>
+    </a>
 
-<div id="notificacionPop">
-    <div onclick="mostrarModalJuego()" class="flex items-center gap-3 cursor-pointer">
-        <div style="font-size: 18px;">🎁</div>
-        <div>
-            <h4 style="margin:0; font-size: 9px; font-weight: 900; text-transform: uppercase;">Bono VIP</h4>
-            <p style="margin:0; font-size: 8px; color: #666; font-weight: 700; text-transform: uppercase;">¡Gana 60% aquí!</p>
-        </div>
-    </div>
-    <button onclick="cerrarBono(event)" class="ml-2 text-gray-400 hover:text-black font-bold">✕</button>
-</div>
-
-<div id="modalJuego" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(8px);">
-    <div class="reto-container" style="width:100%; max-width:350px; position:relative;">
-        <button onclick="cerrarModalJuego()" style="position:absolute; top:15px; right:20px; font-size:20px; color:#000;">✕</button>
-        <h2 class="font-title" style="font-weight:900; font-style:italic; text-transform:uppercase; font-size:18px;">Reto <span style="color:#dc2626;">Descuento</span></h2>
-        <div style="font-size:40px; font-weight:900; color:#dc2626; margin:10px 0;"><span id="numDesc">0</span>%</div>
-        <div class="grid-redes">
-            <div class="red-box" id="box-tt" onclick="clickRed('tt', 'https://tiktok.com/@fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" style="width:30px;"></div>
-            <div class="red-box" id="box-ig" onclick="clickRed('ig', 'https://instagram.com/fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:30px;"></div>
-            <div class="red-box" id="box-fb" onclick="clickRed('fb', 'https://facebook.com/fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" style="width:30px;"></div>
-            <div class="red-box" id="box-wa" onclick="clickRed('wa', 'https://whatsapp.com/channel/0029VbBTr2dK5cDGtfZGFq0q')"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:30px;"></div>
-        </div>
-        <div id="codigoGenerado" onclick="copiarCodigo()">
-            <span id="txtCodigo">CODIGO-AQUI</span>
-            <p style="font-size:8px; margin-top:5px; color:#b91c1c;">¡TOCA PARA COPIAR!</p>
-        </div>
-    </div>
-</div>
-
-<section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
-    <h1 id="tituloPrincipal" class="font-title text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-4">FAST <span class="text-red-600">TRAVEL</span></h1>
-    <img id="logoPrincipal" src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-40 md:w-56 mb-8 drop-shadow-2xl">
-    <h2 class="text-xs md:text-sm font-light mb-8 uppercase tracking-[0.6em] text-gray-400">Transporte Ejecutivo Privado</h2>
-    <div class="flex flex-col sm:flex-row gap-4">
-        <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-2xl transition-all active:scale-95">🚗 Reservar en App</button>
-        <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">💬 WhatsApp</a>
-        <button onclick="abrirModalConductor()" class="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all active:scale-95">🤝 Trabaja con nosotros</button>
-    </div>
-</section>
-
-<section id="servicios" class="py-24 px-6 bg-black border-t border-zinc-900">
-    <h2 class="font-title text-2xl font-black text-center mb-16 text-red-600 uppercase tracking-widest italic">Nuestros Servicios</h2>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Traslados Aeropuerto</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Puntualidad garantizada en sus vuelos nacionales e internacionales.</p>
-        </div>
-        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Servicio Corporativo</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Movilización ejecutiva premium para empresas y directivos.</p>
-        </div>
-        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Eventos Especiales</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Transporte de alto nivel para bodas, galas y eventos exclusivos.</p>
-        </div>
-        <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
-            <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Viajes Nacionales</h3>
-            <p class="text-gray-500 text-xs leading-relaxed">Seguridad y discreción absoluta en todo el territorio ecuatoriano.</p>
-        </div>
-    </div>
-</section>
-
-<div id="modalApp" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center backdrop-blur">
-    <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
-        <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl z-[60]">✕</button>
-        <div id="filtro-seguridad" class="p-12 flex flex-col justify-center h-full text-black overflow-y-auto">
-            <div class="text-center mb-8">
-                <h2 class="font-title text-xl font-black uppercase italic tracking-tighter">Fast Travel <span class="text-red-600">ID</span></h2>
-                <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">Validación de Usuario</p>
+    <div id="notificacionPop">
+        <div onclick="mostrarModalJuego()" class="flex items-center gap-3 cursor-pointer">
+            <div style="font-size: 18px;">🎁</div>
+            <div>
+                <h4 style="margin:0; font-size: 9px; font-weight: 900; text-transform: uppercase;">Bono VIP</h4>
+                <p style="margin:0; font-size: 8px; color: #666; font-weight: 700; text-transform: uppercase;">¡Gana 60% aquí!</p>
             </div>
-            <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-3 italic">Selecciona tu red favorita:</p>
-            <div class="flex justify-center gap-8 mb-10 relative z-10">
-                <div onclick="seleccionarRed('Instagram', 'https://instagram.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
-                    <input type="radio" name="RedSocial" value="Instagram" id="radio-ig" class="hidden peer" required>
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">IG</span>
-                </div>
-                <div onclick="seleccionarRed('TikTok', 'https://tiktok.com/@fasttravelec')" class="flex flex-col items-center cursor-pointer group">
-                    <input type="radio" name="RedSocial" value="TikTok" id="radio-tt" class="hidden peer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">TikTok</span>
-                </div>
-                <div onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
-                    <input type="radio" name="RedSocial" value="Facebook" id="radio-fb" class="hidden peer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
-                    <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">FB</span>
-                </div>
+        </div>
+        <button onclick="cerrarBono(event)" class="ml-2 text-gray-400 hover:text-black font-bold">✕</button>
+    </div>
+
+    <div id="modalJuego" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(8px);">
+        <div class="reto-container" style="width:100%; max-width:350px; position:relative;">
+            <button onclick="cerrarModalJuego()" style="position:absolute; top:15px; right:20px; font-size:20px; color:#000;">✕</button>
+            <h2 class="font-title" style="font-weight:900; font-style:italic; text-transform:uppercase; font-size:18px;">Reto <span style="color:#dc2626;">Descuento</span></h2>
+            <div style="font-size:40px; font-weight:900; color:#dc2626; margin:10px 0;"><span id="numDesc">0</span>%</div>
+            <div class="grid-redes">
+                <div class="red-box" id="box-tt" onclick="clickRed('tt', 'https://tiktok.com/@fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" style="width:30px;"></div>
+                <div class="red-box" id="box-ig" onclick="clickRed('ig', 'https://instagram.com/fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:30px;"></div>
+                <div class="red-box" id="box-fb" onclick="clickRed('fb', 'https://facebook.com/fasttravelec')"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" style="width:30px;"></div>
+                <div class="red-box" id="box-wa" onclick="clickRed('wa', 'https://whatsapp.com/channel/0029VbBTr2dK5cDGtfZGFq0q')"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:30px;"></div>
             </div>
-            <form id="miFormulario" class="space-y-4">
-                <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
-                <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
-                <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold outline-none" required>
-                <input type="email" name="Correo" placeholder="Correo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
-                <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 text-[10px] font-black text-red-600 border border-dashed border-red-200 uppercase outline-none">
-                <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl">Activar Servicio VIP</button>
+            <div id="codigoGenerado" onclick="copiarCodigo()">
+                <span id="txtCodigo">CODIGO-AQUI</span>
+                <p style="font-size:8px; margin-top:5px; color:#b91c1c;">¡TOCA PARA COPIAR!</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-black to-gray-900">
+        <h1 id="tituloPrincipal" class="font-title text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-4">FAST <span class="text-red-600">TRAVEL</span></h1>
+        <img id="logoPrincipal" src="logo_ft-removebg-preview (1).png" alt="Logo" class="w-40 md:w-56 mb-8 drop-shadow-2xl">
+        <h2 class="text-xs md:text-sm font-light mb-8 uppercase tracking-[0.6em] text-gray-400">Transporte Ejecutivo Privado</h2>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="abrirModal()" class="bg-red-700 hover:bg-red-600 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-2xl transition-all active:scale-95">🚗 Reservar en App</button>
+            <a href="https://wa.me/593979986138" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-center active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg">💬 WhatsApp</a>
+            <button onclick="abrirModalConductor()" class="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all active:scale-95">🤝 Trabaja con nosotros</button>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-24 px-6 bg-black border-t border-zinc-900">
+        <h2 class="font-title text-2xl font-black text-center mb-16 text-red-600 uppercase tracking-widest italic">Nuestros Servicios</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+                <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Traslados Aeropuerto</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Puntualidad garantizada en sus vuelos nacionales e internacionales.</p>
+            </div>
+            <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+                <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Servicio Corporativo</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Movilización ejecutiva premium para empresas y directivos.</p>
+            </div>
+            <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+                <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Eventos Especiales</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Transporte de alto nivel para bodas, galas y eventos exclusivos.</p>
+            </div>
+            <div class="card-hover bg-zinc-900/30 p-8 rounded-[40px] border border-zinc-800 transition-all duration-500">
+                <h3 class="font-bold text-lg mb-3 text-white uppercase tracking-tight">Viajes Nacionales</h3>
+                <p class="text-gray-500 text-xs leading-relaxed">Seguridad y discreción absoluta en todo el territorio ecuatoriano.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="fasttravel-redes-container">
+        <a href="https://tiktok.com/@fasttravelec" target="_blank" class="ft-btn-redes ft-btn-tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <a href="https://facebook.com/fasttravelec" target="_blank" class="ft-btn-redes ft-btn-facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://instagram.com/fasttravelec" target="_blank" class="ft-btn-redes ft-btn-instagram">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+    </div>
+
+    <div id="modalApp" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center backdrop-blur">
+        <div id="panel" class="bg-white w-full h-full md:max-w-md md:h-[90vh] md:rounded-[50px] shadow-2xl relative overflow-hidden translate-x-full">
+            <button onclick="cerrarModal()" class="absolute top-8 left-8 text-black text-3xl z-[60]">✕</button>
+            <div id="filtro-seguridad" class="p-12 flex flex-col justify-center h-full text-black overflow-y-auto">
+                <div class="text-center mb-8">
+                    <h2 class="font-title text-xl font-black uppercase italic tracking-tighter">Fast Travel <span class="text-red-600">ID</span></h2>
+                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">Validación de Usuario</p>
+                </div>
+                <p class="text-[9px] text-center font-bold text-gray-400 uppercase mb-3 italic">Selecciona tu red favorita:</p>
+                <div class="flex justify-center gap-8 mb-10 relative z-10">
+                    <div onclick="seleccionarRed('Instagram', 'https://instagram.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                        <input type="radio" name="RedSocial" value="Instagram" id="radio-ig" class="hidden peer" required>
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
+                        <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">IG</span>
+                    </div>
+                    <div onclick="seleccionarRed('TikTok', 'https://tiktok.com/@fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                        <input type="radio" name="RedSocial" value="TikTok" id="radio-tt" class="hidden peer">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
+                        <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">TikTok</span>
+                    </div>
+                    <div onclick="seleccionarRed('Facebook', 'https://facebook.com/fasttravelec')" class="flex flex-col items-center cursor-pointer group">
+                        <input type="radio" name="RedSocial" value="Facebook" id="radio-fb" class="hidden peer">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-9 h-9 mb-2 grayscale peer-checked:grayscale-0 peer-checked:scale-125 transition-all">
+                        <span class="text-[7px] font-black text-gray-400 peer-checked:text-black uppercase">FB</span>
+                    </div>
+                </div>
+                <form id="miFormulario" class="space-y-4">
+                    <input type="text" name="Nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                    <input type="text" name="Cedula" placeholder="Cédula" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                    <input type="number" name="WhatsApp" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs font-bold outline-none" required>
+                    <input type="email" name="Correo" placeholder="Correo" class="w-full p-4 rounded-2xl bg-gray-50 text-xs outline-none" required>
+                    <input type="text" id="inputCuponReal" name="Cupon" placeholder="CÓDIGO PROMOCIONAL" class="w-full p-4 rounded-2xl bg-red-50 text-[10px] font-black text-red-600 border border-dashed border-red-200 uppercase outline-none">
+                    <button type="submit" id="btn-verificar" class="w-full bg-black text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl">Activar Servicio VIP</button>
+                </form>
+            </div>
+            <div id="contenedor-aplicativo" class="hidden h-full w-full">
+                <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full border-0" allow="geolocation"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalConductor" class="fixed inset-0 bg-black/95 z-[110] hidden items-center justify-center backdrop-blur-xl">
+        <div class="bg-white w-full h-full md:max-w-lg md:h-auto md:rounded-[40px] p-10 relative text-black overflow-y-auto max-h-[95vh]">
+            <button onclick="cerrarModalConductor()" class="absolute top-6 right-8 text-2xl font-bold">✕</button>
+            <div class="text-center mb-6">
+                <h2 class="font-title text-2xl font-black uppercase italic text-red-600">Únete al Equipo</h2>
+                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Registro para nuevos conductores</p>
+            </div>
+            <form id="formConductor" class="space-y-3">
+                <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Datos Personales</label>
+                <input type="text" name="nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+                <input type="text" name="cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+                <input type="tel" name="telefono" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+                <label class="text-[9px] font-bold text-gray-400 uppercase ml-2 block mt-4">Información del Vehículo</label>
+                <input type="text" name="vehiculo" placeholder="Modelo y Año del Vehículo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+                <input type="text" name="placa" placeholder="Número de Placa" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
+                <button type="submit" id="btnEnvioConductor" class="w-full bg-red-600 text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl mt-4">Enviar Solicitud</button>
             </form>
         </div>
-        <div id="contenedor-aplicativo" class="hidden h-full w-full">
-            <iframe src="https://fasttravelec.ondelight.app/" class="w-full h-full border-0" allow="geolocation"></iframe>
-        </div>
     </div>
-</div>
 
-<div id="modalConductor" class="fixed inset-0 bg-black/95 z-[110] hidden items-center justify-center backdrop-blur-xl">
-    <div class="bg-white w-full h-full md:max-w-lg md:h-auto md:rounded-[40px] p-10 relative text-black overflow-y-auto max-h-[95vh]">
-        <button onclick="cerrarModalConductor()" class="absolute top-6 right-8 text-2xl font-bold">✕</button>
-        <div class="text-center mb-6">
-            <h2 class="font-title text-2xl font-black uppercase italic text-red-600">Únete al Equipo</h2>
-            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Registro para nuevos conductores</p>
-        </div>
-        <form id="formConductor" class="space-y-3">
-            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2">Datos Personales</label>
-            <input type="text" name="nombre" placeholder="Nombre Completo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <input type="text" name="cedula" placeholder="Número de Cédula" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <input type="tel" name="telefono" placeholder="WhatsApp" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <label class="text-[9px] font-bold text-gray-400 uppercase ml-2 block mt-4">Información del Vehículo</label>
-            <input type="text" name="vehiculo" placeholder="Modelo y Año del Vehículo" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <input type="text" name="placa" placeholder="Número de Placa" class="w-full p-4 rounded-2xl bg-gray-100 text-xs outline-none" required>
-            <button type="submit" id="btnEnvioConductor" class="w-full bg-red-600 text-white font-bold py-5 rounded-2xl uppercase tracking-widest text-[10px] shadow-xl mt-4">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
+    <script>
+        ScrollReveal().reveal('#tituloPrincipal', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
+        ScrollReveal().reveal('#logoPrincipal', { delay: 300, scale: 0.8, duration: 1000 });
+        ScrollReveal().reveal('#hero h2, #hero div', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
+        ScrollReveal().reveal('.card-hover', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
 
-<script>
-    ScrollReveal().reveal('#tituloPrincipal', { delay: 100, distance: '50px', origin: 'bottom', duration: 1000 });
-    ScrollReveal().reveal('#logoPrincipal', { delay: 300, scale: 0.8, duration: 1000 });
-    ScrollReveal().reveal('#hero h2, #hero div', { delay: 500, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
-    ScrollReveal().reveal('.card-hover', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKlJcx4sa_R2y61RZ6bY6cg2o6oebxRA57EPSF5N0PaZp5oa2qcvTcYnTHbGGnYdAGVw/exec'; 
-
-    function abrirModalConductor() {
-        document.getElementById('modalConductor').classList.replace('hidden', 'flex');
-    }
-
-    function cerrarModalConductor() {
-        document.getElementById('modalConductor').classList.replace('flex', 'hidden');
-    }
-    
-    function abrirModal() {
-        document.getElementById('notificacionPop').classList.remove('show');
-        document.getElementById('modalApp').classList.replace('hidden', 'flex');
-        setTimeout(() => {
-            document.getElementById('panel').classList.replace('translate-x-full', 'translate-x-0');
-            document.getElementById('modalApp').classList.add('bg-active');
-        }, 10);
-    }
-
-    function cerrarModal() {
-        document.getElementById('panel').classList.replace('translate-x-0', 'translate-x-full');
-        document.getElementById('modalApp').classList.remove('bg-active');
-        setTimeout(() => { 
-            document.getElementById('modalApp').classList.replace('flex', 'hidden'); 
-            document.getElementById('notificacionPop').classList.add('show');
-        }, 600);
-    }
-
-    function seleccionarRed(red, url) {
-        const ids = { 'Instagram': 'radio-ig', 'TikTok': 'radio-tt', 'Facebook': 'radio-fb' };
-        document.getElementById(ids[red]).checked = true;
-        window.open(url, '_blank');
-    }
-
-    function cerrarBono(e) {
-        e.stopPropagation();
-        document.getElementById('notificacionPop').classList.remove('show');
-    }
-
-    function mostrarModalJuego() { document.getElementById('modalJuego').style.display = 'flex'; }
-    function cerrarModalJuego() { document.getElementById('modalJuego').style.display = 'none'; }
-
-    let acum = 0; let visitadas = new Set();
-    function clickRed(id, link) {
-        if(!visitadas.has(id)) {
-            visitadas.add(id); acum += 15;
-            document.getElementById('numDesc').innerText = acum;
-            document.getElementById('box-' + id).classList.add('active');
-            document.getElementById('txtCodigo').innerText = "FAST" + acum + "VIP";
-            document.getElementById('codigoGenerado').style.display = 'block';
+        function abrirModalConductor() {
+            document.getElementById('modalConductor').classList.replace('hidden', 'flex');
         }
-        window.open(link, '_blank');
-    }
 
-    function copiarCodigo() {
-        let codigo = document.getElementById('txtCodigo').innerText;
-        navigator.clipboard.writeText(codigo).then(() => {
-            alert("¡Código " + codigo + " copiado!");
-            document.getElementById('inputCuponReal').value = codigo;
-            cerrarModalJuego(); abrirModal();
+        function cerrarModalConductor() {
+            document.getElementById('modalConductor').classList.replace('flex', 'hidden');
+        }
+        
+        function abrirModal() {
+            document.getElementById('notificacionPop').classList.remove('show');
+            document.getElementById('modalApp').classList.replace('hidden', 'flex');
+            setTimeout(() => {
+                document.getElementById('panel').classList.replace('translate-x-full', 'translate-x-0');
+                document.getElementById('modalApp').classList.add('bg-active');
+            }, 10);
+        }
+
+        function cerrarModal() {
+            document.getElementById('panel').classList.replace('translate-x-0', 'translate-x-full');
+            document.getElementById('modalApp').classList.remove('bg-active');
+            setTimeout(() => { 
+                document.getElementById('modalApp').classList.replace('flex', 'hidden'); 
+                document.getElementById('notificacionPop').classList.add('show');
+            }, 600);
+        }
+
+        function seleccionarRed(red, url) {
+            const ids = { 'Instagram': 'radio-ig', 'TikTok': 'radio-tt', 'Facebook': 'radio-fb' };
+            document.getElementById(ids[red]).checked = true;
+            window.open(url, '_blank');
+        }
+
+        function cerrarBono(e) {
+            e.stopPropagation();
+            document.getElementById('notificacionPop').classList.remove('show');
+        }
+
+        function mostrarModalJuego() { document.getElementById('modalJuego').style.display = 'flex'; }
+        function cerrarModalJuego() { document.getElementById('modalJuego').style.display = 'none'; }
+
+        let acum = 0; let visitadas = new Set();
+        function clickRed(id, link) {
+            if(!visitadas.has(id)) {
+                visitadas.add(id); acum += 15;
+                document.getElementById('numDesc').innerText = acum;
+                document.getElementById('box-' + id).classList.add('active');
+                document.getElementById('txtCodigo').innerText = "FAST" + acum + "VIP";
+                document.getElementById('codigoGenerado').style.display = 'block';
+            }
+            window.open(link, '_blank');
+        }
+
+        function copiarCodigo() {
+            let codigo = document.getElementById('txtCodigo').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                alert("¡Código " + codigo + " copiado!");
+                document.getElementById('inputCuponReal').value = codigo;
+                cerrarModalJuego(); abrirModal();
+            });
+        }
+
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('notificacionPop').classList.add('show'); }, 3000); });
+
+        document.getElementById('miFormulario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const redSeleccionada = document.querySelector('input[name="RedSocial"]:checked');
+            if (!redSeleccionada) {
+                alert("⚠️ Por favor, selecciona una red social (toca el icono) para continuar.");
+                return;
+            }
+            const btn = document.getElementById('btn-verificar');
+            btn.innerText = "VALIDANDO..."; btn.disabled = true;
+            const params = new URLSearchParams();
+            params.append('Nombre', e.target.Nombre.value);
+            params.append('Cedula', e.target.Cedula.value);
+            params.append('WhatsApp', e.target.WhatsApp.value);
+            params.append('Correo', e.target.Correo.value);
+            params.append('RedSocial', redSeleccionada.value);
+            params.append('Cupon', document.getElementById('inputCuponReal').value || "Ninguno");
+
+            fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
+            .then(() => {
+                document.getElementById('filtro-seguridad').classList.add('hidden');
+                document.getElementById('contenedor-aplicativo').classList.remove('hidden');
+            })
+            .catch(() => {
+                alert("Error de conexión.");
+                btn.disabled = false;
+                btn.innerText = "Activar Servicio VIP";
+            });
         });
-    }
 
-    window.addEventListener('load', () => { setTimeout(() => { document.getElementById('notificacionPop').classList.add('show'); }, 3000); });
+        document.getElementById('formConductor').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnEnvioConductor');
+            const textoOriginal = btn.innerText;
+            
+            btn.innerText = "ENVIANDO SOLICITUD...";
+            btn.disabled = true;
 
-    document.getElementById('miFormulario').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const redSeleccionada = document.querySelector('input[name="RedSocial"]:checked');
-        if (!redSeleccionada) {
-            alert("⚠️ Por favor, selecciona una red social (toca el icono) para continuar.");
-            return;
-        }
-        const btn = document.getElementById('btn-verificar');
-        btn.innerText = "VALIDANDO..."; btn.disabled = true;
-        const params = new URLSearchParams();
-        params.append('Nombre', e.target.Nombre.value);
-        params.append('Cedula', e.target.Cedula.value);
-        params.append('WhatsApp', e.target.WhatsApp.value);
-        params.append('Correo', e.target.Correo.value);
-        params.append('RedSocial', redSeleccionada.value);
-        params.append('Cupon', document.getElementById('inputCuponReal').value || "Ninguno");
-
-        fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' })
-        .then(() => {
-            document.getElementById('filtro-seguridad').classList.add('hidden');
-            document.getElementById('contenedor-aplicativo').classList.remove('hidden');
-        })
-        .catch(() => {
-            alert("Error de conexión.");
-            btn.disabled = false;
-            btn.innerText = "Activar Servicio VIP";
+            const formData = new FormData(this);
+            fetch('registro_conductor.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                if(data.trim() === "Exito") {
+                    alert("¡Registro exitoso! Tu solicitud ha sido enviada correctamente.");
+                    cerrarModalConductor();
+                    this.reset();
+                } else {
+                    alert("Error al guardar: " + data);
+                }
+                btn.innerText = textoOriginal;
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Error de conexión con el servidor.");
+                btn.innerText = textoOriginal;
+                btn.disabled = false;
+            });
         });
-    });
-document.getElementById('formConductor').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btnEnvioConductor');
-    const textoOriginal = btn.innerText;
-    
-    btn.innerText = "ENVIANDO SOLICITUD...";
-    btn.disabled = true;
-
-    const formData = new FormData(this);
-fetch('registro_conductor.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        if(data.trim() === "Exito") {
-            alert("¡Registro exitoso! Tu solicitud ha sido enviada correctamente.");
-            cerrarModalConductor();
-            this.reset(); // Limpia el formulario
-        } else {
-            alert("Error al guardar: " + data);
-        }
-        btn.innerText = textoOriginal;
-        btn.disabled = false;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Error de conexión con el servidor.");
-        btn.innerText = textoOriginal;
-        btn.disabled = false;
-    });
-});
- </script>
+     </script>
 </body>
 </html>
-
-
-
-
