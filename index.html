@@ -354,11 +354,11 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
         
         document.getElementById('formConductor').addEventListener('submit', function(e) {
             e.preventDefault();
-            const btn = document.getElementById('btnEnvioConductor');
+            const btnCond = document.getElementById('btnEnvioConductor');
             const textoOriginal = btn.innerText;
             
-            btn.innerText = "ENVIANDO SOLICITUD...";
-            btn.disabled = true;
+            btnCond.innerText = "ENVIANDO SOLICITUD...";
+            btnCond.disabled = true;
 
             const formData = new FormData(this);
             fetch('registro_conductor.php', {
@@ -373,14 +373,14 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
                 } else {
                     alert("Error al guardar: " + data);
                 }
-                btn.innerText = textoOriginal;
-                btn.disabled = false;
+                btnCond.innerText = textoOriginal;
+                btnCond.disabled = false;
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert("Error de conexión con el servidor.");
-                btn.innerText = textoOriginal;
-                btn.disabled = false;
+                btnCond.innerText = textoOriginal;
+                btnCond.disabled = false;
             });
             });
      </script>
