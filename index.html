@@ -350,7 +350,8 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
         btn.disabled = false;
         btn.innerText = "Activar Servicio VIP";
     });
-            
+      });
+        
         document.getElementById('formConductor').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('btnEnvioConductor');
@@ -380,6 +381,7 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
                 alert("Error de conexión con el servidor.");
                 btn.innerText = textoOriginal;
                 btn.disabled = false;
+            });
             });
      </script>
 </body>
