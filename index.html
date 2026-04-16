@@ -319,24 +319,26 @@
 
         window.addEventListener('load', () => { setTimeout(() => { document.getElementById('notificacionPop').classList.add('show'); }, 3000); });
 
-        document.getElementById('miFormulario').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const redSeleccionada = document.querySelector('input[name="RedSocial"]:checked');
-            if (!redSeleccionada) {
-                alert("⚠️ Por favor, selecciona una red social (toca el icono) para continuar.");
-                return;
-            }
-            const btn = document.getElementById('btn-verificar');
-            btn.innerText = "VALIDANDO..."; btn.disabled = true;
-            const params = new URLSearchParams();
-            params.append('Nombre', e.target.Nombre.value);
-            params.append('Cedula', e.target.Cedula.value);
-            params.append('WhatsApp', e.target.WhatsApp.value);
-            params.append('Correo', e.target.Correo.value);
-            params.append('RedSocial', redSeleccionada.value);
-            params.append('Cupon', document.getElementById('inputCuponReal').value || "Ninguno");
+        document.getElementById('miformulario').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const redSeleccionada = document.querySelector('input[name="RedSocial"]:checked');
+    if (!redSeleccionada) {
+        alert("⚠️ Por favor, selecciona una red social (toca el icono) para continuar.");
+        return;
+    }
 
-fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
+    const btn = document.getElementById('btn-verificar');
+    btn.innerText = "VALIDANDO..."; btn.disabled = true;
+
+    const params = new URLSearchParams();
+    params.append('Nombre', e.target.Nombre.value);
+    params.append('Cedula', e.target.Cedula.value);
+    params.append('WhatsApp', e.target.WhatsApp.value);
+    params.append('Correo', e.target.Correo.value);
+    params.append('RedSocial', redSeleccionada.value);
+    params.append('Cupon', document.getElementById('inputCuponReal').value || "Ninguno");
+
+    fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
 
     fetch('registro_cliente.php', {
         method: 'POST',
@@ -344,7 +346,6 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
     })
     .then(res => res.text())
     .then(data => {
-        console.log("Respuesta Hostinger:", data);
         document.getElementById('filtro-seguridad').classList.add('hidden');
         document.getElementById('contenedor-aplicativo').classList.remove('hidden');
     })
@@ -353,22 +354,26 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
         btn.disabled = false;
         btn.innerText = "Activar Servicio VIP";
     });
-      });
-        
-       document.getElementById('formConductor').addEventListener('submit', function(e) {
+});
+
+// --- REGISTRO DE CONDUCTORES ---
+document.getElementById('formConductor').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const btnCond = document.getElementById('btnEnvioConductor');
     const textoOriginal = btnCond.innerText;
-    btnCond.innerText = "ENVIANDO...";
+    
+    btnCond.innerText = "ENVIANDO SOLICITUD...";
     btnCond.disabled = true;
 
     const formData = new FormData(this);
 
+    // 1. Envío a Google Sheets (El Chip)
     fetch(scriptURL, { method: 'POST', body: formData })
-    .then(res => console.log("Enviado a Google"))
+    .then(res => console.log("Copia en Google lista"))
     .catch(err => console.error("Error Google:", err));
 
+    // 2. Envío a Hostinger (PHP)
     fetch('registro_conductor.php', {
         method: 'POST',
         body: formData
@@ -376,11 +381,11 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
     .then(response => response.text())
     .then(data => {
         if (data.trim() === "Exito") {
-            alert("¡Registro exitoso! Ya eres parte de Fast Travel.");
+            alert("¡Registro exitoso! Tu solicitud ha sido enviada correctamente.");
             cerrarModalConductor();
             this.reset();
         } else {
-            alert("Error al guardar en base de datos: " + data);
+            alert("Error al guardar: " + data);
         }
     })
     .catch(error => {
@@ -391,6 +396,6 @@ fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
         btnCond.disabled = false;
     });
 });
-     </script>
+</script>
 </body>
 </html>
