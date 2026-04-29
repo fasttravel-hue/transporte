@@ -1,1 +1,37 @@
-Hola fast
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Travel V2 | Laboratorio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Definimos el color negro de fondo y el rojo de tu marca */
+        body { background-color: #000; color: #fff; }
+        .texto-rojo { color: #dc2626; }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen text-center px-6">
+
+    <h1 class="text-5xl font-black italic uppercase tracking-tighter mb-2">
+        FAST <span class="texto-rojo">TRAVEL</span>
+    </h1>
+    
+    <p class="text-xs font-light text-gray-500 uppercase tracking-[0.5em] mb-10">
+        Laboratorio de Diseño
+    </p>
+
+    <div class="border border-zinc-800 p-8 rounded-[40px] bg-zinc-900/30 max-w-sm">
+        <p class="text-sm text-gray-400 mb-4">
+            Xavier, si ves esto en el link azul, significa que ya tenemos el control del nuevo repositorio.
+        </p>
+        <p class="text-[10px] font-bold texto-rojo uppercase tracking-widest">
+            ¡Siguiente paso: La magia del celular!
+        </p>
+    </div>
+
+</body>
+</html>
